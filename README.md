@@ -25,6 +25,18 @@ import { useEventListener } from '@wojtekmaj/react-hooks';
 useEventListener(element, 'click', onClick);
 ```
 
+#### `useMatchMedia`
+
+Returns a flag which determines if the document matches the given [media query](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries) string.
+
+##### Sample usage
+
+```js
+import { useMatchMedia } from '@wojtekmaj/react-hooks';
+
+const isDesktop = useMatchMedia('screen and (min-width: 1024px)'); // true / false
+```
+
 #### `useSetInterval`
 
 Runs a given function every n milliseconds.

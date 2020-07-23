@@ -1,5 +1,6 @@
 import {
   useEventListener,
+  useMatchMedia,
   useSetInterval,
   useTick,
   useToggle,
@@ -8,6 +9,10 @@ import {
 describe('index', () => {
   it('has useEventListener exported properly', () => {
     expect(useEventListener).toBeInstanceOf(Function);
+  });
+
+  it('has useMatchMedia exported properly', () => {
+    expect(useMatchMedia).toBeInstanceOf(Function);
   });
 
   it('has useSetInterval exported properly', () => {
