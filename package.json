@@ -1,0 +1,57 @@
+{
+  "name": "@wojtekmaj/react-hooks",
+  "version": "1.0.0",
+  "description": "A collection of React Hooks.",
+  "main": "dist/umd/index.js",
+  "module": "dist/esm/index.js",
+  "source": "src/index.js",
+  "sideEffects": false,
+  "scripts": {
+    "build": "yarn build-esm && yarn build-umd",
+    "build-esm": "cross-env BABEL_ENV=production-esm babel src -d dist/esm --ignore \"**/*.spec.js\"",
+    "build-umd": "cross-env BABEL_ENV=production-umd babel src -d dist/umd --ignore \"**/*.spec.js\"",
+    "clean": "rimraf dist",
+    "jest": "jest",
+    "jest-coverage": "jest --coverage",
+    "lint": "eslint src/ --ext .jsx,.js",
+    "prepublishOnly": "yarn clean && yarn build",
+    "test": "yarn lint && yarn jest"
+  },
+  "keywords": [
+    "react",
+    "hooks"
+  ],
+  "author": {
+    "name": "Wojciech Maj",
+    "email": "kontakt@wojtekmaj.pl"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/cli": "^7.8.0",
+    "@babel/core": "^7.9.0",
+    "@babel/preset-env": "^7.9.0",
+    "@testing-library/react-hooks": "^3.3.0",
+    "cross-env": "^7.0.0",
+    "eslint": "~7.2.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-plugin-import": "^2.21.2",
+    "jest": "^26.0.0",
+    "react": "^16.8.0",
+    "react-dom": "^16.8.0",
+    "react-test-renderer": "^16.9.0",
+    "rimraf": "^3.0.0"
+  },
+  "peerDependencies": {
+    "react": "^16.8.0"
+  },
+  "files": [
+    "LICENSE",
+    "README.md",
+    "dist/",
+    "src/"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wojtekmaj/react-hooks.git"
+  }
+}
