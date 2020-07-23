@@ -13,6 +13,18 @@ A collection of React Hooks.
 
 ## User guide
 
+#### `useEventListener`
+
+Adds event listener to a given element.
+
+##### Sample usage
+
+```js
+import { useEventListener } from '@wojtekmaj/react-hooks';
+
+useEventListener(element, 'click', onClick);
+```
+
 #### `useSetInterval`
 
 Runs a given function every n milliseconds.
