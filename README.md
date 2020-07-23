@@ -37,6 +37,18 @@ import { useMatchMedia } from '@wojtekmaj/react-hooks';
 const isDesktop = useMatchMedia('screen and (min-width: 1024px)'); // true / false
 ```
 
+#### `useMutationObserver`
+
+Observes a given element using [MutationObserver](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver).
+
+##### Sample usage
+
+```js
+import { useMutationObserver } from '@wojtekmaj/react-hooks';
+
+useMutationObserver(element, config, onMutation);
+```
+
 #### `useSetInterval`
 
 Runs a given function every n milliseconds.

@@ -1,6 +1,7 @@
 import {
   useEventListener,
   useMatchMedia,
+  useMutationObserver,
   useSetInterval,
   useTick,
   useToggle,
@@ -13,6 +14,10 @@ describe('index', () => {
 
   it('has useMatchMedia exported properly', () => {
     expect(useMatchMedia).toBeInstanceOf(Function);
+  });
+
+  it('has useMutationObserver exported properly', () => {
+    expect(useMutationObserver).toBeInstanceOf(Function);
   });
 
   it('has useSetInterval exported properly', () => {
