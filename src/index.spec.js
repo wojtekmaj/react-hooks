@@ -3,6 +3,7 @@ import {
   useMatchMedia,
   useMutationObserver,
   useSetInterval,
+  useSetTimeout,
   useTick,
   useToggle,
 } from './index';
@@ -22,6 +23,10 @@ describe('index', () => {
 
   it('has useSetInterval exported properly', () => {
     expect(useSetInterval).toBeInstanceOf(Function);
+  });
+
+  it('has useSetTimeout exported properly', () => {
+    expect(useSetTimeout).toBeInstanceOf(Function);
   });
 
   it('has useTick exported properly', () => {

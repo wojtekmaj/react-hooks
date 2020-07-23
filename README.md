@@ -61,6 +61,18 @@ import { useSetInterval } from '@wojtekmaj/react-hooks';
 useSetInterval(fn, 1000);
 ```
 
+#### `useSetTimeout`
+
+Runs a given function after n milliseconds.
+
+##### Sample usage
+
+```js
+import { useSetTimeout } from '@wojtekmaj/react-hooks';
+
+useSetTimeout(fn, 1000);
+```
+
 #### `useTick`
 
 Counts from 0, increasing the number returned every n milliseconds.
