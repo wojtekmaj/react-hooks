@@ -1,14 +1,22 @@
 {
-  "presets": ["@babel/env"],
+  "presets": [
+    ["@babel/env",{
+      "loose": true
+    }]
+  ],
   "env": {
     "production-esm": {
       "presets": [
-        ["@babel/env", { "modules": false }]
+        ["@babel/env", {
+          "loose": true,
+          "modules": false
+        }]
       ]
     },
     "test": {
       "presets": [
         ["@babel/env", {
+          "loose": true,
           "targets": {
             "node": "current"
           }
