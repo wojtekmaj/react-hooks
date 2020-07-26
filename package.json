@@ -53,5 +53,6 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/wojtekmaj/react-hooks.git"
-  }
+  },
+  "funding": "https://github.com/wojtekmaj/react-hooks?sponsor=1"
 }
