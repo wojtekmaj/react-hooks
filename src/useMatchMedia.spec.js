@@ -33,7 +33,7 @@ describe('useMatchMedia()', () => {
 
   it('should update the flag when the listener is called', () => {
     let listener;
-    addListener.mockImplementation((currentListener) => { listener = currentListener; });
+    addListener.mockImplementationOnce((currentListener) => { listener = currentListener; });
 
     const { result } = renderHook(() => useMatchMedia('screen and (min-width: 1024px'));
 
