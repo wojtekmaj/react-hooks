@@ -1,4 +1,5 @@
 import {
+  useCurrentPosition,
   useEventListener,
   useMatchMedia,
   useMutationObserver,
@@ -9,6 +10,10 @@ import {
 } from './index';
 
 describe('index', () => {
+  it('has useCurrentPosition exported properly', () => {
+    expect(useCurrentPosition).toBeInstanceOf(Function);
+  });
+
   it('has useEventListener exported properly', () => {
     expect(useEventListener).toBeInstanceOf(Function);
   });

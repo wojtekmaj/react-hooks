@@ -13,6 +13,18 @@ A collection of React Hooks.
 
 ## User guide
 
+#### `useCurrentPosition`
+
+Returns current position from Geolocation API.
+
+##### Sample usage
+
+```js
+import { useCurrentPosition } from '@wojtekmaj/react-hooks';
+
+useCurrentPosition(); // { latitude: 0, longitude: 0 }
+```
+
 #### `useEventListener`
 
 Adds event listener to a given element.
