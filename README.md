@@ -13,11 +13,22 @@ A collection of React Hooks.
 
 ## User guide
 
-#### `useCurrentPosition`
+### Table of contents
+
+* [`useCurrentPosition`](#useCurrentPosition)
+* [`useEventListener`](#useEventListener)
+* [`useMatchMedia`](#useMatchMedia)
+* [`useMutationObserver`](#useMutationObserver)
+* [`useSetInterval`](#useSetInterval)
+* [`useSetTimeout`](#useSetTimeout)
+* [`useTick`](#useTick)
+* [`useToggle`](#useToggle)
+
+### `useCurrentPosition`
 
 Returns current position from Geolocation API.
 
-##### Sample usage
+#### Sample usage
 
 ```js
 import { useCurrentPosition } from '@wojtekmaj/react-hooks';
@@ -25,11 +36,11 @@ import { useCurrentPosition } from '@wojtekmaj/react-hooks';
 useCurrentPosition(); // { latitude: 0, longitude: 0 }
 ```
 
-#### `useEventListener`
+### `useEventListener`
 
 Adds event listener to a given element.
 
-##### Sample usage
+#### Sample usage
 
 ```js
 import { useEventListener } from '@wojtekmaj/react-hooks';
@@ -37,11 +48,11 @@ import { useEventListener } from '@wojtekmaj/react-hooks';
 useEventListener(element, 'click', onClick);
 ```
 
-#### `useMatchMedia`
+### `useMatchMedia`
 
 Returns a flag which determines if the document matches the given [media query](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries) string.
 
-##### Sample usage
+#### Sample usage
 
 ```js
 import { useMatchMedia } from '@wojtekmaj/react-hooks';
@@ -49,11 +60,11 @@ import { useMatchMedia } from '@wojtekmaj/react-hooks';
 const isDesktop = useMatchMedia('screen and (min-width: 1024px)'); // true / false
 ```
 
-#### `useMutationObserver`
+### `useMutationObserver`
 
 Observes a given element using [MutationObserver](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver).
 
-##### Sample usage
+#### Sample usage
 
 ```js
 import { useMutationObserver } from '@wojtekmaj/react-hooks';
@@ -61,11 +72,11 @@ import { useMutationObserver } from '@wojtekmaj/react-hooks';
 useMutationObserver(element, config, onMutation);
 ```
 
-#### `useSetInterval`
+### `useSetInterval`
 
 Runs a given function every n milliseconds.
 
-##### Sample usage
+#### Sample usage
 
 ```js
 import { useSetInterval } from '@wojtekmaj/react-hooks';
@@ -73,11 +84,11 @@ import { useSetInterval } from '@wojtekmaj/react-hooks';
 useSetInterval(fn, 1000);
 ```
 
-#### `useSetTimeout`
+### `useSetTimeout`
 
 Runs a given function after n milliseconds.
 
-##### Sample usage
+#### Sample usage
 
 ```js
 import { useSetTimeout } from '@wojtekmaj/react-hooks';
@@ -85,11 +96,11 @@ import { useSetTimeout } from '@wojtekmaj/react-hooks';
 useSetTimeout(fn, 1000);
 ```
 
-#### `useTick`
+### `useTick`
 
 Counts from 0, increasing the number returned every n milliseconds.
 
-##### Sample usage
+#### Sample usage
 
 ```js
 import { useTick } from '@wojtekmaj/react-hooks';
@@ -97,11 +108,11 @@ import { useTick } from '@wojtekmaj/react-hooks';
 const tick = useTick(1000); // 0 … 🕐 … 1 … 🕑 … 2 …
 ```
 
-#### `useToggle`
+### `useToggle`
 
 Returns a flag and a function to toggle it.
 
-##### Sample usage
+#### Sample usage
 
 ```js
 import { useToggle } from '@wojtekmaj/react-hooks';
