@@ -5,7 +5,7 @@ A collection of React Hooks.
 
 ## tl;dr
 * Install by executing `npm install @wojtekmaj/react-hooks` or `yarn add @wojtekmaj/react-hooks`.
-* Import by adding `import * as asyncArrayUtils from '@wojtekmaj/react-hooks'`.
+* Import by adding `import { useTick } from '@wojtekmaj/react-hooks'`.
 * Do stuff with it!
     ```js
     const tick = useTick();
