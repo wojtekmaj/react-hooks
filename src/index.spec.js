@@ -3,6 +3,7 @@ import {
   useEventListener,
   useMatchMedia,
   useMutationObserver,
+  useResizeObserver,
   useSetInterval,
   useSetTimeout,
   useTick,
@@ -24,6 +25,10 @@ describe('index', () => {
 
   it('has useMutationObserver exported properly', () => {
     expect(useMutationObserver).toBeInstanceOf(Function);
+  });
+
+  it('has useResizeObserver exported properly', () => {
+    expect(useResizeObserver).toBeInstanceOf(Function);
   });
 
   it('has useSetInterval exported properly', () => {

@@ -19,6 +19,7 @@ A collection of React Hooks.
 * [`useEventListener`](#useEventListener)
 * [`useMatchMedia`](#useMatchMedia)
 * [`useMutationObserver`](#useMutationObserver)
+* [`useResizeObserver`](#useResizeObserver)
 * [`useSetInterval`](#useSetInterval)
 * [`useSetTimeout`](#useSetTimeout)
 * [`useTick`](#useTick)
@@ -70,6 +71,18 @@ Observes a given element using [MutationObserver](https://developer.mozilla.org/
 import { useMutationObserver } from '@wojtekmaj/react-hooks';
 
 useMutationObserver(element, config, onMutation);
+```
+
+### `useResizeObserver`
+
+Observes a given element using [ResizeObserver](https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver).
+
+#### Sample usage
+
+```js
+import { useResizeObserver } from '@wojtekmaj/react-hooks';
+
+useResizeObserver(element, config, onMutation);
 ```
 
 ### `useSetInterval`
