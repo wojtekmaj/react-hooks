@@ -20,6 +20,8 @@ A collection of React Hooks.
 * [`useMatchMedia`](#useMatchMedia)
 * [`useMutationObserver`](#useMutationObserver)
 * [`useResizeObserver`](#useResizeObserver)
+* [`useScrollLeft`](#useScrollLeft)
+* [`useScrollTop`](#useScrollTop)
 * [`useSetInterval`](#useSetInterval)
 * [`useSetTimeout`](#useSetTimeout)
 * [`useTick`](#useTick)
@@ -83,6 +85,30 @@ Observes a given element using [ResizeObserver](https://developer.mozilla.org/en
 import { useResizeObserver } from '@wojtekmaj/react-hooks';
 
 useResizeObserver(element, config, onMutation);
+```
+
+### `useScrollLeft`
+
+Returns current scroll left position in pixels.
+
+#### Sample usage
+
+```js
+import { useScrollLeft } from '@wojtekmaj/react-hooks';
+
+const scrollLeft = useScrollLeft(); // 0
+```
+
+### `useScrollTop`
+
+Returns current scroll top position in pixels.
+
+#### Sample usage
+
+```js
+import { useScrollTop } from '@wojtekmaj/react-hooks';
+
+const scrollTop = useScrollTop(); // 0
 ```
 
 ### `useSetInterval`

@@ -3,6 +3,8 @@ import useEventListener from './useEventListener';
 import useMatchMedia from './useMatchMedia';
 import useMutationObserver from './useMutationObserver';
 import useResizeObserver from './useResizeObserver';
+import useScrollLeft from './useScrollLeft';
+import useScrollTop from './useScrollTop';
 import useSetInterval from './useSetInterval';
 import useSetTimeout from './useSetTimeout';
 import useTick from './useTick';
@@ -14,6 +16,8 @@ export {
   useMatchMedia,
   useMutationObserver,
   useResizeObserver,
+  useScrollLeft,
+  useScrollTop,
   useSetInterval,
   useSetTimeout,
   useTick,

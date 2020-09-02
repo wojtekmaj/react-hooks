@@ -4,6 +4,8 @@ import {
   useMatchMedia,
   useMutationObserver,
   useResizeObserver,
+  useScrollLeft,
+  useScrollTop,
   useSetInterval,
   useSetTimeout,
   useTick,
@@ -29,6 +31,14 @@ describe('index', () => {
 
   it('has useResizeObserver exported properly', () => {
     expect(useResizeObserver).toBeInstanceOf(Function);
+  });
+
+  it('has useScrollLeft exported properly', () => {
+    expect(useScrollLeft).toBeInstanceOf(Function);
+  });
+
+  it('has useScrollTop exported properly', () => {
+    expect(useScrollTop).toBeInstanceOf(Function);
   });
 
   it('has useSetInterval exported properly', () => {
