@@ -11,7 +11,7 @@ import { useEffect } from 'react';
  */
 export default function useResizeObserver(element, options, observerCallback) {
   useEffect(() => {
-    if (!element) {
+    if (!element || !('ResizeObserver' in window)) {
       return undefined;
     }
 

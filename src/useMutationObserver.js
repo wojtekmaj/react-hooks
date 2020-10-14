@@ -11,7 +11,7 @@ import { useEffect } from 'react';
  */
 export default function useMutationObserver(element, options, observerCallback) {
   useEffect(() => {
-    if (!element) {
+    if (!element || !('MutationObserver' in window)) {
       return undefined;
     }
 

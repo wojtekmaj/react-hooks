@@ -11,7 +11,7 @@ import { useEffect } from 'react';
  */
 export default function useIntersectionObserver(element, options, observerCallback) {
   useEffect(() => {
-    if (!element) {
+    if (!element || !('IntersectionObserver' in window)) {
       return undefined;
     }
 
