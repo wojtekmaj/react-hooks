@@ -1,6 +1,7 @@
 import {
   useCurrentPosition,
   useEventListener,
+  useIntersectionObserver,
   useMatchMedia,
   useMutationObserver,
   useResizeObserver,
@@ -23,6 +24,10 @@ describe('index', () => {
 
   it('has useMatchMedia exported properly', () => {
     expect(useMatchMedia).toBeInstanceOf(Function);
+  });
+
+  it('has useIntersectionObserver exported properly', () => {
+    expect(useIntersectionObserver).toBeInstanceOf(Function);
   });
 
   it('has useMutationObserver exported properly', () => {

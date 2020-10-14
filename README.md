@@ -17,6 +17,7 @@ A collection of React Hooks.
 
 * [`useCurrentPosition`](#useCurrentPosition)
 * [`useEventListener`](#useEventListener)
+* [`useIntersectionObserver`](#useIntersectionObserver)
 * [`useMatchMedia`](#useMatchMedia)
 * [`useMutationObserver`](#useMutationObserver)
 * [`useResizeObserver`](#useResizeObserver)
@@ -49,6 +50,18 @@ Adds event listener to a given element.
 import { useEventListener } from '@wojtekmaj/react-hooks';
 
 useEventListener(element, 'click', onClick);
+```
+
+### `useIntersectionObserver`
+
+Observes a given element using [IntersectionObserver](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver).
+
+#### Sample usage
+
+```js
+import { useIntersectionObserver } from '@wojtekmaj/react-hooks';
+
+useIntersectionObserver(element, config, onIntersectionChange);
 ```
 
 ### `useMatchMedia`

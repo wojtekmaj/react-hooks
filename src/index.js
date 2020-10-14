@@ -1,5 +1,6 @@
 import useCurrentPosition from './useCurrentPosition';
 import useEventListener from './useEventListener';
+import useIntersectionObserver from './useIntersectionObserver';
 import useMatchMedia from './useMatchMedia';
 import useMutationObserver from './useMutationObserver';
 import useResizeObserver from './useResizeObserver';
@@ -13,6 +14,7 @@ import useToggle from './useToggle';
 export {
   useCurrentPosition,
   useEventListener,
+  useIntersectionObserver,
   useMatchMedia,
   useMutationObserver,
   useResizeObserver,
