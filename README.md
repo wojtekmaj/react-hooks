@@ -97,7 +97,7 @@ Observes a given element using [ResizeObserver](https://developer.mozilla.org/en
 ```js
 import { useResizeObserver } from '@wojtekmaj/react-hooks';
 
-useResizeObserver(element, config, onMutation);
+useResizeObserver(element, config, onResize);
 ```
 
 ### `useScrollLeft`
