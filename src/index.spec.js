@@ -11,6 +11,8 @@ import {
   useSetTimeout,
   useTick,
   useToggle,
+  useWindowHeight,
+  useWindowWidth,
 } from './index';
 
 describe('index', () => {
@@ -60,5 +62,13 @@ describe('index', () => {
 
   it('has useToggle exported properly', () => {
     expect(useToggle).toBeInstanceOf(Function);
+  });
+
+  it('has useWindowHeight exported properly', () => {
+    expect(useWindowHeight).toBeInstanceOf(Function);
+  });
+
+  it('has useWindowWidth exported properly', () => {
+    expect(useWindowWidth).toBeInstanceOf(Function);
   });
 });

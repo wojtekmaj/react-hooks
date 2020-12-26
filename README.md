@@ -27,6 +27,8 @@ A collection of React Hooks.
 * [`useSetTimeout`](#useSetTimeout)
 * [`useTick`](#useTick)
 * [`useToggle`](#useToggle)
+* [`useWindowHeight`](#useWindowHeight)
+* [`useWindowWidth`](#useWindowWidth)
 
 ### `useCurrentPosition`
 
@@ -170,6 +172,30 @@ Returns a flag and a function to toggle it.
 import { useToggle } from '@wojtekmaj/react-hooks';
 
 const [value, toggleValue] = useToggle(); // [false, Function]
+```
+
+### `useWindowHeight`
+
+Returns the interior height of the window in pixels.
+
+#### Sample usage
+
+```js
+import { useWindowHeight } from '@wojtekmaj/react-hooks';
+
+const windowWidth = useWindowHeight(); // 900
+```
+
+### `useWindowWidth`
+
+Returns the interior width of the window in pixels.
+
+#### Sample usage
+
+```js
+import { useWindowWidth } from '@wojtekmaj/react-hooks';
+
+const windowWidth = useWindowWidth(); // 1440
 ```
 
 ## License

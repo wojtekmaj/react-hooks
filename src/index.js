@@ -10,6 +10,8 @@ import useSetInterval from './useSetInterval';
 import useSetTimeout from './useSetTimeout';
 import useTick from './useTick';
 import useToggle from './useToggle';
+import useWindowHeight from './useWindowHeight';
+import useWindowWidth from './useWindowWidth';
 
 export {
   useCurrentPosition,
@@ -24,4 +26,6 @@ export {
   useSetTimeout,
   useTick,
   useToggle,
+  useWindowHeight,
+  useWindowWidth,
 };
