@@ -18,7 +18,7 @@ export default function useCurrentPosition(options) {
 
   useEffect(() => {
     if (!('geolocation' in navigator)) {
-      return null;
+      return undefined;
     }
 
     function onPositionReceive(result) {
