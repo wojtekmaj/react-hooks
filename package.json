@@ -42,6 +42,10 @@
   "peerDependencies": {
     "react": "^16.8.0 || ^17.0.0-0"
   },
+  "resolutions": {
+    "rimraf@2.6.3": "^2.6.3",
+    "semver@7.0.0": "^7.0.0"
+  },
   "publishConfig": {
     "access": "public"
   },
