@@ -3,6 +3,7 @@ import useEventListener from './useEventListener';
 import useIntersectionObserver from './useIntersectionObserver';
 import useMatchMedia from './useMatchMedia';
 import useMutationObserver from './useMutationObserver';
+import useOnLine from './useOnLine';
 import useResizeObserver from './useResizeObserver';
 import useScrollLeft from './useScrollLeft';
 import useScrollTop from './useScrollTop';
@@ -19,6 +20,7 @@ export {
   useIntersectionObserver,
   useMatchMedia,
   useMutationObserver,
+  useOnLine,
   useResizeObserver,
   useScrollLeft,
   useScrollTop,

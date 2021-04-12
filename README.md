@@ -20,6 +20,7 @@ A collection of React Hooks.
 * [`useIntersectionObserver`](#useIntersectionObserver)
 * [`useMatchMedia`](#useMatchMedia)
 * [`useMutationObserver`](#useMutationObserver)
+* ['useOnLine'](#useOnLine)
 * [`useResizeObserver`](#useResizeObserver)
 * [`useScrollLeft`](#useScrollLeft)
 * [`useScrollTop`](#useScrollTop)
@@ -88,6 +89,18 @@ Observes a given element using [MutationObserver](https://developer.mozilla.org/
 import { useMutationObserver } from '@wojtekmaj/react-hooks';
 
 useMutationObserver(element, config, onMutation);
+```
+
+### `useOnLine`
+
+Returns the online status of the browser.
+
+#### Sample usage
+
+```js
+import { useOnLine } from '@wojtekmaj/react-hooks';
+
+const offLine = useOnLine(); // true
 ```
 
 ### `useResizeObserver`

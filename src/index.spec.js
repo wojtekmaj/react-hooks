@@ -4,6 +4,7 @@ import {
   useIntersectionObserver,
   useMatchMedia,
   useMutationObserver,
+  useOnLine,
   useResizeObserver,
   useScrollLeft,
   useScrollTop,
@@ -34,6 +35,10 @@ describe('index', () => {
 
   it('has useMutationObserver exported properly', () => {
     expect(useMutationObserver).toBeInstanceOf(Function);
+  });
+
+  it('has useOnLine exported properly', () => {
+    expect(useOnLine).toBeInstanceOf(Function);
   });
 
   it('has useResizeObserver exported properly', () => {
