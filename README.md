@@ -20,7 +20,7 @@ A collection of React Hooks.
 * [`useIntersectionObserver`](#useIntersectionObserver)
 * [`useMatchMedia`](#useMatchMedia)
 * [`useMutationObserver`](#useMutationObserver)
-* ['useOnLine'](#useOnLine)
+* [`useOnLine`](#useOnLine)
 * [`useResizeObserver`](#useResizeObserver)
 * [`useScrollLeft`](#useScrollLeft)
 * [`useScrollTop`](#useScrollTop)
