@@ -103,6 +103,54 @@ import { useOnLine } from '@wojtekmaj/react-hooks';
 const offLine = useOnLine(); // true
 ```
 
+### `usePrefersColorSchemeDark`
+
+Returns a flag which determines if the document matches `(prefers-color-scheme: dark)` [media feature](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries#media_features).
+
+#### Sample usage
+
+```js
+import { usePrefersColorSchemeDark } from '@wojtekmaj/react-hooks';
+
+const prefersColorSchemeDark = usePrefersColorSchemeDark(); // true
+```
+
+### `usePrefersColorSchemeLight`
+
+Returns a flag which determines if the document matches `(prefers-color-scheme: light)` [media feature](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries#media_features).
+
+#### Sample usage
+
+```js
+import { usePrefersColorSchemeLight } from '@wojtekmaj/react-hooks';
+
+const prefersColorSchemeLight = usePrefersColorSchemeLight(); // true
+```
+
+### `usePrefersReducedMotion`
+
+Returns a flag which determines if the document matches `(prefers-reduced-motion: reduce)` [media feature](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries#media_features).
+
+#### Sample usage
+
+```js
+import { usePrefersReducedMotion } from '@wojtekmaj/react-hooks';
+
+const prefersReducedMotion = usePrefersReducedMotion(); // true
+```
+
+### `usePrefersReducedTransparency`
+
+Returns a flag which determines if the document matches `(prefers-reduced-transparency: reduce)` [media feature](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries#media_features).
+
+#### Sample usage
+
+```js
+import { usePrefersReducedTransparency } from '@wojtekmaj/react-hooks';
+
+const prefersReducedTransparency = usePrefersReducedTransparency(); // true
+```
+
 ### `useResizeObserver`
 
 Observes a given element using [ResizeObserver](https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver).

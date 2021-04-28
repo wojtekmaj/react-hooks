@@ -5,6 +5,10 @@ import {
   useMatchMedia,
   useMutationObserver,
   useOnLine,
+  usePrefersColorSchemeDark,
+  usePrefersColorSchemeLight,
+  usePrefersReducedMotion,
+  usePrefersReducedTransparency,
   useResizeObserver,
   useScrollLeft,
   useScrollTop,
@@ -39,6 +43,22 @@ describe('index', () => {
 
   it('has useOnLine exported properly', () => {
     expect(useOnLine).toBeInstanceOf(Function);
+  });
+
+  it('has usePrefersColorSchemeDark exported properly', () => {
+    expect(usePrefersColorSchemeDark).toBeInstanceOf(Function);
+  });
+
+  it('has usePrefersColorSchemeLight exported properly', () => {
+    expect(usePrefersColorSchemeLight).toBeInstanceOf(Function);
+  });
+
+  it('has usePrefersReducedMotion exported properly', () => {
+    expect(usePrefersReducedMotion).toBeInstanceOf(Function);
+  });
+
+  it('has usePrefersReducedTransparency exported properly', () => {
+    expect(usePrefersReducedTransparency).toBeInstanceOf(Function);
   });
 
   it('has useResizeObserver exported properly', () => {

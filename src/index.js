@@ -4,6 +4,10 @@ import useIntersectionObserver from './useIntersectionObserver';
 import useMatchMedia from './useMatchMedia';
 import useMutationObserver from './useMutationObserver';
 import useOnLine from './useOnLine';
+import usePrefersColorSchemeDark from './usePrefersColorSchemeDark';
+import usePrefersColorSchemeLight from './usePrefersColorSchemeLight';
+import usePrefersReducedMotion from './usePrefersReducedMotion';
+import usePrefersReducedTransparency from './usePrefersReducedTransparency';
 import useResizeObserver from './useResizeObserver';
 import useScrollLeft from './useScrollLeft';
 import useScrollTop from './useScrollTop';
@@ -21,6 +25,10 @@ export {
   useMatchMedia,
   useMutationObserver,
   useOnLine,
+  usePrefersColorSchemeDark,
+  usePrefersColorSchemeLight,
+  usePrefersReducedMotion,
+  usePrefersReducedTransparency,
   useResizeObserver,
   useScrollLeft,
   useScrollTop,
