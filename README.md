@@ -104,7 +104,7 @@ Returns the online status of the browser.
 ```js
 import { useOnLine } from '@wojtekmaj/react-hooks';
 
-const offLine = useOnLine(); // true
+const onLine = useOnLine(); // true
 ```
 
 ### `usePrefersColorSchemeDark`
