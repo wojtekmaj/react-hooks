@@ -42,4 +42,28 @@ describe('useToggle()', () => {
 
     expect(value3).toBe(false);
   });
+
+  it('should toggle the flag properly with memoized toggleValue', () => {
+    const { result } = renderHook(() => useToggle());
+
+    const [value, toggleValue] = result.current;
+
+    expect(value).toBe(false);
+
+    act(() => {
+      toggleValue();
+    });
+
+    const [value2] = result.current;
+
+    expect(value2).toBe(true);
+
+    act(() => {
+      toggleValue();
+    });
+
+    const [value3] = result.current;
+
+    expect(value3).toBe(false);
+  });
 });
