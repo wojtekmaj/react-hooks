@@ -2,6 +2,7 @@ import {
   useCurrentPosition,
   useEventListener,
   useIntersectionObserver,
+  useLocalStorage,
   useMatchMedia,
   useMutationObserver,
   useOnLine,
@@ -35,6 +36,10 @@ describe('index', () => {
 
   it('has useIntersectionObserver exported properly', () => {
     expect(useIntersectionObserver).toBeInstanceOf(Function);
+  });
+
+  it('has useLocalStorage exported properly', () => {
+    expect(useLocalStorage).toBeInstanceOf(Function);
   });
 
   it('has useMutationObserver exported properly', () => {

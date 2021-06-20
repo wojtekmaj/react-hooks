@@ -18,6 +18,7 @@ A collection of React Hooks.
 * [`useCurrentPosition`](#useCurrentPosition)
 * [`useEventListener`](#useEventListener)
 * [`useIntersectionObserver`](#useIntersectionObserver)
+* [`useLocalStorage`](#useLocalStorage)
 * [`useMatchMedia`](#useMatchMedia)
 * [`useMutationObserver`](#useMutationObserver)
 * [`useOnLine`](#useOnLine)
@@ -69,6 +70,18 @@ Observes a given element using [IntersectionObserver](https://developer.mozilla.
 import { useIntersectionObserver } from '@wojtekmaj/react-hooks';
 
 useIntersectionObserver(element, config, onIntersectionChange);
+```
+
+### `useLocalStorage`
+
+Returns a stateful value synchronized with [localStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage), and a function to update it.
+
+#### Sample usage
+
+```js
+import { useLocalStorage } from '@wojtekmaj/react-hooks';
+
+const [value, setValue] = useLocalStorage('myKey', 'initialState'); // ['initialState', Function]
 ```
 
 ### `useMatchMedia`

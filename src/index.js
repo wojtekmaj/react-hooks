@@ -1,6 +1,7 @@
 import useCurrentPosition from './useCurrentPosition';
 import useEventListener from './useEventListener';
 import useIntersectionObserver from './useIntersectionObserver';
+import useLocalStorage from './useLocalStorage';
 import useMatchMedia from './useMatchMedia';
 import useMutationObserver from './useMutationObserver';
 import useOnLine from './useOnLine';
@@ -22,6 +23,7 @@ export {
   useCurrentPosition,
   useEventListener,
   useIntersectionObserver,
+  useLocalStorage,
   useMatchMedia,
   useMutationObserver,
   useOnLine,
