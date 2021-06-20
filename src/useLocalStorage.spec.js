@@ -50,7 +50,10 @@ describe('useLocalStorage()', () => {
     expect(JSON.parse(localStorage.getItem('myKey'))).toBe('foo');
 
     act(() => {
-      setValue2('bar');
+      setValue2((prevValue) => {
+        expect(prevValue).toBe('foo');
+        return 'bar';
+      });
     });
 
     const [value3] = result.current;

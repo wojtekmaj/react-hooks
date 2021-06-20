@@ -18,10 +18,15 @@ export default function useLocalStorage(key, initialState) {
     );
   });
 
-  const onChange = useCallback((nextValue) => {
+  const onChange = useCallback((nextValueOrFunction) => {
+    const nextValue = (
+      nextValueOrFunction instanceof Function
+        ? nextValueOrFunction(value)
+        : nextValueOrFunction
+    );
     window.localStorage.setItem(key, JSON.stringify(nextValue));
     setValue(nextValue);
-  }, [key]);
+  }, [key, value]);
 
   const onStorage = useCallback(() => {
     const nextValue = JSON.parse(window.localStorage.getItem(key));
