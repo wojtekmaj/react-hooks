@@ -8,6 +8,14 @@ describe('useMutationObserver()', () => {
     subtree: true,
   };
 
+  it('does nothing given falsy element', () => {
+    const listener = () => {};
+
+    const { result } = renderHook(() => useMutationObserver(null, config, listener));
+
+    expect(result.current).toBe(undefined);
+  });
+
   it('attaches event listener to element properly', async () => {
     const element = document.createElement('div');
     const listener = jest.fn();
