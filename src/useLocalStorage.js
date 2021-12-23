@@ -1,6 +1,8 @@
 import { useCallback, useState } from 'react';
 import useEventListener from './useEventListener';
 
+const isWindowDefined = typeof window !== 'undefined';
+
 /**
  * Returns a stateful value synchronized with localStorage, and a function to update it.
  *
@@ -9,11 +11,15 @@ import useEventListener from './useEventListener';
  */
 export default function useLocalStorage(key, initialState) {
   const [value, setValue] = useState(() => {
-    const rawValue = window.localStorage.getItem(key);
+    if (!isWindowDefined) {
+      return initialState;
+    }
+
+    const rawValue = localStorage.getItem(key);
 
     return (
       rawValue !== undefined && rawValue !== null
-        ? JSON.parse(window.localStorage.getItem(key))
+        ? JSON.parse(localStorage.getItem(key))
         : initialState
     );
   });
@@ -24,19 +30,21 @@ export default function useLocalStorage(key, initialState) {
         ? nextValueOrFunction(value)
         : nextValueOrFunction
     );
-    window.localStorage.setItem(key, JSON.stringify(nextValue));
+    if (isWindowDefined) {
+      localStorage.setItem(key, JSON.stringify(nextValue));
+    }
     setValue(nextValue);
   }, [key, value]);
 
   const onStorage = useCallback(() => {
-    const nextValue = JSON.parse(window.localStorage.getItem(key));
+    const nextValue = JSON.parse(localStorage.getItem(key));
 
     if (nextValue !== value) {
       setValue(nextValue);
     }
   }, [key, value]);
 
-  useEventListener(window, 'storage', onStorage);
+  useEventListener(isWindowDefined ? window : null, 'storage', onStorage);
 
   return [value, onChange];
 }

@@ -2,6 +2,8 @@ import { renderHook } from '@testing-library/react-hooks';
 
 import useIntersectionObserver from './useIntersectionObserver';
 
+const itIfWindowDefined = typeof window !== 'undefined' ? it : it.skip;
+
 describe('useIntersectionObserver()', () => {
   const config = {};
 
@@ -9,13 +11,15 @@ describe('useIntersectionObserver()', () => {
   let disconnect;
 
   beforeEach(() => {
-    global.window.IntersectionObserver = () => {};
-    observe = jest.fn();
-    disconnect = jest.fn();
-    jest.spyOn(global.window, 'IntersectionObserver').mockImplementation(() => ({
-      observe,
-      disconnect,
-    }));
+    if (typeof window !== 'undefined') {
+      global.window.IntersectionObserver = () => {};
+      observe = jest.fn();
+      disconnect = jest.fn();
+      jest.spyOn(global.window, 'IntersectionObserver').mockImplementation(() => ({
+        observe,
+        disconnect,
+      }));
+    }
   });
 
   it('does nothing given falsy element', () => {
@@ -26,7 +30,7 @@ describe('useIntersectionObserver()', () => {
     expect(result.current).toBe(undefined);
   });
 
-  it('attaches event listener to element properly', async () => {
+  itIfWindowDefined('attaches event listener to element properly', async () => {
     const element = document.createElement('div');
     const listener = jest.fn();
 

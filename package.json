@@ -11,10 +11,11 @@
     "build-esm": "BABEL_ENV=production-esm babel src -d dist/esm --ignore \"**/*.spec.js\"",
     "build-umd": "BABEL_ENV=production-umd babel src -d dist/umd --ignore \"**/*.spec.js\"",
     "clean": "rimraf dist",
-    "jest": "jest",
+    "jest": "jest --testEnvironment jsdom",
+    "jest:node": "jest --testEnvironment node",
     "lint": "eslint src/ --ext .jsx,.js",
     "prepack": "yarn clean && yarn build",
-    "test": "yarn lint && yarn jest"
+    "test": "yarn lint && yarn jest && yarn jest:node"
   },
   "keywords": [
     "react",
