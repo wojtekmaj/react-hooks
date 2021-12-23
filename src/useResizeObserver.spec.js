@@ -2,6 +2,8 @@ import { renderHook } from '@testing-library/react-hooks';
 
 import useResizeObserver from './useResizeObserver';
 
+const itIfWindowDefined = typeof window !== 'undefined' ? it : it.skip;
+
 describe('useResizeObserver()', () => {
   const config = {};
 
@@ -9,13 +11,15 @@ describe('useResizeObserver()', () => {
   let disconnect;
 
   beforeEach(() => {
-    global.window.ResizeObserver = () => {};
-    observe = jest.fn();
-    disconnect = jest.fn();
-    jest.spyOn(global.window, 'ResizeObserver').mockImplementation(() => ({
-      observe,
-      disconnect,
-    }));
+    if (typeof window !== 'undefined') {
+      global.window.ResizeObserver = () => {};
+      observe = jest.fn();
+      disconnect = jest.fn();
+      jest.spyOn(global.window, 'ResizeObserver').mockImplementation(() => ({
+        observe,
+        disconnect,
+      }));
+    }
   });
 
   it('does nothing given falsy element', () => {
@@ -26,7 +30,7 @@ describe('useResizeObserver()', () => {
     expect(result.current).toBe(undefined);
   });
 
-  it('attaches event listener to element properly', async () => {
+  itIfWindowDefined('attaches event listener to element properly', async () => {
     const element = document.createElement('div');
     const listener = jest.fn();
 

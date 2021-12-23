@@ -2,6 +2,8 @@ import {
   useCallback, useEffect, useMemo, useState,
 } from 'react';
 
+const isWindowDefined = typeof window !== 'undefined';
+
 /**
  * Returns a flag which determines if the document matches the given media query string.
  *
@@ -9,14 +11,18 @@ import {
  * @returns {boolean} Whether the document matches the given media query string
  */
 export default function useMatchMedia(query) {
-  const mql = useMemo(() => window.matchMedia(query), [query]);
-  const [matches, setMatches] = useState(mql.matches);
+  const mql = useMemo(() => (isWindowDefined ? window.matchMedia(query) : null), [query]);
+  const [matches, setMatches] = useState(mql ? mql.matches : null);
 
   const handleMql = useCallback((event) => {
     setMatches(event.matches);
   }, []);
 
   useEffect(() => {
+    if (!mql) {
+      return undefined;
+    }
+
     mql.addListener(handleMql);
 
     return () => {

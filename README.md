@@ -11,6 +11,10 @@ A collection of React Hooks.
     const tick = useTick();
     ```
 
+## Server-side rendering
+
+All hooks from this package support SSR. Some hooks use browser-only APIs, e.g. `useCurrentPosition`. Such hooks, if they are supposed to return a value, will return `null` instead.
+
 ## User guide
 
 ### Table of contents

@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 
+const isWindowDefined = typeof window !== 'undefined';
+
 /**
  * @typedef LatLng
  * @property {number} latitude Latitude
@@ -17,7 +19,7 @@ export default function useCurrentPosition(options) {
   const [position, setPosition] = useState(null);
 
   useEffect(() => {
-    if (!('geolocation' in navigator)) {
+    if (!isWindowDefined || !('geolocation' in navigator)) {
       return undefined;
     }
 
