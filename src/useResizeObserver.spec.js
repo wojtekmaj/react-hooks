@@ -5,17 +5,22 @@ import useResizeObserver from './useResizeObserver';
 describe('useResizeObserver()', () => {
   const config = {};
 
-  it('attaches event listener to element properly', async () => {
-    const element = document.createElement('div');
-    const listener = jest.fn();
+  let observe;
+  let disconnect;
 
+  beforeEach(() => {
     global.window.ResizeObserver = () => {};
-    const observe = jest.fn();
-    const disconnect = jest.fn();
+    observe = jest.fn();
+    disconnect = jest.fn();
     jest.spyOn(global.window, 'ResizeObserver').mockImplementation(() => ({
       observe,
       disconnect,
     }));
+  });
+
+  it('attaches event listener to element properly', async () => {
+    const element = document.createElement('div');
+    const listener = jest.fn();
 
     renderHook(() => useResizeObserver(element, config, listener));
 
