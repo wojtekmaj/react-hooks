@@ -1,15 +1,17 @@
 [![npm](https://img.shields.io/npm/v/@wojtekmaj/react-hooks.svg)](https://www.npmjs.com/package/@wojtekmaj/react-hooks) ![downloads](https://img.shields.io/npm/dt/@wojtekmaj/react-hooks.svg) [![CI](https://github.com/wojtekmaj/react-hooks/workflows/CI/badge.svg)](https://github.com/wojtekmaj/react-hooks/actions) [![tested with jest](https://img.shields.io/badge/tested_with-jest-99424f.svg)](https://github.com/facebook/jest)
 
 # React-Hooks
+
 A collection of React Hooks.
 
 ## tl;dr
-* Install by executing `npm install @wojtekmaj/react-hooks` or `yarn add @wojtekmaj/react-hooks`.
-* Import by adding `import { useTick } from '@wojtekmaj/react-hooks'`.
-* Do stuff with it!
-    ```js
-    const tick = useTick();
-    ```
+
+- Install by executing `npm install @wojtekmaj/react-hooks` or `yarn add @wojtekmaj/react-hooks`.
+- Import by adding `import { useTick } from '@wojtekmaj/react-hooks'`.
+- Do stuff with it!
+  ```js
+  const tick = useTick();
+  ```
 
 ## Server-side rendering
 
@@ -19,26 +21,26 @@ All hooks from this package support SSR. Some hooks use browser-only APIs, e.g. 
 
 ### Table of contents
 
-* [`useCurrentPosition`](#useCurrentPosition)
-* [`useEventListener`](#useEventListener)
-* [`useIntersectionObserver`](#useIntersectionObserver)
-* [`useLocalStorage`](#useLocalStorage)
-* [`useMatchMedia`](#useMatchMedia)
-* [`useMutationObserver`](#useMutationObserver)
-* [`useOnLine`](#useOnLine)
-* [`usePrefersColorSchemeDark`](#usePrefersColorSchemeDark)
-* [`usePrefersColorSchemeLight`](#usePrefersColorSchemeLight)
-* [`usePrefersReducedMotion`](#usePrefersReducedMotion)
-* [`usePrefersReducedTransparency`](#usePrefersReducedTransparency)
-* [`useResizeObserver`](#useResizeObserver)
-* [`useScrollLeft`](#useScrollLeft)
-* [`useScrollTop`](#useScrollTop)
-* [`useSetInterval`](#useSetInterval)
-* [`useSetTimeout`](#useSetTimeout)
-* [`useTick`](#useTick)
-* [`useToggle`](#useToggle)
-* [`useWindowHeight`](#useWindowHeight)
-* [`useWindowWidth`](#useWindowWidth)
+- [`useCurrentPosition`](#useCurrentPosition)
+- [`useEventListener`](#useEventListener)
+- [`useIntersectionObserver`](#useIntersectionObserver)
+- [`useLocalStorage`](#useLocalStorage)
+- [`useMatchMedia`](#useMatchMedia)
+- [`useMutationObserver`](#useMutationObserver)
+- [`useOnLine`](#useOnLine)
+- [`usePrefersColorSchemeDark`](#usePrefersColorSchemeDark)
+- [`usePrefersColorSchemeLight`](#usePrefersColorSchemeLight)
+- [`usePrefersReducedMotion`](#usePrefersReducedMotion)
+- [`usePrefersReducedTransparency`](#usePrefersReducedTransparency)
+- [`useResizeObserver`](#useResizeObserver)
+- [`useScrollLeft`](#useScrollLeft)
+- [`useScrollTop`](#useScrollTop)
+- [`useSetInterval`](#useSetInterval)
+- [`useSetTimeout`](#useSetTimeout)
+- [`useTick`](#useTick)
+- [`useToggle`](#useToggle)
+- [`useWindowHeight`](#useWindowHeight)
+- [`useWindowWidth`](#useWindowWidth)
 
 ### `useCurrentPosition`
 

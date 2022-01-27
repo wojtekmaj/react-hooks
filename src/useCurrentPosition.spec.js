@@ -43,7 +43,9 @@ describe('useCurrentPosition()', () => {
 
   itIfWindowDefined('should update the flag when getCurrentPosition listener is called', () => {
     let listener;
-    getCurrentPosition.mockImplementationOnce((currentListener) => { listener = currentListener; });
+    getCurrentPosition.mockImplementationOnce((currentListener) => {
+      listener = currentListener;
+    });
 
     const { result } = renderHook(() => useCurrentPosition());
 
@@ -56,7 +58,9 @@ describe('useCurrentPosition()', () => {
 
   itIfWindowDefined('should update the flag when watchPosition listener is called', () => {
     let listener;
-    watchPosition.mockImplementationOnce((currentListener) => { listener = currentListener; });
+    watchPosition.mockImplementationOnce((currentListener) => {
+      listener = currentListener;
+    });
 
     const { result } = renderHook(() => useCurrentPosition());
 

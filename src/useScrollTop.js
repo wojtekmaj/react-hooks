@@ -11,10 +11,7 @@ const isWindowDefined = typeof window !== 'undefined';
 export default function useScrollTop() {
   const [scrollTop, setScrollTop] = useState(isWindowDefined ? window.pageYOffset : null);
 
-  const getScrollTop = useCallback(
-    () => setScrollTop(window.pageYOffset),
-    [],
-  );
+  const getScrollTop = useCallback(() => setScrollTop(window.pageYOffset), []);
 
   useEventListener(isWindowDefined ? document : null, 'scroll', getScrollTop);
 

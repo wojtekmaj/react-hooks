@@ -17,24 +17,22 @@ export default function useLocalStorage(key, initialState) {
 
     const rawValue = localStorage.getItem(key);
 
-    return (
-      rawValue !== undefined && rawValue !== null
-        ? JSON.parse(localStorage.getItem(key))
-        : initialState
-    );
+    return rawValue !== undefined && rawValue !== null
+      ? JSON.parse(localStorage.getItem(key))
+      : initialState;
   });
 
-  const onChange = useCallback((nextValueOrFunction) => {
-    const nextValue = (
-      nextValueOrFunction instanceof Function
-        ? nextValueOrFunction(value)
-        : nextValueOrFunction
-    );
-    if (isWindowDefined) {
-      localStorage.setItem(key, JSON.stringify(nextValue));
-    }
-    setValue(nextValue);
-  }, [key, value]);
+  const onChange = useCallback(
+    (nextValueOrFunction) => {
+      const nextValue =
+        nextValueOrFunction instanceof Function ? nextValueOrFunction(value) : nextValueOrFunction;
+      if (isWindowDefined) {
+        localStorage.setItem(key, JSON.stringify(nextValue));
+      }
+      setValue(nextValue);
+    },
+    [key, value],
+  );
 
   const onStorage = useCallback(() => {
     const nextValue = JSON.parse(localStorage.getItem(key));

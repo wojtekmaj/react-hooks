@@ -11,10 +11,7 @@ const isWindowDefined = typeof window !== 'undefined';
 export default function useWindowWidth() {
   const [windowWidth, setWindowWidth] = useState(isWindowDefined ? window.innerWidth : null);
 
-  const getWindowWidth = useCallback(
-    () => setWindowWidth(window.innerWidth),
-    [],
-  );
+  const getWindowWidth = useCallback(() => setWindowWidth(window.innerWidth), []);
 
   useEventListener(isWindowDefined ? window : null, 'resize', getWindowWidth);
 

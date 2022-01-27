@@ -1,6 +1,4 @@
-import {
-  useCallback, useEffect, useMemo, useState,
-} from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 
 const isWindowDefined = typeof window !== 'undefined';
 

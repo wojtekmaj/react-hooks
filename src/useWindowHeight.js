@@ -11,10 +11,7 @@ const isWindowDefined = typeof window !== 'undefined';
 export default function useWindowHeight() {
   const [windowHeight, setWindowHeight] = useState(isWindowDefined ? window.innerHeight : null);
 
-  const getWindowHeight = useCallback(
-    () => setWindowHeight(window.innerHeight),
-    [],
-  );
+  const getWindowHeight = useCallback(() => setWindowHeight(window.innerHeight), []);
 
   useEventListener(isWindowDefined ? window : null, 'resize', getWindowHeight);
 
