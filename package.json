@@ -32,7 +32,7 @@
     "@babel/cli": "^7.15.0",
     "@babel/core": "^7.15.0",
     "@babel/preset-env": "^7.15.0",
-    "@testing-library/react-hooks": "^7.0.0",
+    "@testing-library/react-hooks": "^8.0.1",
     "eslint": "^8.5.0",
     "eslint-config-wojtekmaj": "^0.7.1",
     "husky": "^8.0.0",
