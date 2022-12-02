@@ -2,7 +2,7 @@ import { renderHook } from '@testing-library/react-hooks';
 
 import useResizeObserver from './useResizeObserver';
 
-const itIfWindowDefined = typeof window !== 'undefined' ? it : it.skip;
+const itIfDocumentDefined = typeof document !== 'undefined' ? it : it.skip;
 
 describe('useResizeObserver()', () => {
   const config = {};
@@ -30,7 +30,7 @@ describe('useResizeObserver()', () => {
     expect(result.current).toBe(undefined);
   });
 
-  itIfWindowDefined('attaches event listener to element properly', async () => {
+  itIfDocumentDefined('attaches event listener to element properly', async () => {
     const element = document.createElement('div');
     const listener = jest.fn();
 

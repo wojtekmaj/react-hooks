@@ -1,7 +1,7 @@
 import { useCallback, useState } from 'react';
 import useEventListener from './useEventListener';
 
-const isWindowDefined = typeof window !== 'undefined';
+const isWindowDefined = typeof document !== 'undefined';
 
 /**
  * Returns current scroll top position in pixels.

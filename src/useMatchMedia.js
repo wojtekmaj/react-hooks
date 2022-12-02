@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 
-const isWindowDefined = typeof window !== 'undefined';
+const isWindowDefined = typeof document !== 'undefined';
 
 /**
  * Returns a flag which determines if the document matches the given media query string.

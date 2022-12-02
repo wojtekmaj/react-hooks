@@ -1,7 +1,7 @@
 import { useCallback, useState } from 'react';
 import useEventListener from './useEventListener';
 
-const isWindowDefined = typeof window !== 'undefined';
+const isWindowDefined = typeof document !== 'undefined';
 
 /**
  * Returns a stateful value synchronized with localStorage, and a function to update it.

@@ -2,7 +2,7 @@ import { renderHook } from '@testing-library/react-hooks';
 
 import useEventListener from './useEventListener';
 
-const itIfWindowDefined = typeof window !== 'undefined' ? it : it.skip;
+const itIfDocumentDefined = typeof document !== 'undefined' ? it : it.skip;
 
 describe('useEventListener()', () => {
   it('does nothing given falsy element', () => {
@@ -14,7 +14,7 @@ describe('useEventListener()', () => {
     expect(result.current).toBe(undefined);
   });
 
-  itIfWindowDefined('attaches event listener to element properly', () => {
+  itIfDocumentDefined('attaches event listener to element properly', () => {
     const element = document.createElement('div');
     jest.spyOn(element, 'addEventListener');
 

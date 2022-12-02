@@ -2,17 +2,17 @@ import { renderHook } from '@testing-library/react-hooks';
 
 import useWindowWidth from './useWindowWidth';
 
-const itIfWindowDefined = typeof window !== 'undefined' ? it : it.skip;
-const itIfWindowUndefined = typeof window === 'undefined' ? it : it.skip;
+const itIfDocumentDefined = typeof document !== 'undefined' ? it : it.skip;
+const itIfDocumentUndefined = typeof document === 'undefined' ? it : it.skip;
 
 describe('useWindowWidth()', () => {
-  itIfWindowDefined('should return window.innerWidth by default', () => {
+  itIfDocumentDefined('should return window.innerWidth by default', () => {
     const { result } = renderHook(() => useWindowWidth());
 
     expect(result.current).toBe(window.innerWidth);
   });
 
-  itIfWindowUndefined('should return null', () => {
+  itIfDocumentUndefined('should return null', () => {
     const { result } = renderHook(() => useWindowWidth());
 
     expect(result.current).toBe(null);

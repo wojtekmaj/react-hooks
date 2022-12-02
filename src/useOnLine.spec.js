@@ -2,17 +2,17 @@ import { renderHook } from '@testing-library/react-hooks';
 
 import useOnLine from './useOnLine';
 
-const itIfWindowDefined = typeof window !== 'undefined' ? it : it.skip;
-const itIfWindowUndefined = typeof window === 'undefined' ? it : it.skip;
+const itIfDocumentDefined = typeof document !== 'undefined' ? it : it.skip;
+const itIfDocumentUndefined = typeof document === 'undefined' ? it : it.skip;
 
 describe('useOnLine()', () => {
-  itIfWindowDefined('should return current browser online status properly', () => {
+  itIfDocumentDefined('should return current browser online status properly', () => {
     const { result } = renderHook(() => useOnLine());
 
     expect(result.current).toBe(true);
   });
 
-  itIfWindowUndefined('should return null', () => {
+  itIfDocumentUndefined('should return null', () => {
     const { result } = renderHook(() => useOnLine());
 
     expect(result.current).toBe(null);
