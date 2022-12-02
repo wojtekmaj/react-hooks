@@ -1,7 +1,7 @@
 import { useCallback, useState } from 'react';
 import useEventListener from './useEventListener';
 
-const isWindowDefined = typeof window !== 'undefined';
+const isBrowser = typeof document !== 'undefined';
 
 /**
  * Returns the interior height of the window in pixels.
@@ -9,11 +9,11 @@ const isWindowDefined = typeof window !== 'undefined';
  * @returns {number} Height of the window in pixels
  */
 export default function useWindowHeight() {
-  const [windowHeight, setWindowHeight] = useState(isWindowDefined ? window.innerHeight : null);
+  const [windowHeight, setWindowHeight] = useState(isBrowser ? window.innerHeight : null);
 
   const getWindowHeight = useCallback(() => setWindowHeight(window.innerHeight), []);
 
-  useEventListener(isWindowDefined ? window : null, 'resize', getWindowHeight);
+  useEventListener(isBrowser ? window : null, 'resize', getWindowHeight);
 
   return windowHeight;
 }

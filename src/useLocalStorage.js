@@ -1,7 +1,7 @@
 import { useCallback, useState } from 'react';
 import useEventListener from './useEventListener';
 
-const isWindowDefined = typeof window !== 'undefined';
+const isBrowser = typeof document !== 'undefined';
 
 /**
  * Returns a stateful value synchronized with localStorage, and a function to update it.
@@ -11,7 +11,7 @@ const isWindowDefined = typeof window !== 'undefined';
  */
 export default function useLocalStorage(key, initialState) {
   const [value, setValue] = useState(() => {
-    if (!isWindowDefined) {
+    if (!isBrowser) {
       return initialState;
     }
 
@@ -26,7 +26,7 @@ export default function useLocalStorage(key, initialState) {
     (nextValueOrFunction) => {
       const nextValue =
         nextValueOrFunction instanceof Function ? nextValueOrFunction(value) : nextValueOrFunction;
-      if (isWindowDefined) {
+      if (isBrowser) {
         localStorage.setItem(key, JSON.stringify(nextValue));
       }
       setValue(nextValue);
@@ -42,7 +42,7 @@ export default function useLocalStorage(key, initialState) {
     }
   }, [key, value]);
 
-  useEventListener(isWindowDefined ? window : null, 'storage', onStorage);
+  useEventListener(isBrowser ? window : null, 'storage', onStorage);
 
   return [value, onChange];
 }

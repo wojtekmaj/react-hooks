@@ -2,7 +2,7 @@ import { renderHook, act } from '@testing-library/react-hooks';
 
 import useLocalStorage from './useLocalStorage';
 
-const itIfWindowDefined = typeof window !== 'undefined' ? it : it.skip;
+const itIfDocumentDefined = typeof document !== 'undefined' ? it : it.skip;
 
 describe('useLocalStorage()', () => {
   afterEach(() => {
@@ -19,7 +19,7 @@ describe('useLocalStorage()', () => {
     expect(value).toBe('initialState');
   });
 
-  itIfWindowDefined('should return value from localStorage properly', () => {
+  itIfDocumentDefined('should return value from localStorage properly', () => {
     localStorage.setItem('myKey', JSON.stringify('foo'));
 
     const { result } = renderHook(() => useLocalStorage('myKey', 'initialState'));
@@ -29,7 +29,7 @@ describe('useLocalStorage()', () => {
     expect(value).toBe('foo');
   });
 
-  itIfWindowDefined('should return value from localStorage properly even if it’s falsy', () => {
+  itIfDocumentDefined('should return value from localStorage properly even if it’s falsy', () => {
     localStorage.setItem('myKey', JSON.stringify(0));
 
     const { result } = renderHook(() => useLocalStorage('myKey', 'initialState'));

@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 
-const isWindowDefined = typeof window !== 'undefined';
+const isBrowser = typeof document !== 'undefined';
 
 /**
  * Returns a flag which determines if the document matches the given media query string.
@@ -9,7 +9,7 @@ const isWindowDefined = typeof window !== 'undefined';
  * @returns {boolean} Whether the document matches the given media query string
  */
 export default function useMatchMedia(query) {
-  const mql = useMemo(() => (isWindowDefined ? window.matchMedia(query) : null), [query]);
+  const mql = useMemo(() => (isBrowser ? window.matchMedia(query) : null), [query]);
   const [matches, setMatches] = useState(mql ? mql.matches : null);
 
   const handleMql = useCallback((event) => {

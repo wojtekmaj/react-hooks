@@ -2,7 +2,7 @@ import { renderHook, act } from '@testing-library/react-hooks';
 
 import useCurrentPosition from './useCurrentPosition';
 
-const itIfWindowDefined = typeof window !== 'undefined' ? it : it.skip;
+const itIfDocumentDefined = typeof document !== 'undefined' ? it : it.skip;
 
 describe('useCurrentPosition()', () => {
   let getCurrentPosition;
@@ -29,19 +29,19 @@ describe('useCurrentPosition()', () => {
     expect(result.current).toBe(null);
   });
 
-  itIfWindowDefined('should get initial position', () => {
+  itIfDocumentDefined('should get initial position', () => {
     renderHook(() => useCurrentPosition());
 
     expect(getCurrentPosition).toHaveBeenCalledTimes(1);
   });
 
-  itIfWindowDefined('should subscribe to position changes', () => {
+  itIfDocumentDefined('should subscribe to position changes', () => {
     renderHook(() => useCurrentPosition());
 
     expect(watchPosition).toHaveBeenCalledTimes(1);
   });
 
-  itIfWindowDefined('should update the flag when getCurrentPosition listener is called', () => {
+  itIfDocumentDefined('should update the flag when getCurrentPosition listener is called', () => {
     let listener;
     getCurrentPosition.mockImplementationOnce((currentListener) => {
       listener = currentListener;
@@ -56,7 +56,7 @@ describe('useCurrentPosition()', () => {
     expect(result.current).toEqual({ lat: 0, lng: 0 });
   });
 
-  itIfWindowDefined('should update the flag when watchPosition listener is called', () => {
+  itIfDocumentDefined('should update the flag when watchPosition listener is called', () => {
     let listener;
     watchPosition.mockImplementationOnce((currentListener) => {
       listener = currentListener;

@@ -2,7 +2,7 @@ import { renderHook } from '@testing-library/react-hooks';
 
 import useMutationObserver from './useMutationObserver';
 
-const itIfWindowDefined = typeof window !== 'undefined' ? it : it.skip;
+const itIfDocumentDefined = typeof document !== 'undefined' ? it : it.skip;
 
 describe('useMutationObserver()', () => {
   const config = {
@@ -18,7 +18,7 @@ describe('useMutationObserver()', () => {
     expect(result.current).toBe(undefined);
   });
 
-  itIfWindowDefined('attaches event listener to element properly', async () => {
+  itIfDocumentDefined('attaches event listener to element properly', async () => {
     const element = document.createElement('div');
     const listener = jest.fn();
 

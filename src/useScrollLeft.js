@@ -1,7 +1,7 @@
 import { useCallback, useState } from 'react';
 import useEventListener from './useEventListener';
 
-const isWindowDefined = typeof window !== 'undefined';
+const isBrowser = typeof document !== 'undefined';
 
 /**
  * Returns current scroll left position in pixels.
@@ -9,11 +9,11 @@ const isWindowDefined = typeof window !== 'undefined';
  * @returns {number} Scroll left position in pixels
  */
 export default function useScrollLeft() {
-  const [scrollLeft, setScrollLeft] = useState(isWindowDefined ? window.pageXOffset : null);
+  const [scrollLeft, setScrollLeft] = useState(isBrowser ? window.pageXOffset : null);
 
   const getScrollLeft = useCallback(() => setScrollLeft(window.pageXOffset), []);
 
-  useEventListener(isWindowDefined ? document : null, 'scroll', getScrollLeft);
+  useEventListener(isBrowser ? document : null, 'scroll', getScrollLeft);
 
   return scrollLeft;
 }

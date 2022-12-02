@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-const isWindowDefined = typeof window !== 'undefined';
+const isBrowser = typeof document !== 'undefined';
 
 /**
  * @typedef LatLng
@@ -19,7 +19,7 @@ export default function useCurrentPosition(options) {
   const [position, setPosition] = useState(null);
 
   useEffect(() => {
-    if (!isWindowDefined || !('geolocation' in navigator)) {
+    if (!isBrowser || !('geolocation' in navigator)) {
       return undefined;
     }
 

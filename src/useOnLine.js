@@ -1,7 +1,7 @@
 import { useCallback, useState } from 'react';
 import useEventListener from './useEventListener';
 
-const isWindowDefined = typeof window !== 'undefined';
+const isBrowser = typeof document !== 'undefined';
 
 /**
  * Returns the online status of the browser.
@@ -9,7 +9,7 @@ const isWindowDefined = typeof window !== 'undefined';
  * @returns {Boolean} Online status of the browser
  */
 export default function useOnLine() {
-  const [onLine, setOnLine] = useState(isWindowDefined ? navigator.onLine : null);
+  const [onLine, setOnLine] = useState(isBrowser ? navigator.onLine : null);
 
   const handleOnline = useCallback(() => {
     setOnLine(true);
@@ -19,8 +19,8 @@ export default function useOnLine() {
     setOnLine(false);
   }, []);
 
-  useEventListener(isWindowDefined ? window : null, 'online', handleOnline);
-  useEventListener(isWindowDefined ? window : null, 'offline', handleOffline);
+  useEventListener(isBrowser ? window : null, 'online', handleOnline);
+  useEventListener(isBrowser ? window : null, 'offline', handleOffline);
 
   return onLine;
 }
