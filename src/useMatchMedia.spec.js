@@ -6,16 +6,20 @@ const itIfDocumentDefined = typeof document !== 'undefined' ? it : it.skip;
 const itIfDocumentUndefined = typeof document === 'undefined' ? it : it.skip;
 
 describe('useMatchMedia()', () => {
+  let matches;
   let addListener;
   let removeListener;
 
   beforeEach(() => {
     if (typeof window !== 'undefined') {
+      matches = true;
       addListener = jest.fn();
       removeListener = jest.fn();
 
       const mql = {
-        matches: true,
+        get matches() {
+          return matches;
+        },
         addListener,
         removeListener,
       };
@@ -51,6 +55,7 @@ describe('useMatchMedia()', () => {
     const { result } = renderHook(() => useMatchMedia('screen and (min-width: 1024px'));
 
     act(() => {
+      matches = false;
       listener({ matches: false });
     });
 
