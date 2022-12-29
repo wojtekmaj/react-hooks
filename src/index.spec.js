@@ -6,6 +6,7 @@ import {
   useMatchMedia,
   useMutationObserver,
   useOnLine,
+  usePermissionState,
   usePrefersColorSchemeDark,
   usePrefersColorSchemeLight,
   usePrefersReducedMotion,
@@ -48,6 +49,10 @@ describe('index', () => {
 
   it('has useOnLine exported properly', () => {
     expect(useOnLine).toBeInstanceOf(Function);
+  });
+
+  it('has usePermissionState exported properly', () => {
+    expect(usePermissionState).toBeInstanceOf(Function);
   });
 
   it('has usePrefersColorSchemeDark exported properly', () => {

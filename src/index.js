@@ -5,6 +5,7 @@ import useLocalStorage from './useLocalStorage';
 import useMatchMedia from './useMatchMedia';
 import useMutationObserver from './useMutationObserver';
 import useOnLine from './useOnLine';
+import usePermissionState from './usePermissionState';
 import usePrefersColorSchemeDark from './usePrefersColorSchemeDark';
 import usePrefersColorSchemeLight from './usePrefersColorSchemeLight';
 import usePrefersReducedMotion from './usePrefersReducedMotion';
@@ -27,6 +28,7 @@ export {
   useMatchMedia,
   useMutationObserver,
   useOnLine,
+  usePermissionState,
   usePrefersColorSchemeDark,
   usePrefersColorSchemeLight,
   usePrefersReducedMotion,

@@ -28,6 +28,7 @@ All hooks from this package support SSR. Some hooks use browser-only APIs, e.g. 
 - [`useMatchMedia`](#useMatchMedia)
 - [`useMutationObserver`](#useMutationObserver)
 - [`useOnLine`](#useOnLine)
+- [`usePermissionState`](#usePermissionState)
 - [`usePrefersColorSchemeDark`](#usePrefersColorSchemeDark)
 - [`usePrefersColorSchemeLight`](#usePrefersColorSchemeLight)
 - [`usePrefersReducedMotion`](#usePrefersReducedMotion)
@@ -124,6 +125,18 @@ Returns the online status of the browser.
 import { useOnLine } from '@wojtekmaj/react-hooks';
 
 const onLine = useOnLine(); // true
+```
+
+### `usePermissionState`
+
+Returns permission state given permission name.
+
+#### Sample usage
+
+```js
+import { usePermissionState } from '@wojtekmaj/react-hooks';
+
+const state = usePermissionState({ name: 'geolocation' }); // 'granted'
 ```
 
 ### `usePrefersColorSchemeDark`
