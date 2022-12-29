@@ -28,6 +28,10 @@ describe('useMatchMedia()', () => {
     }
   });
 
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
   itIfDocumentDefined('should return the flag initially', () => {
     const { result } = renderHook(() => useMatchMedia('screen and (min-width: 1024px'));
 

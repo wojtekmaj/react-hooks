@@ -22,6 +22,10 @@ describe('useIntersectionObserver()', () => {
     }
   });
 
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
   it('does nothing given falsy element', () => {
     const listener = () => {};
 

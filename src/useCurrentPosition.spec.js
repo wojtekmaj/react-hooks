@@ -23,6 +23,10 @@ describe('useCurrentPosition()', () => {
     }
   });
 
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
   it('should return null initially', () => {
     const { result } = renderHook(() => useCurrentPosition());
 

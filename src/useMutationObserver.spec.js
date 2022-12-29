@@ -10,6 +10,10 @@ describe('useMutationObserver()', () => {
     subtree: true,
   };
 
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
   it('does nothing given falsy element', () => {
     const listener = () => {};
 

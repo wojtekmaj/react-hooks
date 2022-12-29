@@ -5,6 +5,10 @@ import useEventListener from './useEventListener';
 const itIfDocumentDefined = typeof document !== 'undefined' ? it : it.skip;
 
 describe('useEventListener()', () => {
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
   it('does nothing given falsy element', () => {
     const type = 'click';
     const listener = () => {};

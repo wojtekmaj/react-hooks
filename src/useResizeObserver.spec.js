@@ -22,6 +22,10 @@ describe('useResizeObserver()', () => {
     }
   });
 
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
   it('does nothing given falsy element', () => {
     const listener = () => {};
 
