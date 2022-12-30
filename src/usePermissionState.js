@@ -50,7 +50,7 @@ export default function usePermissionState({ name }) {
         permissionStatus.removeEventListener('change', onPermissionStatusChange);
       }
     };
-  }, [name]);
+  }, [areNavigatorPermissionsSupported, name]);
 
   return state;
 }
