@@ -2,10 +2,12 @@ import { renderHook, act } from '@testing-library/react-hooks';
 
 import useSetTimeout from './useSetTimeout';
 
+const itIfDocumentDefined = typeof document !== 'undefined' ? it : it.skip;
+
 jest.useFakeTimers();
 
 describe('useSetTimeout()', () => {
-  it('should run given function once after given timeout', () => {
+  itIfDocumentDefined('should run given function once after given timeout', () => {
     const fn = jest.fn();
 
     renderHook(() => useSetTimeout(fn, 1000));

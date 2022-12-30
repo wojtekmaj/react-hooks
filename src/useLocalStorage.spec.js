@@ -39,7 +39,7 @@ describe('useLocalStorage()', () => {
     expect(value).toBe(0);
   });
 
-  it('should update value properly', () => {
+  itIfDocumentDefined('should update value properly', () => {
     const { result } = renderHook(() => useLocalStorage('myKey'));
 
     const [, setValue] = result.current;

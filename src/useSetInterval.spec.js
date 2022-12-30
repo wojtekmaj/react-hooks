@@ -2,10 +2,12 @@ import { renderHook, act } from '@testing-library/react-hooks';
 
 import useSetInterval from './useSetInterval';
 
+const itIfDocumentDefined = typeof document !== 'undefined' ? it : it.skip;
+
 jest.useFakeTimers();
 
 describe('useSetInterval()', () => {
-  it('should run given function in given intervals', () => {
+  itIfDocumentDefined('should run given function in given intervals', () => {
     const fn = jest.fn();
 
     renderHook(() => useSetInterval(fn, 1000));
