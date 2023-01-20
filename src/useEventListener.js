@@ -3,9 +3,9 @@ import { useEffect } from 'react';
 /**
  * Adds event listener to a given element.
  *
- * @param {HTMLElement} element Element to attach the listener to
+ * @param {Element | Window | Document} [element] Element to attach the listener to
  * @param {string} type Event type
- * @param {Function} listener Event listener
+ * @param {EventListenerOrEventListenerObject} listener Event listener
  */
 export default function useEventListener(element, type, listener) {
   useEffect(() => {

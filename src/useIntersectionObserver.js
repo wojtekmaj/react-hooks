@@ -3,8 +3,8 @@ import { useEffect } from 'react';
 /**
  * Observes a given element using IntersectionObserver.
  *
- * @param {HTMLElement} element Element to attach IntersectionObserver to
- * @param {object} options IntersectionObserver options. WARNING! If you define the object in
+ * @param {HTMLElement} [element] Element to attach IntersectionObserver to
+ * @param {IntersectionObserverInit} [options] IntersectionObserver options. WARNING! If you define the object in
  *   component body, make sure to memoize it.
  * @param {Function} observerCallback IntersectionObserver callback. WARNING! If you define
  *   the function in component body, make sure to memoize it.
