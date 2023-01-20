@@ -60,7 +60,8 @@ describe('useMatchMedia()', () => {
 
     act(() => {
       matches = false;
-      listener({ matches: false });
+      const mediaQueryListEvent = new MediaQueryListEvent('change', { matches });
+      listener(mediaQueryListEvent);
     });
 
     expect(result.current).toBe(false);
