@@ -5,8 +5,8 @@ import usePermissionState from './usePermissionState';
 const itIfDocumentDefined = typeof document !== 'undefined' ? it : it.skip;
 const itIfDocumentUndefined = typeof document === 'undefined' ? it : it.skip;
 
-function waitForAsync() {
-  return new Promise((resolve) => {
+async function waitForAsync() {
+  await new Promise((resolve) => {
     setTimeout(resolve, 0);
   });
 }

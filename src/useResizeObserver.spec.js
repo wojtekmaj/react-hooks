@@ -4,6 +4,12 @@ import useResizeObserver from './useResizeObserver';
 
 const itIfDocumentDefined = typeof document !== 'undefined' ? it : it.skip;
 
+async function waitForAsync() {
+  await new Promise((resolve) => {
+    setTimeout(resolve, 0);
+  });
+}
+
 describe('useResizeObserver()', () => {
   const config = {};
 
@@ -40,7 +46,7 @@ describe('useResizeObserver()', () => {
 
     renderHook(() => useResizeObserver(element, config, listener));
 
-    await new Promise((resolve) => resolve());
+    await waitForAsync();
 
     expect(global.window.ResizeObserver).toHaveBeenCalledTimes(1);
     expect(global.window.ResizeObserver).toHaveBeenCalledWith(listener);

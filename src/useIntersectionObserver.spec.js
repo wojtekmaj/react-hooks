@@ -4,6 +4,12 @@ import useIntersectionObserver from './useIntersectionObserver';
 
 const itIfDocumentDefined = typeof document !== 'undefined' ? it : it.skip;
 
+async function waitForAsync() {
+  await new Promise((resolve) => {
+    setTimeout(resolve, 0);
+  });
+}
+
 describe('useIntersectionObserver()', () => {
   const config = {};
 
@@ -40,7 +46,7 @@ describe('useIntersectionObserver()', () => {
 
     renderHook(() => useIntersectionObserver(element, config, listener));
 
-    await new Promise((resolve) => resolve());
+    await waitForAsync();
 
     expect(global.window.IntersectionObserver).toHaveBeenCalledTimes(1);
     expect(global.window.IntersectionObserver).toHaveBeenCalledWith(listener, config);

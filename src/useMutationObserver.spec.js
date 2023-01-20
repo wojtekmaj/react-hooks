@@ -4,6 +4,12 @@ import useMutationObserver from './useMutationObserver';
 
 const itIfDocumentDefined = typeof document !== 'undefined' ? it : it.skip;
 
+async function waitForAsync() {
+  await new Promise((resolve) => {
+    setTimeout(resolve, 0);
+  });
+}
+
 describe('useMutationObserver()', () => {
   const config = {
     childList: true,
@@ -30,7 +36,7 @@ describe('useMutationObserver()', () => {
 
     element.appendChild(document.createElement('span'));
 
-    await new Promise((resolve) => resolve());
+    await waitForAsync();
 
     expect(listener).toHaveBeenCalledTimes(1);
     expect(listener).toHaveBeenCalledWith(
