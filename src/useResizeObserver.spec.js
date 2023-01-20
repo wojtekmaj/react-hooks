@@ -19,8 +19,10 @@ describe('useResizeObserver()', () => {
   beforeEach(() => {
     if (typeof window !== 'undefined') {
       global.window.ResizeObserver = () => {};
+
       observe = jest.fn();
       disconnect = jest.fn();
+
       jest.spyOn(global.window, 'ResizeObserver').mockImplementation(() => ({
         observe,
         disconnect,

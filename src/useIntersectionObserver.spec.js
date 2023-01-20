@@ -19,8 +19,10 @@ describe('useIntersectionObserver()', () => {
   beforeEach(() => {
     if (typeof window !== 'undefined') {
       global.window.IntersectionObserver = () => {};
+
       observe = jest.fn();
       disconnect = jest.fn();
+
       jest.spyOn(global.window, 'IntersectionObserver').mockImplementation(() => ({
         observe,
         disconnect,
