@@ -54,10 +54,18 @@ describe('useCurrentPosition()', () => {
     const { result } = renderHook(() => useCurrentPosition());
 
     act(() => {
-      listener({ coords: { lat: 0, lng: 0 } });
+      listener({
+        coords: {
+          latitude: 0,
+          longitude: 0,
+        },
+      });
     });
 
-    expect(result.current).toEqual({ lat: 0, lng: 0 });
+    expect(result.current).toEqual({
+      latitude: 0,
+      longitude: 0,
+    });
   });
 
   itIfDocumentDefined('should update the flag when watchPosition listener is called', () => {
@@ -69,9 +77,17 @@ describe('useCurrentPosition()', () => {
     const { result } = renderHook(() => useCurrentPosition());
 
     act(() => {
-      listener({ coords: { lat: 0, lng: 0 } });
+      listener({
+        coords: {
+          latitude: 0,
+          longitude: 0,
+        },
+      });
     });
 
-    expect(result.current).toEqual({ lat: 0, lng: 0 });
+    expect(result.current).toEqual({
+      latitude: 0,
+      longitude: 0,
+    });
   });
 });
