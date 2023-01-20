@@ -13,7 +13,7 @@ const isBrowser = typeof document !== 'undefined';
  *
  * @param {object} [options] Options to pass to Geolocation.getCurrentPosition
  *   and Geolocation.watchPosition. See https://developer.mozilla.org/en-US/docs/Web/API/PositionOptions
- * @returns {LatLng} Object wth latitude and longitude
+ * @returns {LatLng} Object with latitude and longitude
  */
 export default function useCurrentPosition(options) {
   const [position, setPosition] = useState(null);
