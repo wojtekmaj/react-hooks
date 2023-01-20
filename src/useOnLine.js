@@ -6,7 +6,7 @@ const isBrowser = typeof document !== 'undefined';
 /**
  * Returns the online status of the browser.
  *
- * @returns {Boolean} Online status of the browser
+ * @returns {boolean} Online status of the browser
  */
 export default function useOnLine() {
   const [onLine, setOnLine] = useState(isBrowser ? navigator.onLine : null);
