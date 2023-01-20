@@ -1,6 +1,6 @@
 {
   "name": "@wojtekmaj/react-hooks",
-  "version": "1.14.0",
+  "version": "1.15.0",
   "description": "A collection of React Hooks.",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
