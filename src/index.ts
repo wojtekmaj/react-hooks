@@ -12,7 +12,9 @@ import usePrefersReducedMotion from './usePrefersReducedMotion';
 import usePrefersReducedTransparency from './usePrefersReducedTransparency';
 import useResizeObserver from './useResizeObserver';
 import useScrollLeft from './useScrollLeft';
+import useScrollLeftPercent from './useScrollLeftPercent';
 import useScrollTop from './useScrollTop';
+import useScrollTopPercent from './useScrollTopPercent';
 import useSetInterval from './useSetInterval';
 import useSetTimeout from './useSetTimeout';
 import useTick from './useTick';
@@ -35,7 +37,9 @@ export {
   usePrefersReducedTransparency,
   useResizeObserver,
   useScrollLeft,
+  useScrollLeftPercent,
   useScrollTop,
+  useScrollTopPercent,
   useSetInterval,
   useSetTimeout,
   useTick,
