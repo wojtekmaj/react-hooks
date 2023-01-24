@@ -6,7 +6,9 @@ const isBrowser = typeof document !== 'undefined';
  * Returns current position from Geolocation API.
  *
  * @param {PositionOptions} [options] Options to pass to Geolocation.getCurrentPosition
- *   and Geolocation.watchPosition. See https://developer.mozilla.org/en-US/docs/Web/API/PositionOptions
+ *   and Geolocation.watchPosition.
+ *   See https://developer.mozilla.org/en-US/docs/Web/API/PositionOptions. WARNING! If you define
+ *   the function in component body, make sure to memoize it.
  * @returns {GeolocationCoordinates} Object with latitude and longitude
  */
 export default function useCurrentPosition(
@@ -30,7 +32,7 @@ export default function useCurrentPosition(
     return () => {
       navigator.geolocation.clearWatch(watch);
     };
-  }, []);
+  }, [options]);
 
   return position;
 }
