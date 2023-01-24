@@ -1,9 +1,11 @@
 import useScrollLeft from './useScrollLeft';
+import useWindowWidth from './useWindowWidth';
 
 export default function useScrollLeftPercent(): number | null {
   const scrollLeft = useScrollLeft();
+  const windowWidth = useWindowWidth();
 
-  if (scrollLeft === null) {
+  if (scrollLeft === null || windowWidth === null) {
     return null;
   }
 
@@ -13,5 +15,5 @@ export default function useScrollLeftPercent(): number | null {
     return 0;
   }
 
-  return scrollLeft / Math.max(0, scrollWidth - window.innerWidth);
+  return scrollLeft / Math.max(0, scrollWidth - windowWidth);
 }

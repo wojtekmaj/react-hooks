@@ -1,9 +1,11 @@
 import useScrollTop from './useScrollTop';
+import useWindowHeight from './useWindowHeight';
 
 export default function useScrollTopPercent(): number | null {
   const scrollTop = useScrollTop();
+  const windowHeight = useWindowHeight();
 
-  if (scrollTop === null) {
+  if (scrollTop === null || windowHeight === null) {
     return null;
   }
 
@@ -13,5 +15,5 @@ export default function useScrollTopPercent(): number | null {
     return 0;
   }
 
-  return scrollTop / Math.max(0, scrollHeight - window.innerHeight);
+  return scrollTop / Math.max(0, scrollHeight - windowHeight);
 }
