@@ -35,7 +35,9 @@ All hooks from this package support SSR. Some hooks use browser-only APIs, e.g. 
 - [`usePrefersReducedTransparency`](#usePrefersReducedTransparency)
 - [`useResizeObserver`](#useResizeObserver)
 - [`useScrollLeft`](#useScrollLeft)
+- [`useScrollLeftPercent`](#useScrollLeftPercent)
 - [`useScrollTop`](#useScrollTop)
+- [`useScrollTopPercent`](#useScrollTopPercent)
 - [`useSetInterval`](#useSetInterval)
 - [`useSetTimeout`](#useSetTimeout)
 - [`useTick`](#useTick)
@@ -211,6 +213,18 @@ import { useScrollLeft } from '@wojtekmaj/react-hooks';
 const scrollLeft = useScrollLeft(); // 0
 ```
 
+### `useScrollLeftPercent`
+
+Returns current scroll left position in percentage.
+
+#### Sample usage
+
+```js
+import { useScrollLeftPercent } from '@wojtekmaj/react-hooks';
+
+const scrollLeftPercent = useScrollLeftPercent(); // 0.5
+```
+
 ### `useScrollTop`
 
 Returns current scroll top position in pixels.
@@ -221,6 +235,18 @@ Returns current scroll top position in pixels.
 import { useScrollTop } from '@wojtekmaj/react-hooks';
 
 const scrollTop = useScrollTop(); // 0
+```
+
+### `useScrollTopPercent`
+
+Returns current scroll top position in percentage.
+
+#### Sample usage
+
+```js
+import { useScrollTopPercent } from '@wojtekmaj/react-hooks';
+
+const scrollTopPercent = useScrollTopPercent(); // 0.5
 ```
 
 ### `useSetInterval`
