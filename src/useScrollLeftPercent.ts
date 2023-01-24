@@ -7,11 +7,11 @@ export default function useScrollLeftPercent(): number | null {
     return null;
   }
 
-  const { scrollHeight } = document.documentElement;
+  const { scrollWidth } = document.documentElement;
 
-  if (scrollHeight === 0) {
+  if (scrollWidth === 0) {
     return 0;
   }
 
-  return scrollLeft / Math.max(0, scrollHeight - window.innerHeight);
+  return scrollLeft / Math.max(0, scrollWidth - window.innerWidth);
 }
