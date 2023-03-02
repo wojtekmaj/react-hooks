@@ -1,3 +1,4 @@
+import { afterEach, describe, expect, it, vi } from 'vitest';
 import { renderHook } from '@testing-library/react-hooks';
 
 import useEventListener from './useEventListener';
@@ -6,7 +7,7 @@ const itIfDocumentDefined = typeof document !== 'undefined' ? it : it.skip;
 
 describe('useEventListener()', () => {
   afterEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
   });
 
   it('does nothing given falsy element', () => {
@@ -22,7 +23,7 @@ describe('useEventListener()', () => {
 
   itIfDocumentDefined('attaches event listener to element properly', () => {
     const element = document.createElement('div');
-    jest.spyOn(element, 'addEventListener');
+    vi.spyOn(element, 'addEventListener');
 
     const type = 'click';
     const listener = () => {

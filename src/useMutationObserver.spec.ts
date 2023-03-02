@@ -1,3 +1,4 @@
+import { afterEach, describe, expect, it, vi } from 'vitest';
 import { renderHook } from '@testing-library/react-hooks';
 
 import useMutationObserver from './useMutationObserver';
@@ -17,7 +18,7 @@ describe('useMutationObserver()', () => {
   };
 
   afterEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
   });
 
   it('does nothing given falsy element', () => {
@@ -32,7 +33,7 @@ describe('useMutationObserver()', () => {
 
   itIfDocumentDefined('attaches event listener to element properly', async () => {
     const element = document.createElement('div');
-    const listener = jest.fn();
+    const listener = vi.fn();
 
     renderHook(() => useMutationObserver(element, config, listener));
 

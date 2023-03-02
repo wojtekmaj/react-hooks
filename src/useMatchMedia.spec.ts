@@ -1,32 +1,23 @@
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { renderHook, act } from '@testing-library/react-hooks';
 
 import useMatchMedia from './useMatchMedia';
+
+import type { Mock } from 'vitest';
 
 const itIfDocumentDefined = typeof document !== 'undefined' ? it : it.skip;
 const itIfDocumentUndefined = typeof document === 'undefined' ? it : it.skip;
 
 describe('useMatchMedia()', () => {
   let matches: boolean;
-  let addEventListener: jest.Mock<
-    (
-      type: string,
-      listener: EventListenerOrEventListenerObject,
-      options?: boolean | AddEventListenerOptions,
-    ) => void
-  >;
-  let removeEventListener: jest.Mock<
-    (
-      type: string,
-      listener: EventListenerOrEventListenerObject,
-      options?: boolean | AddEventListenerOptions,
-    ) => void
-  >;
+  let addEventListener: Mock;
+  let removeEventListener: Mock;
 
   beforeEach(() => {
     if (typeof window !== 'undefined') {
       matches = true;
-      addEventListener = jest.fn();
-      removeEventListener = jest.fn();
+      addEventListener = vi.fn();
+      removeEventListener = vi.fn();
 
       const mql = {
         get matches() {
@@ -36,12 +27,12 @@ describe('useMatchMedia()', () => {
         removeEventListener,
       };
 
-      window.matchMedia = jest.fn().mockReturnValue(mql);
+      window.matchMedia = vi.fn().mockReturnValue(mql);
     }
   });
 
   afterEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
   });
 
   itIfDocumentDefined('should return the flag initially', () => {

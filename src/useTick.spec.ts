@@ -1,8 +1,9 @@
+import { describe, expect, it, vi } from 'vitest';
 import { renderHook, act } from '@testing-library/react-hooks';
 
 import useTick from './useTick';
 
-jest.useFakeTimers();
+vi.useFakeTimers();
 
 describe('useTick()', () => {
   it('should increment the counter in given intervals', () => {
@@ -11,13 +12,13 @@ describe('useTick()', () => {
     expect(result.current).toBe(0);
 
     act(() => {
-      jest.advanceTimersByTime(1000);
+      vi.advanceTimersByTime(1000);
     });
 
     expect(result.current).toBe(1);
 
     act(() => {
-      jest.advanceTimersByTime(1000);
+      vi.advanceTimersByTime(1000);
     });
 
     expect(result.current).toBe(2);

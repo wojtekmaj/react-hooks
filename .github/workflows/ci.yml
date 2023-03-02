@@ -110,7 +110,7 @@ jobs:
           HUSKY: 0
 
       - name: Run tests
-        run: yarn jest
+        run: yarn unit
 
   unit-ssr:
     name: Unit tests (SSR)
@@ -144,4 +144,4 @@ jobs:
           HUSKY: 0
 
       - name: Run tests
-        run: yarn jest:node
+        run: yarn unit:node

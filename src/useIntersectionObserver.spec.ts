@@ -1,6 +1,9 @@
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { renderHook } from '@testing-library/react-hooks';
 
 import useIntersectionObserver from './useIntersectionObserver';
+
+import type { Mock, SpyInstance } from 'vitest';
 
 const itIfDocumentDefined = typeof document !== 'undefined' ? it : it.skip;
 
@@ -13,13 +16,13 @@ async function waitForAsync() {
 describe('useIntersectionObserver()', () => {
   const config = {};
 
-  let observe: jest.Mock<typeof window.IntersectionObserver.prototype.observe>;
-  let disconnect: jest.Mock<typeof window.IntersectionObserver.prototype.disconnect>;
+  let observe: Mock;
+  let disconnect: Mock;
 
   beforeEach(() => {
     if (typeof window !== 'undefined') {
-      observe = jest.fn();
-      disconnect = jest.fn();
+      observe = vi.fn();
+      disconnect = vi.fn();
 
       Object.defineProperty(window, 'IntersectionObserver', {
         configurable: true,
@@ -29,10 +32,13 @@ describe('useIntersectionObserver()', () => {
         },
       });
 
-      const mockIntersectionObserver = jest.spyOn(window, 'IntersectionObserver');
+      const mockIntersectionObserver = vi.spyOn(window, 'IntersectionObserver');
 
       (
-        mockIntersectionObserver as jest.SpyInstance<Partial<IntersectionObserver>>
+        mockIntersectionObserver as SpyInstance<
+          [callback: IntersectionObserverCallback, options?: IntersectionObserverInit | undefined],
+          Partial<IntersectionObserver>
+        >
       ).mockImplementation(() => ({
         observe,
         disconnect,
@@ -41,7 +47,7 @@ describe('useIntersectionObserver()', () => {
   });
 
   afterEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
   });
 
   it('does nothing given falsy element', () => {

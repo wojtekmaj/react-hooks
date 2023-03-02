@@ -1,3 +1,4 @@
+import { afterEach, describe, expect, it } from 'vitest';
 import { renderHook, act } from '@testing-library/react-hooks';
 
 import useLocalStorage from './useLocalStorage';

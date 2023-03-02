@@ -1,6 +1,9 @@
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { renderHook } from '@testing-library/react-hooks';
 
 import useResizeObserver from './useResizeObserver';
+
+import type { Mock, SpyInstance } from 'vitest';
 
 const itIfDocumentDefined = typeof document !== 'undefined' ? it : it.skip;
 
@@ -13,13 +16,13 @@ async function waitForAsync() {
 describe('useResizeObserver()', () => {
   const config = {};
 
-  let observe: jest.Mock<typeof window.ResizeObserver.prototype.observe>;
-  let disconnect: jest.Mock<typeof window.ResizeObserver.prototype.disconnect>;
+  let observe: Mock;
+  let disconnect: Mock;
 
   beforeEach(() => {
     if (typeof window !== 'undefined') {
-      observe = jest.fn();
-      disconnect = jest.fn();
+      observe = vi.fn();
+      disconnect = vi.fn();
 
       Object.defineProperty(window, 'ResizeObserver', {
         configurable: true,
@@ -29,8 +32,13 @@ describe('useResizeObserver()', () => {
         },
       });
 
-      const mockResizeObserver = jest.spyOn(window, 'ResizeObserver');
-      (mockResizeObserver as jest.SpyInstance<Partial<ResizeObserver>>).mockImplementation(() => ({
+      const mockResizeObserver = vi.spyOn(window, 'ResizeObserver');
+      (
+        mockResizeObserver as SpyInstance<
+          [callback: ResizeObserverCallback],
+          Partial<ResizeObserver>
+        >
+      ).mockImplementation(() => ({
         observe,
         disconnect,
       }));
@@ -38,7 +46,7 @@ describe('useResizeObserver()', () => {
   });
 
   afterEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
   });
 
   it('does nothing given falsy element', () => {

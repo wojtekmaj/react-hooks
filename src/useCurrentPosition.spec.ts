@@ -1,22 +1,25 @@
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { renderHook, act } from '@testing-library/react-hooks';
 
 import useCurrentPosition from './useCurrentPosition';
 
+import type { Mock } from 'vitest';
+
 const itIfDocumentDefined = typeof document !== 'undefined' ? it : it.skip;
 
 describe('useCurrentPosition()', () => {
-  let getCurrentPosition: jest.Mock<typeof navigator.geolocation.getCurrentPosition>;
-  let watchPosition: jest.Mock<typeof navigator.geolocation.watchPosition>;
+  let getCurrentPosition: Mock;
+  let watchPosition: Mock;
 
   beforeEach(() => {
     if (typeof window !== 'undefined') {
-      getCurrentPosition = jest.fn();
-      watchPosition = jest.fn();
+      getCurrentPosition = vi.fn();
+      watchPosition = vi.fn();
 
       const geolocation: Partial<Geolocation> = {
         getCurrentPosition,
-        watchPosition: (watchPosition = jest.fn()),
-        clearWatch: jest.fn(),
+        watchPosition,
+        clearWatch: vi.fn(),
       };
 
       Object.defineProperty(navigator, 'geolocation', {
@@ -25,12 +28,12 @@ describe('useCurrentPosition()', () => {
         get: () => undefined,
       });
 
-      jest.spyOn(navigator, 'geolocation', 'get').mockReturnValue(geolocation as Geolocation);
+      vi.spyOn(navigator, 'geolocation', 'get').mockReturnValue(geolocation as Geolocation);
     }
   });
 
   afterEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
   });
 
   it('should return null initially', () => {

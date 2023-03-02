@@ -1,25 +1,26 @@
+import { describe, expect, it, vi } from 'vitest';
 import { renderHook, act } from '@testing-library/react-hooks';
 
 import useSetInterval from './useSetInterval';
 
-jest.useFakeTimers();
+vi.useFakeTimers();
 
 describe('useSetInterval()', () => {
   it('should run given function in given intervals', () => {
-    const fn = jest.fn();
+    const fn = vi.fn();
 
     renderHook(() => useSetInterval(fn, 1000));
 
     expect(fn).toHaveBeenCalledTimes(0);
 
     act(() => {
-      jest.advanceTimersByTime(1000);
+      vi.advanceTimersByTime(1000);
     });
 
     expect(fn).toHaveBeenCalledTimes(1);
 
     act(() => {
-      jest.advanceTimersByTime(1000);
+      vi.advanceTimersByTime(1000);
     });
 
     expect(fn).toHaveBeenCalledTimes(2);
