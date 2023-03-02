@@ -1,4 +1,0 @@
-{
-  "reporters": ["default", "github-actions"],
-  "setupFilesAfterEnv": ["<rootDir>/jest.setup.ts"]
-}

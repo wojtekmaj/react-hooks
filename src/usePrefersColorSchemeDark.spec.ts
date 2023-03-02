@@ -1,11 +1,12 @@
+import { describe, expect, it, vi } from 'vitest';
 import { renderHook } from '@testing-library/react-hooks';
 
 import usePrefersColorSchemeDark from './usePrefersColorSchemeDark';
 import useMatchMedia from './useMatchMedia';
 
-jest.mock('./useMatchMedia', () => jest.fn());
+vi.mock('./useMatchMedia', () => ({ default: vi.fn() }));
 
-const mockedUseMatchMedia = jest.mocked(useMatchMedia);
+const mockedUseMatchMedia = vi.mocked(useMatchMedia);
 mockedUseMatchMedia.mockReturnValue(true);
 
 describe('usePrefersColorSchemeDark()', () => {

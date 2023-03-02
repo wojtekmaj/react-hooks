@@ -1,6 +1,9 @@
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { renderHook, act } from '@testing-library/react-hooks';
 
 import usePermissionState from './usePermissionState';
+
+import type { Mock, SpyInstance } from 'vitest';
 
 const itIfDocumentDefined = typeof document !== 'undefined' ? it : it.skip;
 const itIfDocumentUndefined = typeof document === 'undefined' ? it : it.skip;
@@ -13,36 +16,36 @@ async function waitForAsync() {
 
 describe('usePermissionState()', () => {
   let state: PermissionState;
-  let query: jest.Mock<typeof navigator.permissions.query>;
-  let addEventListener: jest.Mock<typeof window.Notification.prototype.addEventListener>;
-  let removeEventListener: jest.Mock<typeof window.Notification.prototype.removeEventListener>;
+  let query: SpyInstance;
+  let addEventListener: Mock;
+  let removeEventListener: Mock;
 
   beforeEach(() => {
     if (typeof window !== 'undefined') {
       state = 'granted';
-      query = jest.fn();
-      addEventListener = jest.fn();
-      removeEventListener = jest.fn();
+      addEventListener = vi.fn();
+      removeEventListener = vi.fn();
 
       Object.defineProperty(navigator, 'permissions', {
         configurable: true,
         enumerable: true,
-        get: () => ({
-          query,
-        }),
+        writable: true,
+        value: {
+          query: vi.fn(),
+        },
       });
 
-      const mockQuery = jest.spyOn(navigator.permissions, 'query');
+      query = vi.spyOn(navigator.permissions, 'query');
 
-      (mockQuery as jest.SpyInstance<Promise<Partial<PermissionStatus>>>).mockImplementation(
-        async () => ({
-          get state() {
-            return state;
-          },
-          addEventListener,
-          removeEventListener,
-        }),
-      );
+      (
+        query as SpyInstance<[PermissionDescriptor], Promise<Partial<PermissionStatus>>>
+      ).mockImplementation(async () => ({
+        get state() {
+          return state;
+        },
+        addEventListener,
+        removeEventListener,
+      }));
 
       Object.defineProperty(window, 'Notification', {
         configurable: true,
@@ -57,7 +60,7 @@ describe('usePermissionState()', () => {
   });
 
   afterEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
   });
 
   itIfDocumentDefined('should return null initially', async () => {
