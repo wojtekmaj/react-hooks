@@ -10,7 +10,7 @@ const isBrowser = typeof document !== 'undefined';
  * @returns {string} Permission state ("granted", "denied", "prompt")
  */
 export default function usePermissionState({ name }: PermissionDescriptor): string | null {
-  const [state, setState] = useState(() => {
+  const [state, setState] = useState<string | null>(() => {
     const areNavigatorPermissionsSupported = isBrowser && 'permissions' in navigator;
 
     if (!areNavigatorPermissionsSupported) {
