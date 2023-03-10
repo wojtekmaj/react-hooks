@@ -4,6 +4,7 @@ import useIntersectionObserver from './useIntersectionObserver';
 import useLocalStorage from './useLocalStorage';
 import useMatchMedia from './useMatchMedia';
 import useMutationObserver from './useMutationObserver';
+import useNetworkInformation from './useNetworkInformation';
 import useOnLine from './useOnLine';
 import usePermissionState from './usePermissionState';
 import usePrefersColorSchemeDark from './usePrefersColorSchemeDark';
@@ -29,6 +30,7 @@ export {
   useLocalStorage,
   useMatchMedia,
   useMutationObserver,
+  useNetworkInformation,
   useOnLine,
   usePermissionState,
   usePrefersColorSchemeDark,
