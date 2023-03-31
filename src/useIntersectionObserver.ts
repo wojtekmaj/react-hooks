@@ -8,12 +8,13 @@ import { useEffect } from 'react';
  *   the object in component body, make sure to memoize it.
  * @param {Function} observerCallback IntersectionObserver callback. WARNING! If you define the
  *   function in component body, make sure to memoize it.
+ * @returns {void}
  */
 export default function useIntersectionObserver(
   element: HTMLElement | null,
   options: IntersectionObserverInit | undefined,
   observerCallback: IntersectionObserverCallback,
-) {
+): void {
   useEffect(() => {
     if (!element || !('IntersectionObserver' in window)) {
       return undefined;

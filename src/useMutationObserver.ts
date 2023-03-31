@@ -8,12 +8,13 @@ import { useEffect } from 'react';
  *   object in component body, make sure to memoize it.
  * @param {MutationCallback} observerCallback MutationObserver callback. WARNING! If you define the
  *   function in component body, make sure to memoize it.
+ * @returns {void}
  */
 export default function useMutationObserver(
   element: Node | null,
   options: MutationObserverInit,
   observerCallback: MutationCallback,
-) {
+): void {
   useEffect(() => {
     if (!element || !('MutationObserver' in window)) {
       return undefined;

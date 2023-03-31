@@ -6,7 +6,7 @@ const isBrowser = typeof document !== 'undefined';
 /**
  * Returns current scroll left position in pixels.
  *
- * @returns {number} Scroll left position in pixels
+ * @returns {number | null} Scroll left position in pixels
  */
 export default function useScrollLeft(): number | null {
   const [scrollLeft, setScrollLeft] = useState<number | null>(

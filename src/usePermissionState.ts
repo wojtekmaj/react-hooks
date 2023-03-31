@@ -7,7 +7,7 @@ const isBrowser = typeof document !== 'undefined';
  *
  * @param {PermissionDescriptor} options Options
  * @param {PermissionDescriptor.name} options.name Permission name
- * @returns {string} Permission state ("granted", "denied", "prompt")
+ * @returns {string | null} Permission state ("granted", "denied", "prompt")
  */
 export default function usePermissionState({ name }: PermissionDescriptor): string | null {
   const [state, setState] = useState<string | null>(() => {

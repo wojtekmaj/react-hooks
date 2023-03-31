@@ -6,12 +6,13 @@ import { useEffect } from 'react';
  * @param {Element | Window | Document} [element] Element to attach the listener to
  * @param {string} type Event type
  * @param {EventListenerOrEventListenerObject} listener Event listener
+ * @returns {void}
  */
 export default function useEventListener(
   element: Element | Window | Document | null,
   type: string,
   listener: EventListenerOrEventListenerObject,
-) {
+): void {
   useEffect(() => {
     if (!element) {
       return undefined;

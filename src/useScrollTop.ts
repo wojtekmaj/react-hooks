@@ -6,7 +6,7 @@ const isBrowser = typeof document !== 'undefined';
 /**
  * Returns current scroll top position in pixels.
  *
- * @returns {number} Scroll top position in pixels
+ * @returns {number | null} Scroll top position in pixels
  */
 export default function useScrollTop(): number | null {
   const [scrollTop, setScrollTop] = useState<number | null>(isBrowser ? window.pageYOffset : null);
