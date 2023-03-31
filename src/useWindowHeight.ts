@@ -9,9 +9,7 @@ const isBrowser = typeof document !== 'undefined';
  * @returns {number | null} Height of the window in pixels
  */
 export default function useWindowHeight(): number | null {
-  const [windowHeight, setWindowHeight] = useState<number | null>(
-    isBrowser ? window.innerHeight : null,
-  );
+  const [windowHeight, setWindowHeight] = useState(isBrowser ? window.innerHeight : null);
 
   const getWindowHeight = useCallback(() => setWindowHeight(window.innerHeight), []);
 

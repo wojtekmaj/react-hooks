@@ -9,9 +9,7 @@ const isBrowser = typeof document !== 'undefined';
  * @returns {number | null} Width of the window in pixels
  */
 export default function useWindowWidth(): number | null {
-  const [windowWidth, setWindowWidth] = useState<number | null>(
-    isBrowser ? window.innerWidth : null,
-  );
+  const [windowWidth, setWindowWidth] = useState(isBrowser ? window.innerWidth : null);
 
   const getWindowWidth = useCallback(() => setWindowWidth(window.innerWidth), []);
 

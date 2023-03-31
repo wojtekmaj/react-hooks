@@ -10,7 +10,7 @@ const isBrowser = typeof document !== 'undefined';
  */
 export default function useMatchMedia(query: string): boolean | null {
   const mql = useMemo(() => (isBrowser ? window.matchMedia(query) : null), [query]);
-  const [matches, setMatches] = useState<boolean | null>(mql ? mql.matches : null);
+  const [matches, setMatches] = useState(mql ? mql.matches : null);
 
   const handleMql = useCallback((event: MediaQueryListEvent) => {
     setMatches(event.matches);

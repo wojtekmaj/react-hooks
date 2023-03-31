@@ -9,9 +9,7 @@ const isBrowser = typeof document !== 'undefined';
  * @returns {number | null} Scroll left position in pixels
  */
 export default function useScrollLeft(): number | null {
-  const [scrollLeft, setScrollLeft] = useState<number | null>(
-    isBrowser ? window.pageXOffset : null,
-  );
+  const [scrollLeft, setScrollLeft] = useState(isBrowser ? window.pageXOffset : null);
 
   const getScrollLeft = useCallback(() => setScrollLeft(window.pageXOffset), []);
 

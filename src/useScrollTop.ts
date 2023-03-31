@@ -9,7 +9,7 @@ const isBrowser = typeof document !== 'undefined';
  * @returns {number | null} Scroll top position in pixels
  */
 export default function useScrollTop(): number | null {
-  const [scrollTop, setScrollTop] = useState<number | null>(isBrowser ? window.pageYOffset : null);
+  const [scrollTop, setScrollTop] = useState(isBrowser ? window.pageYOffset : null);
 
   const getScrollTop = useCallback(() => setScrollTop(window.pageYOffset), []);
 
