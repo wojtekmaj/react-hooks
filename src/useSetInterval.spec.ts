@@ -3,10 +3,13 @@ import { renderHook, act } from '@testing-library/react-hooks';
 
 import useSetInterval from './useSetInterval';
 
+const itIfDocumentDefined = typeof document !== 'undefined' ? it : it.skip;
+const itIfDocumentUndefined = typeof document === 'undefined' ? it : it.skip;
+
 vi.useFakeTimers();
 
 describe('useSetInterval()', () => {
-  it('should run given function in given intervals', () => {
+  itIfDocumentDefined('should run given function in given intervals', () => {
     const fn = vi.fn();
 
     renderHook(() => useSetInterval(fn, 1000));
@@ -24,5 +27,25 @@ describe('useSetInterval()', () => {
     });
 
     expect(fn).toHaveBeenCalledTimes(2);
+  });
+
+  itIfDocumentUndefined('should not do anything', () => {
+    const fn = vi.fn();
+
+    renderHook(() => useSetInterval(fn, 1000));
+
+    expect(fn).toHaveBeenCalledTimes(0);
+
+    act(() => {
+      vi.advanceTimersByTime(1000);
+    });
+
+    expect(fn).toHaveBeenCalledTimes(0);
+
+    act(() => {
+      vi.advanceTimersByTime(1000);
+    });
+
+    expect(fn).toHaveBeenCalledTimes(0);
   });
 });

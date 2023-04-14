@@ -3,6 +3,8 @@ import { renderHook, act } from '@testing-library/react-hooks';
 
 import useToggle from './useToggle';
 
+const itIfDocumentDefined = typeof document !== 'undefined' ? it : it.skip;
+
 describe('useToggle()', () => {
   it('should return false value by default', () => {
     const { result } = renderHook(() => useToggle());
@@ -20,7 +22,7 @@ describe('useToggle()', () => {
     expect(value).toBe(true);
   });
 
-  it('should toggle the flag properly', () => {
+  itIfDocumentDefined('should toggle the flag properly', () => {
     const { result } = renderHook(() => useToggle());
 
     const [value, toggleValue] = result.current;
@@ -44,7 +46,7 @@ describe('useToggle()', () => {
     expect(value3).toBe(false);
   });
 
-  it('should toggle the flag properly with memoized toggleValue', () => {
+  itIfDocumentDefined('should toggle the flag properly with memoized toggleValue', () => {
     const { result } = renderHook(() => useToggle());
 
     const [value, toggleValue] = result.current;
