@@ -1,7 +1,20 @@
-import { useCallback, useState } from 'react';
-import useEventListener from './useEventListener';
+import { useSyncExternalStore } from 'react';
 
-const isBrowser = typeof document !== 'undefined';
+function subscribe(callback: () => void) {
+  window.addEventListener('scroll', callback);
+
+  return () => {
+    window.removeEventListener('scroll', callback);
+  };
+}
+
+function getSnapshot() {
+  return window.pageYOffset;
+}
+
+function getServerSnapshot() {
+  return null;
+}
 
 /**
  * Returns current scroll top position in pixels.
@@ -9,11 +22,7 @@ const isBrowser = typeof document !== 'undefined';
  * @returns {number | null} Scroll top position in pixels
  */
 export default function useScrollTop(): number | null {
-  const [scrollTop, setScrollTop] = useState(isBrowser ? window.pageYOffset : null);
-
-  const getScrollTop = useCallback(() => setScrollTop(window.pageYOffset), []);
-
-  useEventListener(isBrowser ? document : null, 'scroll', getScrollTop);
+  const scrollTop = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 
   return scrollTop;
 }

@@ -1,7 +1,20 @@
-import { useCallback, useState } from 'react';
-import useEventListener from './useEventListener';
+import { useSyncExternalStore } from 'react';
 
-const isBrowser = typeof document !== 'undefined';
+function subscribe(callback: () => void) {
+  window.addEventListener('scroll', callback);
+
+  return () => {
+    window.removeEventListener('scroll', callback);
+  };
+}
+
+function getSnapshot() {
+  return window.pageXOffset;
+}
+
+function getServerSnapshot() {
+  return null;
+}
 
 /**
  * Returns current scroll left position in pixels.
@@ -9,11 +22,7 @@ const isBrowser = typeof document !== 'undefined';
  * @returns {number | null} Scroll left position in pixels
  */
 export default function useScrollLeft(): number | null {
-  const [scrollLeft, setScrollLeft] = useState(isBrowser ? window.pageXOffset : null);
-
-  const getScrollLeft = useCallback(() => setScrollLeft(window.pageXOffset), []);
-
-  useEventListener(isBrowser ? document : null, 'scroll', getScrollLeft);
+  const scrollLeft = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 
   return scrollLeft;
 }
