@@ -37,15 +37,22 @@ export default function useLocalStorage<T = unknown>(
     [key, value],
   );
 
-  const onStorage = useCallback(() => {
-    const rawValue = localStorage.getItem(key);
+  const onStorage = useCallback(
+    (event: StorageEvent) => {
+      if (event.key !== key) {
+        return;
+      }
 
-    const nextValue = rawValue !== undefined && rawValue !== null ? JSON.parse(rawValue) : null;
+      const { newValue: rawValue } = event;
 
-    if (nextValue !== value) {
-      setValue(nextValue);
-    }
-  }, [key, value]);
+      const nextValue = rawValue !== undefined && rawValue !== null ? JSON.parse(rawValue) : null;
+
+      if (nextValue !== value) {
+        setValue(nextValue);
+      }
+    },
+    [key, value],
+  );
 
   useEventListener(isBrowser ? window : null, 'storage', onStorage);
 
