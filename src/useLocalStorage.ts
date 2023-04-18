@@ -20,7 +20,7 @@ export default function useLocalStorage<T = unknown>(
 
     const rawValue = localStorage.getItem(key);
 
-    return rawValue !== undefined && rawValue !== null ? JSON.parse(rawValue) : initialState;
+    return rawValue !== null ? JSON.parse(rawValue) : initialState;
   });
 
   const onChange = useCallback(
@@ -45,7 +45,7 @@ export default function useLocalStorage<T = unknown>(
 
       const { newValue: rawValue } = event;
 
-      const nextValue = rawValue !== undefined && rawValue !== null ? JSON.parse(rawValue) : null;
+      const nextValue = rawValue !== null ? JSON.parse(rawValue) : null;
 
       if (nextValue !== value) {
         setValue(nextValue);
