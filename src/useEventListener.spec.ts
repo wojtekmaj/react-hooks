@@ -35,4 +35,36 @@ describe('useEventListener()', () => {
     expect(element.addEventListener).toHaveBeenCalledTimes(1);
     expect(element.addEventListener).toHaveBeenCalledWith(type, listener);
   });
+
+  itIfDocumentDefined(
+    'should allow storage handler to be passed if element is window and type is storage',
+    () => {
+      const element = window;
+      vi.spyOn(element, 'addEventListener');
+
+      const type = 'storage';
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      const listener = (event: StorageEvent) => {
+        // Intentionally empty
+      };
+
+      renderHook(() => useEventListener(element, type, listener));
+    },
+  );
+
+  itIfDocumentDefined(
+    'should allow storage handler to be passed if element is document and type is visibilitychange',
+    () => {
+      const element = document;
+      vi.spyOn(element, 'addEventListener');
+
+      const type = 'visibilitychange';
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      const listener = (event: Event) => {
+        // Intentionally empty
+      };
+
+      renderHook(() => useEventListener(element, type, listener));
+    },
+  );
 });
