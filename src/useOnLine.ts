@@ -1,22 +1,7 @@
-import { useSyncExternalStore } from 'react';
+import { useCallback, useState } from 'react';
+import useEventListener from './useEventListener';
 
-function subscribe(callback: () => void) {
-  window.addEventListener('online', callback);
-  window.addEventListener('offline', callback);
-
-  return () => {
-    window.removeEventListener('online', callback);
-    window.removeEventListener('offline', callback);
-  };
-}
-
-function getSnapshot() {
-  return navigator.onLine;
-}
-
-function getServerSnapshot() {
-  return null;
-}
+const isBrowser = typeof document !== 'undefined';
 
 /**
  * Returns the online status of the browser.
@@ -24,7 +9,18 @@ function getServerSnapshot() {
  * @returns {boolean | null} Online status of the browser
  */
 export default function useOnLine(): boolean | null {
-  const onLine = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
+  const [onLine, setOnLine] = useState(isBrowser ? navigator.onLine : null);
+
+  const handleOnline = useCallback(() => {
+    setOnLine(true);
+  }, []);
+
+  const handleOffline = useCallback(() => {
+    setOnLine(false);
+  }, []);
+
+  useEventListener(isBrowser ? window : null, 'online', handleOnline);
+  useEventListener(isBrowser ? window : null, 'offline', handleOffline);
 
   return onLine;
 }

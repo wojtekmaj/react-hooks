@@ -1,8 +1,6 @@
-import { useCallback, useSyncExternalStore } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 
-function getServerSnapshot() {
-  return null;
-}
+const isBrowser = typeof document !== 'undefined';
 
 /**
  * Returns a flag which determines if the document matches the given media query string.
@@ -11,25 +9,24 @@ function getServerSnapshot() {
  * @returns {boolean | null} Whether the document matches the given media query string
  */
 export default function useMatchMedia(query: string): boolean | null {
-  const subscribe = useCallback(
-    (callback: () => void) => {
-      const mql = window.matchMedia(query);
+  const mql = useMemo(() => (isBrowser ? window.matchMedia(query) : null), [query]);
+  const [matches, setMatches] = useState(mql ? mql.matches : null);
 
-      mql.addEventListener('change', callback);
-      return () => {
-        mql.removeEventListener('change', callback);
-      };
-    },
-    [query],
-  );
+  const handleMql = useCallback((event: MediaQueryListEvent) => {
+    setMatches(event.matches);
+  }, []);
 
-  const getSnapshot = useCallback(() => {
-    const mql = window.matchMedia(query);
+  useEffect(() => {
+    if (!mql) {
+      return undefined;
+    }
 
-    return mql.matches;
-  }, [query]);
+    mql.addEventListener('change', handleMql);
 
-  const matches = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
+    return () => {
+      mql.removeEventListener('change', handleMql);
+    };
+  }, [mql, handleMql]);
 
   return matches;
 }

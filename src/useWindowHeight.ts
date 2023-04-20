@@ -1,20 +1,7 @@
-import { useSyncExternalStore } from 'react';
+import { useCallback, useState } from 'react';
+import useEventListener from './useEventListener';
 
-function subscribe(callback: () => void) {
-  window.addEventListener('resize', callback);
-
-  return () => {
-    window.removeEventListener('resize', callback);
-  };
-}
-
-function getSnapshot() {
-  return window.innerHeight;
-}
-
-function getServerSnapshot() {
-  return null;
-}
+const isBrowser = typeof document !== 'undefined';
 
 /**
  * Returns the interior height of the window in pixels.
@@ -22,7 +9,11 @@ function getServerSnapshot() {
  * @returns {number | null} Height of the window in pixels
  */
 export default function useWindowHeight(): number | null {
-  const windowHeight = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
+  const [windowHeight, setWindowHeight] = useState(isBrowser ? window.innerHeight : null);
+
+  const getWindowHeight = useCallback(() => setWindowHeight(window.innerHeight), []);
+
+  useEventListener(isBrowser ? window : null, 'resize', getWindowHeight);
 
   return windowHeight;
 }

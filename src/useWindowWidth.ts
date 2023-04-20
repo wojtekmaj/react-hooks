@@ -1,20 +1,7 @@
-import { useSyncExternalStore } from 'react';
+import { useCallback, useState } from 'react';
+import useEventListener from './useEventListener';
 
-function subscribe(callback: () => void) {
-  window.addEventListener('resize', callback);
-
-  return () => {
-    window.removeEventListener('resize', callback);
-  };
-}
-
-function getSnapshot() {
-  return window.innerWidth;
-}
-
-function getServerSnapshot() {
-  return null;
-}
+const isBrowser = typeof document !== 'undefined';
 
 /**
  * Returns the interior width of the window in pixels.
@@ -22,7 +9,11 @@ function getServerSnapshot() {
  * @returns {number | null} Width of the window in pixels
  */
 export default function useWindowWidth(): number | null {
-  const windowWidth = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
+  const [windowWidth, setWindowWidth] = useState(isBrowser ? window.innerWidth : null);
+
+  const getWindowWidth = useCallback(() => setWindowWidth(window.innerWidth), []);
+
+  useEventListener(isBrowser ? window : null, 'resize', getWindowWidth);
 
   return windowWidth;
 }
