@@ -9,7 +9,7 @@ A collection of React Hooks.
 - Install by executing `npm install @wojtekmaj/react-hooks` or `yarn add @wojtekmaj/react-hooks`.
 - Import by adding `import { useTick } from '@wojtekmaj/react-hooks'`.
 - Do stuff with it!
-  ```js
+  ```ts
   const tick = useTick();
   ```
 
@@ -51,7 +51,7 @@ Returns current position from Geolocation API.
 
 #### Sample usage
 
-```js
+```ts
 import { useCurrentPosition } from '@wojtekmaj/react-hooks';
 
 useCurrentPosition(); // { latitude: 0, longitude: 0 }
@@ -63,7 +63,7 @@ Adds event listener to a given element.
 
 #### Sample usage
 
-```js
+```ts
 import { useEventListener } from '@wojtekmaj/react-hooks';
 
 useEventListener(element, 'click', onClick);
@@ -75,7 +75,7 @@ Observes a given element using [IntersectionObserver](https://developer.mozilla.
 
 #### Sample usage
 
-```js
+```ts
 import { useIntersectionObserver } from '@wojtekmaj/react-hooks';
 
 useIntersectionObserver(element, config, onIntersectionChange);
@@ -87,7 +87,7 @@ Returns a stateful value synchronized with [localStorage](https://developer.mozi
 
 #### Sample usage
 
-```js
+```ts
 import { useLocalStorage } from '@wojtekmaj/react-hooks';
 
 const [value, setValue] = useLocalStorage('myKey', 'initialState'); // ['initialState', Function]
@@ -99,7 +99,7 @@ Returns a flag which determines if the document matches the given [media query](
 
 #### Sample usage
 
-```js
+```ts
 import { useMatchMedia } from '@wojtekmaj/react-hooks';
 
 const isDesktop = useMatchMedia('screen and (min-width: 1024px)'); // true / false
@@ -111,7 +111,7 @@ Observes a given element using [MutationObserver](https://developer.mozilla.org/
 
 #### Sample usage
 
-```js
+```ts
 import { useMutationObserver } from '@wojtekmaj/react-hooks';
 
 useMutationObserver(element, config, onMutation);
@@ -123,7 +123,7 @@ Returns the online status of the browser.
 
 #### Sample usage
 
-```js
+```ts
 import { useOnLine } from '@wojtekmaj/react-hooks';
 
 const onLine = useOnLine(); // true
@@ -135,7 +135,7 @@ Returns permission state given permission name.
 
 #### Sample usage
 
-```js
+```ts
 import { usePermissionState } from '@wojtekmaj/react-hooks';
 
 const state = usePermissionState({ name: 'geolocation' }); // 'granted'
@@ -147,7 +147,7 @@ Returns a flag which determines if the document matches `(prefers-color-scheme: 
 
 #### Sample usage
 
-```js
+```ts
 import { usePrefersColorSchemeDark } from '@wojtekmaj/react-hooks';
 
 const prefersColorSchemeDark = usePrefersColorSchemeDark(); // true
@@ -159,7 +159,7 @@ Returns a flag which determines if the document matches `(prefers-color-scheme: 
 
 #### Sample usage
 
-```js
+```ts
 import { usePrefersColorSchemeLight } from '@wojtekmaj/react-hooks';
 
 const prefersColorSchemeLight = usePrefersColorSchemeLight(); // true
@@ -171,7 +171,7 @@ Returns a flag which determines if the document matches `(prefers-reduced-motion
 
 #### Sample usage
 
-```js
+```ts
 import { usePrefersReducedMotion } from '@wojtekmaj/react-hooks';
 
 const prefersReducedMotion = usePrefersReducedMotion(); // true
@@ -183,7 +183,7 @@ Returns a flag which determines if the document matches `(prefers-reduced-transp
 
 #### Sample usage
 
-```js
+```ts
 import { usePrefersReducedTransparency } from '@wojtekmaj/react-hooks';
 
 const prefersReducedTransparency = usePrefersReducedTransparency(); // true
@@ -195,7 +195,7 @@ Observes a given element using [ResizeObserver](https://developer.mozilla.org/en
 
 #### Sample usage
 
-```js
+```ts
 import { useResizeObserver } from '@wojtekmaj/react-hooks';
 
 useResizeObserver(element, config, onResize);
@@ -207,7 +207,7 @@ Returns current scroll left position in pixels.
 
 #### Sample usage
 
-```js
+```ts
 import { useScrollLeft } from '@wojtekmaj/react-hooks';
 
 const scrollLeft = useScrollLeft(); // 0
@@ -219,7 +219,7 @@ Returns current scroll left position in percentage.
 
 #### Sample usage
 
-```js
+```ts
 import { useScrollLeftPercent } from '@wojtekmaj/react-hooks';
 
 const scrollLeftPercent = useScrollLeftPercent(); // 0.5
@@ -231,7 +231,7 @@ Returns current scroll top position in pixels.
 
 #### Sample usage
 
-```js
+```ts
 import { useScrollTop } from '@wojtekmaj/react-hooks';
 
 const scrollTop = useScrollTop(); // 0
@@ -243,7 +243,7 @@ Returns current scroll top position in percentage.
 
 #### Sample usage
 
-```js
+```ts
 import { useScrollTopPercent } from '@wojtekmaj/react-hooks';
 
 const scrollTopPercent = useScrollTopPercent(); // 0.5
@@ -255,7 +255,7 @@ Runs a given function every n milliseconds.
 
 #### Sample usage
 
-```js
+```ts
 import { useSetInterval } from '@wojtekmaj/react-hooks';
 
 useSetInterval(fn, 1000);
@@ -267,7 +267,7 @@ Runs a given function after n milliseconds.
 
 #### Sample usage
 
-```js
+```ts
 import { useSetTimeout } from '@wojtekmaj/react-hooks';
 
 useSetTimeout(fn, 1000);
@@ -279,7 +279,7 @@ Counts from 0, increasing the number returned every n milliseconds.
 
 #### Sample usage
 
-```js
+```ts
 import { useTick } from '@wojtekmaj/react-hooks';
 
 const tick = useTick(1000); // 0 … 🕐 … 1 … 🕑 … 2 …
@@ -291,7 +291,7 @@ Returns a flag and a function to toggle it.
 
 #### Sample usage
 
-```js
+```ts
 import { useToggle } from '@wojtekmaj/react-hooks';
 
 const [value, toggleValue] = useToggle(); // [false, Function]
@@ -303,7 +303,7 @@ Returns the interior height of the window in pixels.
 
 #### Sample usage
 
-```js
+```ts
 import { useWindowHeight } from '@wojtekmaj/react-hooks';
 
 const windowWidth = useWindowHeight(); // 900
@@ -315,7 +315,7 @@ Returns the interior width of the window in pixels.
 
 #### Sample usage
 
-```js
+```ts
 import { useWindowWidth } from '@wojtekmaj/react-hooks';
 
 const windowWidth = useWindowWidth(); // 1440
