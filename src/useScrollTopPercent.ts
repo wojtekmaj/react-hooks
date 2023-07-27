@@ -1,5 +1,5 @@
-import useScrollTop from './useScrollTop';
-import useWindowHeight from './useWindowHeight';
+import useScrollTop from './useScrollTop.js';
+import useWindowHeight from './useWindowHeight.js';
 
 export default function useScrollTopPercent(): number | null {
   const scrollTop = useScrollTop();

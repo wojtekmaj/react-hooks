@@ -1,4 +1,4 @@
-import useMatchMedia from './useMatchMedia';
+import useMatchMedia from './useMatchMedia.js';
 
 /**
  * Returns a flag which determines if the document matches `(prefers-reduced-motion: reduce)` media

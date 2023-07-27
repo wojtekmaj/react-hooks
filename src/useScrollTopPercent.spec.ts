@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { renderHook } from '@testing-library/react-hooks';
 
-import useScrollTopPercent from './useScrollTopPercent';
+import useScrollTopPercent from './useScrollTopPercent.js';
 
 const itIfDocumentDefined = typeof document !== 'undefined' ? it : it.skip;
 const itIfDocumentUndefined = typeof document === 'undefined' ? it : it.skip;

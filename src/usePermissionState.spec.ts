@@ -1,7 +1,7 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { renderHook, act } from '@testing-library/react-hooks';
 
-import usePermissionState from './usePermissionState';
+import usePermissionState from './usePermissionState.js';
 
 import type { Mock, SpyInstance } from 'vitest';
 

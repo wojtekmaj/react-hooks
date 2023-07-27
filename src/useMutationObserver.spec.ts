@@ -1,7 +1,7 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import { renderHook } from '@testing-library/react-hooks';
 
-import useMutationObserver from './useMutationObserver';
+import useMutationObserver from './useMutationObserver.js';
 
 const itIfDocumentDefined = typeof document !== 'undefined' ? it : it.skip;
 

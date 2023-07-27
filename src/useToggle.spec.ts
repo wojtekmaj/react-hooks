@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { renderHook, act } from '@testing-library/react-hooks';
 
-import useToggle from './useToggle';
+import useToggle from './useToggle.js';
 
 const itIfDocumentDefined = typeof document !== 'undefined' ? it : it.skip;
 

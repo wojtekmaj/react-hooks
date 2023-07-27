@@ -1,10 +1,10 @@
 import { describe, expect, it, vi } from 'vitest';
 import { renderHook } from '@testing-library/react-hooks';
 
-import usePrefersReducedMotion from './usePrefersReducedMotion';
-import useMatchMedia from './useMatchMedia';
+import usePrefersReducedMotion from './usePrefersReducedMotion.js';
+import useMatchMedia from './useMatchMedia.js';
 
-vi.mock('./useMatchMedia', () => ({ default: vi.fn() }));
+vi.mock('./useMatchMedia.js', () => ({ default: vi.fn() }));
 
 const mockedUseMatchMedia = vi.mocked(useMatchMedia);
 mockedUseMatchMedia.mockReturnValue(true);
