@@ -1,5 +1,5 @@
-import useScrollLeft from './useScrollLeft';
-import useWindowWidth from './useWindowWidth';
+import useScrollLeft from './useScrollLeft.js';
+import useWindowWidth from './useWindowWidth.js';
 
 export default function useScrollLeftPercent(): number | null {
   const scrollLeft = useScrollLeft();

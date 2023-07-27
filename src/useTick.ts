@@ -1,5 +1,5 @@
 import { useCallback, useState } from 'react';
-import useSetInterval from './useSetInterval';
+import useSetInterval from './useSetInterval.js';
 
 /**
  * Counts from 0, increasing the number returned every n milliseconds.

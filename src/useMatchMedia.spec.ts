@@ -1,7 +1,7 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { renderHook, act } from '@testing-library/react-hooks';
 
-import useMatchMedia from './useMatchMedia';
+import useMatchMedia from './useMatchMedia.js';
 
 import type { Mock } from 'vitest';
 

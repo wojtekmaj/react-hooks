@@ -1,7 +1,7 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { renderHook, act } from '@testing-library/react-hooks';
 
-import useCurrentPosition from './useCurrentPosition';
+import useCurrentPosition from './useCurrentPosition.js';
 
 import type { Mock } from 'vitest';
 

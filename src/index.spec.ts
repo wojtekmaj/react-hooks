@@ -21,7 +21,7 @@ import {
   useToggle,
   useWindowHeight,
   useWindowWidth,
-} from './index';
+} from './index.js';
 
 describe('index', () => {
   it('has useCurrentPosition exported properly', () => {

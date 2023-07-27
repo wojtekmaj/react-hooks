@@ -1,7 +1,7 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import { renderHook } from '@testing-library/react-hooks';
 
-import useEventListener from './useEventListener';
+import useEventListener from './useEventListener.js';
 
 const itIfDocumentDefined = typeof document !== 'undefined' ? it : it.skip;
 

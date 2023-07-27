@@ -1,7 +1,7 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { renderHook } from '@testing-library/react-hooks';
 
-import useIntersectionObserver from './useIntersectionObserver';
+import useIntersectionObserver from './useIntersectionObserver.js';
 
 import type { Mock, SpyInstance } from 'vitest';
 
