@@ -1,6 +1,6 @@
 {
   "name": "@wojtekmaj/react-hooks",
-  "version": "1.18.0",
+  "version": "1.18.1",
   "description": "A collection of React Hooks.",
   "type": "module",
   "sideEffects": false,
