@@ -74,5 +74,5 @@
     "url": "https://github.com/wojtekmaj/react-hooks.git"
   },
   "funding": "https://github.com/wojtekmaj/react-hooks?sponsor=1",
-  "packageManager": "yarn@3.1.0"
+  "packageManager": "yarn@4.0.0"
 }
