@@ -5,11 +5,12 @@
     "isolatedModules": true,
     "module": "esnext",
     "moduleResolution": "node",
+    "noEmit": true,
     "noUncheckedIndexedAccess": true,
     "outDir": "dist",
     "strict": true,
     "target": "es5",
     "verbatimModuleSyntax": true
   },
-  "include": ["src"]
+  "exclude": ["dist"]
 }

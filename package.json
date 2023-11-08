@@ -23,7 +23,7 @@
     "prepack": "yarn clean && yarn build",
     "prettier": "prettier --check . --cache",
     "test": "yarn lint && yarn tsc && yarn prettier && yarn unit && yarn unit:node",
-    "tsc": "tsc --noEmit",
+    "tsc": "tsc",
     "unit": "vitest --config vitest.config.ts",
     "unit:node": "vitest --config vitest.config.node.ts"
   },
