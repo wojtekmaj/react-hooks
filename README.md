@@ -1,4 +1,4 @@
-[![npm](https://img.shields.io/npm/v/@wojtekmaj/react-hooks.svg)](https://www.npmjs.com/package/@wojtekmaj/react-hooks) ![downloads](https://img.shields.io/npm/dt/@wojtekmaj/react-hooks.svg) [![CI](https://github.com/wojtekmaj/react-hooks/workflows/CI/badge.svg)](https://github.com/wojtekmaj/react-hooks/actions)
+[![npm](https://img.shields.io/npm/v/@wojtekmaj/react-hooks.svg)](https://www.npmjs.com/package/@wojtekmaj/react-hooks) ![downloads](https://img.shields.io/npm/dt/@wojtekmaj/react-hooks.svg) [![CI](https://github.com/wojtekmaj/react-hooks/actions/workflows/ci.yml/badge.svg)](https://github.com/wojtekmaj/react-hooks/actions)
 
 # React-Hooks
 
