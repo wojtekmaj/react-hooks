@@ -1,4 +1,4 @@
-global.MediaQueryListEvent = class MediaQueryListEvent extends Event {
+globalThis.MediaQueryListEvent = class MediaQueryListEvent extends Event {
   matches: boolean;
   media: string;
 
