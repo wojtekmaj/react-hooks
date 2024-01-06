@@ -5,7 +5,7 @@ import useIntersectionObserver from './useIntersectionObserver.js';
 
 import type { Mock, SpyInstance } from 'vitest';
 
-const itIfDocumentDefined = typeof document !== 'undefined' ? it : it.skip;
+const itIfDocumentDefined = it.runIf(typeof document !== 'undefined');
 
 async function waitForAsync() {
   await new Promise((resolve) => {

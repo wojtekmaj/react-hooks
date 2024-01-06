@@ -3,8 +3,8 @@ import { renderHook, act } from '@testing-library/react-hooks';
 
 import useSetTimeout from './useSetTimeout.js';
 
-const itIfDocumentDefined = typeof document !== 'undefined' ? it : it.skip;
-const itIfDocumentUndefined = typeof document === 'undefined' ? it : it.skip;
+const itIfDocumentDefined = it.runIf(typeof document !== 'undefined');
+const itIfDocumentUndefined = it.runIf(typeof document === 'undefined');
 
 vi.useFakeTimers();
 

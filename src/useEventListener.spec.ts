@@ -3,7 +3,7 @@ import { renderHook } from '@testing-library/react-hooks';
 
 import useEventListener from './useEventListener.js';
 
-const itIfDocumentDefined = typeof document !== 'undefined' ? it : it.skip;
+const itIfDocumentDefined = it.runIf(typeof document !== 'undefined');
 
 describe('useEventListener()', () => {
   afterEach(() => {

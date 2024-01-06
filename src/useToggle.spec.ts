@@ -3,7 +3,7 @@ import { renderHook, act } from '@testing-library/react-hooks';
 
 import useToggle from './useToggle.js';
 
-const itIfDocumentDefined = typeof document !== 'undefined' ? it : it.skip;
+const itIfDocumentDefined = it.runIf(typeof document !== 'undefined');
 
 describe('useToggle()', () => {
   it('should return false value by default', () => {

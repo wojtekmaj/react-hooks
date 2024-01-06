@@ -3,8 +3,8 @@ import { renderHook } from '@testing-library/react-hooks';
 
 import useScrollTop from './useScrollTop.js';
 
-const itIfDocumentDefined = typeof document !== 'undefined' ? it : it.skip;
-const itIfDocumentUndefined = typeof document === 'undefined' ? it : it.skip;
+const itIfDocumentDefined = it.runIf(typeof document !== 'undefined');
+const itIfDocumentUndefined = it.runIf(typeof document === 'undefined');
 
 describe('useScrollTop()', () => {
   itIfDocumentDefined('should return current scroll top position properly', () => {

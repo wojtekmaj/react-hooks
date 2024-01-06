@@ -3,8 +3,8 @@ import { renderHook } from '@testing-library/react-hooks';
 
 import useWindowHeight from './useWindowHeight.js';
 
-const itIfDocumentDefined = typeof document !== 'undefined' ? it : it.skip;
-const itIfDocumentUndefined = typeof document === 'undefined' ? it : it.skip;
+const itIfDocumentDefined = it.runIf(typeof document !== 'undefined');
+const itIfDocumentUndefined = it.runIf(typeof document === 'undefined');
 
 describe('useWindowHeight()', () => {
   itIfDocumentDefined('should return window.innerHeight by default', () => {

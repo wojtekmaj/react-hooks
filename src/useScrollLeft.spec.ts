@@ -3,8 +3,8 @@ import { renderHook } from '@testing-library/react-hooks';
 
 import useScrollLeft from './useScrollLeft.js';
 
-const itIfDocumentDefined = typeof document !== 'undefined' ? it : it.skip;
-const itIfDocumentUndefined = typeof document === 'undefined' ? it : it.skip;
+const itIfDocumentDefined = it.runIf(typeof document !== 'undefined');
+const itIfDocumentUndefined = it.runIf(typeof document === 'undefined');
 
 describe('useScrollLeft()', () => {
   itIfDocumentDefined('should return current scroll left position properly', () => {

@@ -5,7 +5,7 @@ import useCurrentPosition from './useCurrentPosition.js';
 
 import type { Mock } from 'vitest';
 
-const itIfDocumentDefined = typeof document !== 'undefined' ? it : it.skip;
+const itIfDocumentDefined = it.runIf(typeof document !== 'undefined');
 
 describe('useCurrentPosition()', () => {
   let getCurrentPosition: Mock;

@@ -5,8 +5,8 @@ import useMatchMedia from './useMatchMedia.js';
 
 import type { Mock } from 'vitest';
 
-const itIfDocumentDefined = typeof document !== 'undefined' ? it : it.skip;
-const itIfDocumentUndefined = typeof document === 'undefined' ? it : it.skip;
+const itIfDocumentDefined = it.runIf(typeof document !== 'undefined');
+const itIfDocumentUndefined = it.runIf(typeof document === 'undefined');
 
 describe('useMatchMedia()', () => {
   let matches: boolean;
