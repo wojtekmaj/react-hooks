@@ -74,7 +74,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/wojtekmaj/react-hooks.git"
+    "url": "git+https://github.com/wojtekmaj/react-hooks.git"
   },
   "funding": "https://github.com/wojtekmaj/react-hooks?sponsor=1",
   "packageManager": "yarn@4.0.2"
