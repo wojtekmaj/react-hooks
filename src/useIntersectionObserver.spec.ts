@@ -3,7 +3,7 @@ import { renderHook } from '@testing-library/react-hooks';
 
 import useIntersectionObserver from './useIntersectionObserver.js';
 
-import type { Mock, SpyInstance } from 'vitest';
+import type { Mock, MockInstance } from 'vitest';
 
 const itIfDocumentDefined = it.runIf(typeof document !== 'undefined');
 
@@ -35,7 +35,7 @@ describe('useIntersectionObserver()', () => {
       const mockIntersectionObserver = vi.spyOn(window, 'IntersectionObserver');
 
       (
-        mockIntersectionObserver as SpyInstance<
+        mockIntersectionObserver as MockInstance<
           [callback: IntersectionObserverCallback, options?: IntersectionObserverInit | undefined],
           Partial<IntersectionObserver>
         >

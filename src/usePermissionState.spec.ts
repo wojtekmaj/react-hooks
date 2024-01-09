@@ -3,7 +3,7 @@ import { renderHook, act } from '@testing-library/react-hooks';
 
 import usePermissionState from './usePermissionState.js';
 
-import type { Mock, SpyInstance } from 'vitest';
+import type { Mock, MockInstance } from 'vitest';
 
 const itIfDocumentDefined = it.runIf(typeof document !== 'undefined');
 const itIfDocumentUndefined = it.runIf(typeof document === 'undefined');
@@ -16,7 +16,7 @@ async function waitForAsync() {
 
 describe('usePermissionState()', () => {
   let state: PermissionState;
-  let query: SpyInstance;
+  let query: MockInstance;
   let addEventListener: Mock;
   let removeEventListener: Mock;
 
@@ -38,7 +38,7 @@ describe('usePermissionState()', () => {
       query = vi.spyOn(navigator.permissions, 'query');
 
       (
-        query as SpyInstance<[PermissionDescriptor], Promise<Partial<PermissionStatus>>>
+        query as MockInstance<[PermissionDescriptor], Promise<Partial<PermissionStatus>>>
       ).mockImplementation(async () => ({
         get state() {
           return state;
