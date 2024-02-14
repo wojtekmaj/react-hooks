@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from 'vitest';
-import { renderHook } from '@testing-library/react-hooks';
+import { renderHook } from '@testing-library/react';
 
 import usePrefersColorSchemeLight from './usePrefersColorSchemeLight.js';
 import useMatchMedia from './useMatchMedia.js';

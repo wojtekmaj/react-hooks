@@ -3,7 +3,7 @@ import { defineConfig } from 'vitest/config';
 export default defineConfig({
   resolve: {
     alias: {
-      '@testing-library/react-hooks': '@testing-library/react-hooks/server',
+      '@testing-library/react': '@testing-library/react/server',
     },
   },
   test: {
