@@ -22,6 +22,9 @@ All hooks from this package support SSR. Some hooks use browser-only APIs, e.g. 
 ### Table of contents
 
 - [`useCurrentPosition`](#useCurrentPosition)
+- [`useDebouncedEffect`](#useDebouncedEffect)
+- [`useDebouncedState`](#useDebouncedState)
+- [`useDebouncedValue`](#useDebouncedValue)
 - [`useEventListener`](#useEventListener)
 - [`useIntersectionObserver`](#useIntersectionObserver)
 - [`useLocalStorage`](#useLocalStorage)
@@ -55,6 +58,48 @@ Returns current position from Geolocation API.
 import { useCurrentPosition } from '@wojtekmaj/react-hooks';
 
 useCurrentPosition(); // { latitude: 0, longitude: 0 }
+```
+
+### `useDebouncedEffect`
+
+Runs a given effect after a given delay.
+
+#### Sample usage
+
+```ts
+import { useDebouncedEffect } from '@wojtekmaj/react-hooks';
+
+useDebouncedEffect(
+  () => {
+    // This will run after 1 second of value not changing.
+  },
+  [value],
+  1000,
+);
+```
+
+### `useDebouncedState`
+
+Returns a debounced state and a function to update it.
+
+#### Sample usage
+
+```ts
+import { useDebouncedState } from '@wojtekmaj/react-hooks';
+
+const [value, setValue] = useDebouncedState('initialState', 1000); // ['initialState', Function]
+```
+
+### `useDebouncedValue`
+
+Returns a debounced value.
+
+#### Sample usage
+
+```ts
+import { useDebouncedValue } from '@wojtekmaj/react-hooks';
+
+const debouncedValue = useDebouncedValue(value, 1000); // This value will be updated after 1 second of value not changing.
 ```
 
 ### `useEventListener`
