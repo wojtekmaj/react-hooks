@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from 'vitest';
-import { renderHook, act } from '@testing-library/react-hooks';
+import { renderHook, act } from '@testing-library/react';
 
 import useDebouncedEffect from './useDebouncedEffect.js';
 
@@ -28,11 +28,11 @@ describe('useDebouncedEffect()', () => {
     const fn = vi.fn();
 
     const { rerender } = renderHook<
+      void,
       {
         effect: EffectCallback;
         deps: DependencyList;
-      },
-      void
+      }
     >(({ effect, deps }) => useDebouncedEffect(effect, deps, 500), {
       initialProps: { effect: fn, deps: [1] },
     });
@@ -56,11 +56,11 @@ describe('useDebouncedEffect()', () => {
     const fn = vi.fn().mockReturnValue(cleanup);
 
     const { unmount } = renderHook<
+      void,
       {
         effect: EffectCallback;
         deps: DependencyList;
-      },
-      void
+      }
     >(({ effect, deps }) => useDebouncedEffect(effect, deps, 500), {
       initialProps: { effect: fn, deps: [] },
     });
@@ -83,11 +83,11 @@ describe('useDebouncedEffect()', () => {
     const fn = vi.fn().mockReturnValue(cleanup);
 
     const { rerender } = renderHook<
+      void,
       {
         effect: EffectCallback;
         deps: DependencyList;
-      },
-      void
+      }
     >(({ effect, deps }) => useDebouncedEffect(effect, deps, 500), {
       initialProps: { effect: fn, deps: [1] },
     });

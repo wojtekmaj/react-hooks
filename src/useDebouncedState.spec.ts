@@ -1,4 +1,4 @@
-import { renderHook, act } from '@testing-library/react-hooks';
+import { renderHook, act } from '@testing-library/react';
 import { describe, expect, it, vi } from 'vitest';
 
 import useDebouncedState from './useDebouncedState.js';
@@ -25,13 +25,16 @@ describe('useDebouncedState()', () => {
   });
 
   itIfDocumentDefined('should update the value after the debounce time', () => {
-    const { result } = renderHook(() => useDebouncedState('test', 500));
+    const { result, rerender } = renderHook(({ value, time }) => useDebouncedState(value, time), {
+      initialProps: { value: 'test', time: 500 },
+    });
 
     const [, setValue] = result.current;
 
     setValue('updated');
 
-    vi.runAllTimers();
+    // Simulate rerender
+    rerender({ value: 'updated', time: 500 });
 
     act(() => {
       vi.advanceTimersByTime(500);

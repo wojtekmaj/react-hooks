@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from 'vitest';
-import { renderHook, act } from '@testing-library/react-hooks';
+import { renderHook, act } from '@testing-library/react';
 
 import useTick from './useTick.js';
 

@@ -1,5 +1,5 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
-import { renderHook } from '@testing-library/react-hooks';
+import { renderHook } from '@testing-library/react';
 
 import useMutationObserver from './useMutationObserver.js';
 
