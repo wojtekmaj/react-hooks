@@ -1,6 +1,9 @@
 import { describe, expect, it } from 'vitest';
 import {
   useCurrentPosition,
+  useDebouncedEffect,
+  useDebouncedState,
+  useDebouncedValue,
   useEventListener,
   useIntersectionObserver,
   useLocalStorage,
@@ -26,6 +29,18 @@ import {
 describe('index', () => {
   it('has useCurrentPosition exported properly', () => {
     expect(useCurrentPosition).toBeInstanceOf(Function);
+  });
+
+  it('has useDebouncedEffect exported properly', () => {
+    expect(useDebouncedEffect).toBeInstanceOf(Function);
+  });
+
+  it('has useDebouncedState exported properly', () => {
+    expect(useDebouncedState).toBeInstanceOf(Function);
+  });
+
+  it('has useDebouncedValue exported properly', () => {
+    expect(useDebouncedValue).toBeInstanceOf(Function);
   });
 
   it('has useEventListener exported properly', () => {

@@ -1,4 +1,7 @@
 import useCurrentPosition from './useCurrentPosition.js';
+import useDebouncedEffect from './useDebouncedEffect.js';
+import useDebouncedState from './useDebouncedState.js';
+import useDebouncedValue from './useDebouncedValue.js';
 import useEventListener from './useEventListener.js';
 import useIntersectionObserver from './useIntersectionObserver.js';
 import useLocalStorage from './useLocalStorage.js';
@@ -24,6 +27,9 @@ import useWindowWidth from './useWindowWidth.js';
 
 export {
   useCurrentPosition,
+  useDebouncedEffect,
+  useDebouncedState,
+  useDebouncedValue,
   useEventListener,
   useIntersectionObserver,
   useLocalStorage,
