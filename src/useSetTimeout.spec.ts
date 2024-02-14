@@ -14,7 +14,7 @@ describe('useSetTimeout()', () => {
 
     renderHook(() => useSetTimeout(fn, 1000));
 
-    expect(fn).toHaveBeenCalledTimes(0);
+    expect(fn).not.toHaveBeenCalled();
 
     act(() => {
       vi.advanceTimersByTime(1000);
@@ -34,18 +34,18 @@ describe('useSetTimeout()', () => {
 
     renderHook(() => useSetTimeout(fn, 1000));
 
-    expect(fn).toHaveBeenCalledTimes(0);
+    expect(fn).not.toHaveBeenCalled();
 
     act(() => {
       vi.advanceTimersByTime(1000);
     });
 
-    expect(fn).toHaveBeenCalledTimes(0);
+    expect(fn).not.toHaveBeenCalled();
 
     act(() => {
       vi.advanceTimersByTime(1000);
     });
 
-    expect(fn).toHaveBeenCalledTimes(0);
+    expect(fn).not.toHaveBeenCalled();
   });
 });
