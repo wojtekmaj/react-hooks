@@ -18,11 +18,11 @@
     "build-cjs": "tsc --project tsconfig.build.json --outDir dist/cjs --module commonjs --moduleResolution node --verbatimModuleSyntax false",
     "build-cjs-package": "echo '{\n  \"type\": \"commonjs\"\n}' > dist/cjs/package.json",
     "clean": "rimraf dist",
+    "format": "prettier --check . --cache",
     "lint": "eslint .",
     "postinstall": "husky",
     "prepack": "yarn clean && yarn build",
-    "prettier": "prettier --check . --cache",
-    "test": "yarn lint && yarn tsc && yarn prettier && yarn unit && yarn unit:node",
+    "test": "yarn lint && yarn tsc && yarn format && yarn unit && yarn unit:node",
     "tsc": "tsc",
     "unit": "vitest --config vitest.config.ts",
     "unit:node": "vitest --config vitest.config.node.ts"
