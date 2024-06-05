@@ -43,7 +43,6 @@ describe('useEventListener()', () => {
       vi.spyOn(element, 'addEventListener');
 
       const type = 'storage';
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const listener = (event: StorageEvent) => {
         // Intentionally empty
       };
@@ -59,7 +58,6 @@ describe('useEventListener()', () => {
       vi.spyOn(element, 'addEventListener');
 
       const type = 'visibilitychange';
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const listener = (event: Event) => {
         // Intentionally empty
       };
