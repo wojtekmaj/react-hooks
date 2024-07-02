@@ -481,17 +481,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@testing-library/react@npm:^15.0.0":
-  version: 15.0.4
-  resolution: "@testing-library/react@npm:15.0.4"
+"@testing-library/react@npm:^16.0.0":
+  version: 16.0.0
+  resolution: "@testing-library/react@npm:16.0.0"
   dependencies:
     "@babel/runtime": "npm:^7.12.5"
-    "@testing-library/dom": "npm:^10.0.0"
-    "@types/react-dom": "npm:^18.0.0"
   peerDependencies:
+    "@testing-library/dom": ^10.0.0
+    "@types/react": ^18.0.0
+    "@types/react-dom": ^18.0.0
     react: ^18.0.0
     react-dom: ^18.0.0
-  checksum: 10c0/2f58729e39b93915c527557e87396e02deb5aecd3cf806427deee19bcccf8114681bf259c24b6a4a916e98710193b190ec321e842faaac4196131e22c8a8ac92
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
+    "@types/react-dom":
+      optional: true
+  checksum: 10c0/297f97bf4722dad05f11d9cafd47d387dbdb096fea4b79b876c7466460f0f2e345b55b81b3e37fc81ed8185c528cb53dd8455ca1b6b019b229edf6c796f11c9f
   languageName: node
   linkType: hard
 
@@ -516,7 +522,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-dom@npm:^18.0.0":
+"@types/react-dom@npm:*":
   version: 18.0.11
   resolution: "@types/react-dom@npm:18.0.11"
   dependencies:
@@ -601,8 +607,10 @@ __metadata:
   resolution: "@wojtekmaj/react-hooks@workspace:."
   dependencies:
     "@biomejs/biome": "npm:^1.8.0"
-    "@testing-library/react": "npm:^15.0.0"
+    "@testing-library/dom": "npm:^10.0.0"
+    "@testing-library/react": "npm:^16.0.0"
     "@types/react": "npm:*"
+    "@types/react-dom": "npm:*"
     happy-dom: "npm:^12.9.0"
     husky: "npm:^9.0.0"
     react: "npm:^18.2.0"
