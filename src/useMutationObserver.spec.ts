@@ -3,7 +3,7 @@ import { renderHook } from '@testing-library/react';
 
 import useMutationObserver from './useMutationObserver.js';
 
-const itIfDocumentDefined = it.runIf(typeof document !== 'undefined');
+const itIfWindowDefined = it.runIf(typeof window !== 'undefined');
 
 async function waitForAsync() {
   await new Promise((resolve) => {
@@ -31,7 +31,7 @@ describe('useMutationObserver()', () => {
     expect(result.current).toBe(undefined);
   });
 
-  itIfDocumentDefined('attaches event listener to element properly', async () => {
+  itIfWindowDefined('attaches event listener to element properly', async () => {
     const element = document.createElement('div');
     const listener = vi.fn();
 

@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 
-const isBrowser = typeof document !== 'undefined';
+const isBrowser = typeof window !== 'undefined';
 
 /**
  * Returns a flag which determines if the document matches the given media query string.

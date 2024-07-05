@@ -3,13 +3,13 @@ import { renderHook, act } from '@testing-library/react';
 
 import useTick from './useTick.js';
 
-const itIfDocumentDefined = it.runIf(typeof document !== 'undefined');
-const itIfDocumentUndefined = it.runIf(typeof document === 'undefined');
+const itIfWindowDefined = it.runIf(typeof window !== 'undefined');
+const itIfWindowUndefined = it.runIf(typeof window === 'undefined');
 
 vi.useFakeTimers();
 
 describe('useTick()', () => {
-  itIfDocumentDefined('should increment the counter in given intervals', () => {
+  itIfWindowDefined('should increment the counter in given intervals', () => {
     const { result } = renderHook(() => useTick(1000));
 
     expect(result.current).toBe(0);
@@ -27,7 +27,7 @@ describe('useTick()', () => {
     expect(result.current).toBe(2);
   });
 
-  itIfDocumentUndefined('should not do anything', () => {
+  itIfWindowUndefined('should not do anything', () => {
     const { result } = renderHook(() => useTick(1000));
 
     expect(result.current).toBe(0);

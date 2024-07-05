@@ -3,7 +3,7 @@ import { renderHook } from '@testing-library/react';
 
 import useEventListener from './useEventListener.js';
 
-const itIfDocumentDefined = it.runIf(typeof document !== 'undefined');
+const itIfWindowDefined = it.runIf(typeof window !== 'undefined');
 
 describe('useEventListener()', () => {
   afterEach(() => {
@@ -21,7 +21,7 @@ describe('useEventListener()', () => {
     expect(result.current).toBe(undefined);
   });
 
-  itIfDocumentDefined('attaches event listener to element properly', () => {
+  itIfWindowDefined('attaches event listener to element properly', () => {
     const element = document.createElement('div');
     vi.spyOn(element, 'addEventListener');
 
@@ -36,7 +36,7 @@ describe('useEventListener()', () => {
     expect(element.addEventListener).toHaveBeenCalledWith(type, listener);
   });
 
-  itIfDocumentDefined(
+  itIfWindowDefined(
     'should allow storage handler to be passed if element is window and type is storage',
     () => {
       const element = window;
@@ -51,7 +51,7 @@ describe('useEventListener()', () => {
     },
   );
 
-  itIfDocumentDefined(
+  itIfWindowDefined(
     'should allow storage handler to be passed if element is document and type is visibilitychange',
     () => {
       const element = document;

@@ -3,17 +3,17 @@ import { renderHook } from '@testing-library/react';
 
 import useScrollTopPercent from './useScrollTopPercent.js';
 
-const itIfDocumentDefined = it.runIf(typeof document !== 'undefined');
-const itIfDocumentUndefined = it.runIf(typeof document === 'undefined');
+const itIfWindowDefined = it.runIf(typeof window !== 'undefined');
+const itIfWindowUndefined = it.runIf(typeof window === 'undefined');
 
 describe('useScrollTopPercent()', () => {
-  itIfDocumentDefined('should return current scroll top percentage properly', () => {
+  itIfWindowDefined('should return current scroll top percentage properly', () => {
     const { result } = renderHook(() => useScrollTopPercent());
 
     expect(result.current).toBe(0);
   });
 
-  itIfDocumentUndefined('should return null', () => {
+  itIfWindowUndefined('should return null', () => {
     const { result } = renderHook(() => useScrollTopPercent());
 
     expect(result.current).toBe(null);

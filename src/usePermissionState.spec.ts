@@ -5,8 +5,8 @@ import usePermissionState from './usePermissionState.js';
 
 import type { Mock, MockInstance } from 'vitest';
 
-const itIfDocumentDefined = it.runIf(typeof document !== 'undefined');
-const itIfDocumentUndefined = it.runIf(typeof document === 'undefined');
+const itIfWindowDefined = it.runIf(typeof window !== 'undefined');
+const itIfWindowUndefined = it.runIf(typeof window === 'undefined');
 
 async function waitForAsync() {
   await new Promise((resolve) => {
@@ -63,7 +63,7 @@ describe('usePermissionState()', () => {
     vi.clearAllMocks();
   });
 
-  itIfDocumentDefined('should return null initially', async () => {
+  itIfWindowDefined('should return null initially', async () => {
     const { result } = renderHook(() => usePermissionState({ name: 'geolocation' }));
 
     expect(result.current).toBe(null);
@@ -71,7 +71,7 @@ describe('usePermissionState()', () => {
     await act(() => waitForAsync());
   });
 
-  itIfDocumentDefined(
+  itIfWindowDefined(
     'should return Notification.permission initially given name "notifications"',
     async () => {
       const { result } = renderHook(() => usePermissionState({ name: 'notifications' }));
@@ -82,7 +82,7 @@ describe('usePermissionState()', () => {
     },
   );
 
-  itIfDocumentUndefined('should return null', async () => {
+  itIfWindowUndefined('should return null', async () => {
     const { result } = renderHook(() => usePermissionState({ name: 'geolocation' }));
 
     expect(result.current).toBe(null);
@@ -90,7 +90,7 @@ describe('usePermissionState()', () => {
     await act(() => waitForAsync());
   });
 
-  itIfDocumentDefined('should query permissions', async () => {
+  itIfWindowDefined('should query permissions', async () => {
     renderHook(() => usePermissionState({ name: 'geolocation' }));
 
     await act(() => waitForAsync());
@@ -98,7 +98,7 @@ describe('usePermissionState()', () => {
     expect(query).toHaveBeenCalledTimes(1);
   });
 
-  itIfDocumentDefined('should add listener', async () => {
+  itIfWindowDefined('should add listener', async () => {
     renderHook(() => usePermissionState({ name: 'geolocation' }));
 
     await act(() => waitForAsync());
@@ -106,7 +106,7 @@ describe('usePermissionState()', () => {
     expect(addEventListener).toHaveBeenCalledTimes(1);
   });
 
-  itIfDocumentDefined('should update the flag when the listener is called', async () => {
+  itIfWindowDefined('should update the flag when the listener is called', async () => {
     let listener: EventListener;
     addEventListener.mockImplementationOnce((type, currentListener) => {
       listener = currentListener;

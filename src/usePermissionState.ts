@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-const isBrowser = typeof document !== 'undefined';
+const isBrowser = typeof window !== 'undefined';
 
 /**
  * Returns permission state given permission name.

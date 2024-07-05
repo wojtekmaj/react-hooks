@@ -5,7 +5,7 @@ import useIntersectionObserver from './useIntersectionObserver.js';
 
 import type { Mock, MockInstance } from 'vitest';
 
-const itIfDocumentDefined = it.runIf(typeof document !== 'undefined');
+const itIfWindowDefined = it.runIf(typeof window !== 'undefined');
 
 async function waitForAsync() {
   await new Promise((resolve) => {
@@ -60,7 +60,7 @@ describe('useIntersectionObserver()', () => {
     expect(result.current).toBe(undefined);
   });
 
-  itIfDocumentDefined('attaches event listener to element properly', async () => {
+  itIfWindowDefined('attaches event listener to element properly', async () => {
     const element = document.createElement('div');
     const listener = () => {
       // Intentionally empty

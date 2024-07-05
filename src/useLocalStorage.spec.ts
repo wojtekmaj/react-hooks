@@ -3,7 +3,7 @@ import { renderHook, act } from '@testing-library/react';
 
 import useLocalStorage from './useLocalStorage.js';
 
-const itIfDocumentDefined = it.runIf(typeof document !== 'undefined');
+const itIfWindowDefined = it.runIf(typeof window !== 'undefined');
 
 describe('useLocalStorage()', () => {
   afterEach(() => {
@@ -20,7 +20,7 @@ describe('useLocalStorage()', () => {
     expect(value).toBe('initialState');
   });
 
-  itIfDocumentDefined('should return value from localStorage properly', () => {
+  itIfWindowDefined('should return value from localStorage properly', () => {
     localStorage.setItem('myKey', JSON.stringify('foo'));
 
     const { result } = renderHook(() => useLocalStorage('myKey', 'initialState'));
@@ -30,7 +30,7 @@ describe('useLocalStorage()', () => {
     expect(value).toBe('foo');
   });
 
-  itIfDocumentDefined('should return value from localStorage properly even if it’s falsy', () => {
+  itIfWindowDefined('should return value from localStorage properly even if it’s falsy', () => {
     localStorage.setItem('myKey', JSON.stringify(0));
 
     const { result } = renderHook(() => useLocalStorage('myKey', 'initialState'));
@@ -40,7 +40,7 @@ describe('useLocalStorage()', () => {
     expect(value).toBe(0);
   });
 
-  itIfDocumentDefined('should update value properly', () => {
+  itIfWindowDefined('should update value properly', () => {
     const { result } = renderHook(() => useLocalStorage('myKey'));
 
     const [, setValue] = result.current;

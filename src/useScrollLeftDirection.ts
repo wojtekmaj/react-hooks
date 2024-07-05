@@ -2,7 +2,7 @@ import { useCallback, useRef, useState } from 'react';
 
 import useEventListener from './useEventListener.js';
 
-const isBrowser = typeof document !== 'undefined';
+const isBrowser = typeof window !== 'undefined';
 
 type Direction = 'still' | 'left' | 'right';
 

@@ -3,17 +3,17 @@ import { renderHook } from '@testing-library/react';
 
 import useScrollLeftDirection from './useScrollLeftDirection.js';
 
-const itIfDocumentDefined = it.runIf(typeof document !== 'undefined');
-const itIfDocumentUndefined = it.runIf(typeof document === 'undefined');
+const itIfWindowDefined = it.runIf(typeof window !== 'undefined');
+const itIfWindowUndefined = it.runIf(typeof window === 'undefined');
 
 describe('useScrollLeftDirection()', () => {
-  itIfDocumentDefined('should return "still"', () => {
+  itIfWindowDefined('should return "still"', () => {
     const { result } = renderHook(() => useScrollLeftDirection());
 
     expect(result.current).toBe('still');
   });
 
-  itIfDocumentUndefined('should return null', () => {
+  itIfWindowUndefined('should return null', () => {
     const { result } = renderHook(() => useScrollLeftDirection());
 
     expect(result.current).toBe(null);

@@ -5,12 +5,12 @@ import useDebouncedEffect from './useDebouncedEffect.js';
 
 import type { DependencyList, EffectCallback } from 'react';
 
-const itIfDocumentDefined = it.runIf(typeof document !== 'undefined');
+const itIfWindowDefined = it.runIf(typeof window !== 'undefined');
 
 vi.useFakeTimers();
 
 describe('useDebouncedEffect()', () => {
-  itIfDocumentDefined('should call effect after debounce time on mount', () => {
+  itIfWindowDefined('should call effect after debounce time on mount', () => {
     const fn = vi.fn();
 
     renderHook(() => useDebouncedEffect(fn, [], 500));
@@ -24,7 +24,7 @@ describe('useDebouncedEffect()', () => {
     expect(fn).toHaveBeenCalledTimes(1);
   });
 
-  itIfDocumentDefined('should call effect after debounce time on dependency change', () => {
+  itIfWindowDefined('should call effect after debounce time on dependency change', () => {
     const fn = vi.fn();
 
     const { rerender } = renderHook<
@@ -50,7 +50,7 @@ describe('useDebouncedEffect()', () => {
     expect(fn).toHaveBeenCalledTimes(1);
   });
 
-  itIfDocumentDefined('should cancel effect on unmount', () => {
+  itIfWindowDefined('should cancel effect on unmount', () => {
     const cleanup = vi.fn();
 
     const fn = vi.fn().mockReturnValue(cleanup);
@@ -77,7 +77,7 @@ describe('useDebouncedEffect()', () => {
     expect(cleanup).toHaveBeenCalledTimes(1);
   });
 
-  itIfDocumentDefined('should cancel and re-run effect on dependency change', () => {
+  itIfWindowDefined('should cancel and re-run effect on dependency change', () => {
     const cleanup = vi.fn();
 
     const fn = vi.fn().mockReturnValue(cleanup);

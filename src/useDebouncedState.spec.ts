@@ -3,7 +3,7 @@ import { describe, expect, it, vi } from 'vitest';
 
 import useDebouncedState from './useDebouncedState.js';
 
-const itIfDocumentDefined = it.runIf(typeof document !== 'undefined');
+const itIfWindowDefined = it.runIf(typeof window !== 'undefined');
 
 vi.useFakeTimers();
 
@@ -14,7 +14,7 @@ describe('useDebouncedState()', () => {
     expect(result.current).toEqual(['test', expect.any(Function)]);
   });
 
-  itIfDocumentDefined('should not update the value before the debounce time', () => {
+  itIfWindowDefined('should not update the value before the debounce time', () => {
     const { result } = renderHook(() => useDebouncedState('test', 500));
 
     const [, setValue] = result.current;
@@ -24,7 +24,7 @@ describe('useDebouncedState()', () => {
     expect(result.current).toEqual(['test', expect.any(Function)]);
   });
 
-  itIfDocumentDefined('should update the value after the debounce time', () => {
+  itIfWindowDefined('should update the value after the debounce time', () => {
     const { result, rerender } = renderHook(({ value, time }) => useDebouncedState(value, time), {
       initialProps: { value: 'test', time: 500 },
     });
