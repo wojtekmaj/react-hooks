@@ -38,8 +38,10 @@ All hooks from this package support SSR. Some hooks use browser-only APIs, e.g. 
 - [`usePrefersReducedTransparency`](#usePrefersReducedTransparency)
 - [`useResizeObserver`](#useResizeObserver)
 - [`useScrollLeft`](#useScrollLeft)
+- [`useScrollLeftDirection`](#useScrollLeftDirection)
 - [`useScrollLeftPercent`](#useScrollLeftPercent)
 - [`useScrollTop`](#useScrollTop)
+- [`useScrollTopDirection`](#useScrollTopDirection)
 - [`useScrollTopPercent`](#useScrollTopPercent)
 - [`useSetInterval`](#useSetInterval)
 - [`useSetTimeout`](#useSetTimeout)
@@ -258,6 +260,18 @@ import { useScrollLeft } from '@wojtekmaj/react-hooks';
 const scrollLeft = useScrollLeft(); // 0
 ```
 
+### `useScrollLeftDirection`
+
+Returns current scroll left direction.
+
+#### Sample usage
+
+```ts
+import { useScrollLeftDirection } from '@wojtekmaj/react-hooks';
+
+const scrollLeftDirection = useScrollLeftDirection(); // 'still' / 'left' / 'right'
+```
+
 ### `useScrollLeftPercent`
 
 Returns current scroll left position in percentage.
@@ -280,6 +294,18 @@ Returns current scroll top position in pixels.
 import { useScrollTop } from '@wojtekmaj/react-hooks';
 
 const scrollTop = useScrollTop(); // 0
+```
+
+### `useScrollTopDirection`
+
+Returns current scroll top direction.
+
+#### Sample usage
+
+```ts
+import { useScrollTopDirection } from '@wojtekmaj/react-hooks';
+
+const scrollTopDirection = useScrollTopDirection(); // 'still' / 'up' / 'down'
 ```
 
 ### `useScrollTopPercent`
