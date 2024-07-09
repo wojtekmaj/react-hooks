@@ -3,7 +3,7 @@ import { renderHook } from '@testing-library/react';
 
 import useResizeObserver from './useResizeObserver.js';
 
-import type { Mock, MockInstance } from 'vitest';
+import type { Mock } from 'vitest';
 
 const itIfWindowDefined = it.runIf(typeof window !== 'undefined');
 
@@ -33,13 +33,12 @@ describe('useResizeObserver()', () => {
       });
 
       const mockResizeObserver = vi.spyOn(window, 'ResizeObserver');
-      (
-        mockResizeObserver as MockInstance<
-          [callback: ResizeObserverCallback],
-          Partial<ResizeObserver>
-        >
-      ).mockImplementation(() => ({
+
+      mockResizeObserver.mockImplementation(() => ({
         observe,
+        unobserve: () => {
+          //Intentionally empty
+        },
         disconnect,
       }));
     }

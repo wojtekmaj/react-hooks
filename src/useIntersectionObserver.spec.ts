@@ -34,14 +34,18 @@ describe('useIntersectionObserver()', () => {
 
       const mockIntersectionObserver = vi.spyOn(window, 'IntersectionObserver');
 
-      (
-        mockIntersectionObserver as MockInstance<
-          [callback: IntersectionObserverCallback, options?: IntersectionObserverInit | undefined],
-          Partial<IntersectionObserver>
-        >
-      ).mockImplementation(() => ({
+      mockIntersectionObserver.mockImplementation(() => ({
         observe,
+        unobserve: () => {
+          //Intentionally empty
+        },
         disconnect,
+        root: null,
+        rootMargin: '',
+        thresholds: [],
+        takeRecords: () => {
+          return [];
+        },
       }));
     }
   });

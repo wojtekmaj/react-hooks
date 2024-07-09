@@ -37,9 +37,7 @@ describe('usePermissionState()', () => {
 
       query = vi.spyOn(navigator.permissions, 'query');
 
-      (
-        query as MockInstance<[PermissionDescriptor], Promise<Partial<PermissionStatus>>>
-      ).mockImplementation(async () => ({
+      query.mockImplementation(async () => ({
         get state() {
           return state;
         },
