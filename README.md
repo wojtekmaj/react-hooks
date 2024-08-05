@@ -43,6 +43,7 @@ All hooks from this package support SSR. Some hooks use browser-only APIs, e.g. 
 - [`useScrollTop`](#useScrollTop)
 - [`useScrollTopDirection`](#useScrollTopDirection)
 - [`useScrollTopPercent`](#useScrollTopPercent)
+- [`useSessionStorage`](#useSessionStorage)
 - [`useSetInterval`](#useSetInterval)
 - [`useSetTimeout`](#useSetTimeout)
 - [`useTick`](#useTick)
@@ -318,6 +319,18 @@ Returns current scroll top position in percentage.
 import { useScrollTopPercent } from '@wojtekmaj/react-hooks';
 
 const scrollTopPercent = useScrollTopPercent(); // 0.5
+```
+
+### `useSessionStorage`
+
+Returns a stateful value synchronized with [sessionStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage), and a function to update it.
+
+#### Sample usage
+
+```ts
+import { useSessionStorage } from '@wojtekmaj/react-hooks';
+
+const [value, setValue] = useSessionStorage('myKey', 'initialState'); // ['initialState', Function]
 ```
 
 ### `useSetInterval`
