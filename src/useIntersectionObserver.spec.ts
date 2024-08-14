@@ -3,7 +3,7 @@ import { renderHook } from '@testing-library/react';
 
 import useIntersectionObserver from './useIntersectionObserver.js';
 
-import type { Mock, MockInstance } from 'vitest';
+import type { Mock } from 'vitest';
 
 const itIfWindowDefined = it.runIf(typeof window !== 'undefined');
 

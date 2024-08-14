@@ -55,7 +55,7 @@ describe('useMatchMedia()', () => {
 
   itIfWindowDefined('should update the flag when the listener is called', () => {
     let listener: EventListener;
-    addEventListener.mockImplementationOnce((type, currentListener) => {
+    addEventListener.mockImplementationOnce((_type, currentListener) => {
       listener = currentListener;
 
       return () => null;

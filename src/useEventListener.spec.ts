@@ -43,7 +43,7 @@ describe('useEventListener()', () => {
       vi.spyOn(element, 'addEventListener');
 
       const type = 'storage';
-      const listener = (event: StorageEvent) => {
+      const listener = (_event: StorageEvent) => {
         // Intentionally empty
       };
 
@@ -58,7 +58,7 @@ describe('useEventListener()', () => {
       vi.spyOn(element, 'addEventListener');
 
       const type = 'visibilitychange';
-      const listener = (event: Event) => {
+      const listener = (_event: Event) => {
         // Intentionally empty
       };
 
