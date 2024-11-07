@@ -45,7 +45,7 @@
     "@testing-library/react": "^16.0.0",
     "@types/react": "*",
     "@types/react-dom": "*",
-    "happy-dom": "^12.9.0",
+    "happy-dom": "^15.10.2",
     "husky": "^9.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
