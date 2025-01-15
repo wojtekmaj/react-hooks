@@ -12,7 +12,7 @@ describe('useSessionStorage()', () => {
     }
   });
 
-  it('should return initialState value if value in sessionStorage is not given', () => {
+  it('should return initialState value if value in sessionStorage is not given (initialState is a value)', () => {
     const { result } = renderHook(() => useSessionStorage('myKey', 'initialState'));
 
     const [value] = result.current;
@@ -20,12 +20,33 @@ describe('useSessionStorage()', () => {
     expect(value).toBe('initialState');
   });
 
+  it('should return initialState value if value in sessionStorage is not given (initialState is a function)', () => {
+    const { result } = renderHook(() => useSessionStorage('myKey', () => 'initialState'));
+
+    const [value] = result.current;
+
+    expect(value).toBe('initialState');
+  });
+
   itIfWindowDefined(
-    'should return initialState if value in sessionStorage is not valid JSON',
+    'should return initialState if value in sessionStorage is not valid JSON (initialState is a value)',
     () => {
       sessionStorage.setItem('myKey', 'invalid JSON');
 
       const { result } = renderHook(() => useSessionStorage('myKey', 'initialState'));
+
+      const [value] = result.current;
+
+      expect(value).toBe('initialState');
+    },
+  );
+
+  itIfWindowDefined(
+    'should return initialState if value in sessionStorage is not valid JSON (initialState is a function)',
+    () => {
+      sessionStorage.setItem('myKey', 'invalid JSON');
+
+      const { result } = renderHook(() => useSessionStorage('myKey', () => 'initialState'));
 
       const [value] = result.current;
 

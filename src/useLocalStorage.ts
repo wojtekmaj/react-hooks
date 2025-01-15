@@ -14,16 +14,20 @@ export default function useLocalStorage<T = unknown>(
   initialState?: T | (() => T),
 ): [T, (nextValueOrFunction: T | ((value: T) => T)) => void] {
   const [value, setValue] = useState<T>(() => {
+    function getInitialState() {
+      return initialState instanceof Function ? initialState() : initialState;
+    }
+
     if (!isBrowser) {
-      return initialState;
+      return getInitialState();
     }
 
     const rawValue = localStorage.getItem(key);
 
     try {
-      return rawValue !== null ? JSON.parse(rawValue) : initialState;
+      return rawValue !== null ? JSON.parse(rawValue) : getInitialState();
     } catch {
-      return initialState;
+      return getInitialState();
     }
   });
 

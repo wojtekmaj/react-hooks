@@ -12,7 +12,7 @@ describe('useLocalStorage()', () => {
     }
   });
 
-  it('should return initialState value if value in localStorage is not given', () => {
+  it('should return initialState value if value in localStorage is not given (initialState is a value)', () => {
     const { result } = renderHook(() => useLocalStorage('myKey', 'initialState'));
 
     const [value] = result.current;
@@ -20,15 +20,39 @@ describe('useLocalStorage()', () => {
     expect(value).toBe('initialState');
   });
 
-  itIfWindowDefined('should return initialState if value in localStorage is not valid JSON', () => {
-    localStorage.setItem('myKey', 'invalid JSON');
-
-    const { result } = renderHook(() => useLocalStorage('myKey', 'initialState'));
+  it('should return initialState value if value in localStorage is not given (initialState is a function)', () => {
+    const { result } = renderHook(() => useLocalStorage('myKey', () => 'initialState'));
 
     const [value] = result.current;
 
     expect(value).toBe('initialState');
   });
+
+  itIfWindowDefined(
+    'should return initialState if value in localStorage is not valid JSON (initialState is a value)',
+    () => {
+      localStorage.setItem('myKey', 'invalid JSON');
+
+      const { result } = renderHook(() => useLocalStorage('myKey', 'initialState'));
+
+      const [value] = result.current;
+
+      expect(value).toBe('initialState');
+    },
+  );
+
+  itIfWindowDefined(
+    'should return initialState if value in localStorage is not valid JSON (initialState is a function)',
+    () => {
+      localStorage.setItem('myKey', 'invalid JSON');
+
+      const { result } = renderHook(() => useLocalStorage('myKey', () => 'initialState'));
+
+      const [value] = result.current;
+
+      expect(value).toBe('initialState');
+    },
+  );
 
   itIfWindowDefined('should return value from localStorage properly', () => {
     localStorage.setItem('myKey', JSON.stringify('foo'));
