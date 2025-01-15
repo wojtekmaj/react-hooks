@@ -20,7 +20,11 @@ export default function useSessionStorage<T = unknown>(
 
     const rawValue = sessionStorage.getItem(key);
 
-    return rawValue !== null ? JSON.parse(rawValue) : initialState;
+    try {
+      return rawValue !== null ? JSON.parse(rawValue) : initialState;
+    } catch {
+      return initialState;
+    }
   });
 
   const onChange = useCallback(

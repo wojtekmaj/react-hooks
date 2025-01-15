@@ -20,6 +20,16 @@ describe('useLocalStorage()', () => {
     expect(value).toBe('initialState');
   });
 
+  itIfWindowDefined('should return initialState if value in localStorage is not valid JSON', () => {
+    localStorage.setItem('myKey', 'invalid JSON');
+
+    const { result } = renderHook(() => useLocalStorage('myKey', 'initialState'));
+
+    const [value] = result.current;
+
+    expect(value).toBe('initialState');
+  });
+
   itIfWindowDefined('should return value from localStorage properly', () => {
     localStorage.setItem('myKey', JSON.stringify('foo'));
 

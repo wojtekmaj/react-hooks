@@ -20,6 +20,19 @@ describe('useSessionStorage()', () => {
     expect(value).toBe('initialState');
   });
 
+  itIfWindowDefined(
+    'should return initialState if value in sessionStorage is not valid JSON',
+    () => {
+      sessionStorage.setItem('myKey', 'invalid JSON');
+
+      const { result } = renderHook(() => useSessionStorage('myKey', 'initialState'));
+
+      const [value] = result.current;
+
+      expect(value).toBe('initialState');
+    },
+  );
+
   itIfWindowDefined('should return value from sessionStorage properly', () => {
     sessionStorage.setItem('myKey', JSON.stringify('foo'));
 
