@@ -17,7 +17,7 @@ export default function usePermissionState({ name }: PermissionDescriptor): Perm
       return null;
     }
 
-    if (name === 'notifications') {
+    if (name === 'notifications' && 'Notification' in window) {
       const potentialState = Notification.permission;
 
       return potentialState === 'default' ? 'prompt' : potentialState;
