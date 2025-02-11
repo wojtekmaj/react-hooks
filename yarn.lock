@@ -620,6 +620,7 @@ __metadata:
     "@types/react-dom": "npm:*"
     "@vitest/browser-playwright": "npm:^4.0.1"
     husky: "npm:^9.0.0"
+    network-information-types: "npm:^0.1.1"
     playwright: "npm:^1.55.1"
     react: "npm:^18.2.0"
     react-dom: "npm:^18.2.0"
@@ -868,6 +869,15 @@ __metadata:
   bin:
     nanoid: bin/nanoid.cjs
   checksum: 10c0/40e7f70b3d15f725ca072dfc4f74e81fcf1fbb02e491cf58ac0c79093adc9b0a73b152bcde57df4b79cd097e13023d7504acb38404a4da7bc1cd8e887b82fe0b
+  languageName: node
+  linkType: hard
+
+"network-information-types@npm:^0.1.1":
+  version: 0.1.1
+  resolution: "network-information-types@npm:0.1.1"
+  peerDependencies:
+    typescript: ">= 3.0.0"
+  checksum: 10c0/4bf7824e284138e2cca665380f9eba41b79a32e768c6ef944f4dd6d8cff3490c7bab705cd77e265468e0de18b8a32e83aabe0a107247496a11253cac54eab29b
   languageName: node
   linkType: hard
 
