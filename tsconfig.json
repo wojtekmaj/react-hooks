@@ -13,7 +13,11 @@
     "skipLibCheck": true,
     "strict": true,
     "target": "es2018",
-    "types": ["@vitest/browser/providers/playwright", "@vitest/browser/matchers"],
+    "types": [
+      "@vitest/browser/providers/playwright",
+      "@vitest/browser/matchers",
+      "network-information-types"
+    ],
     "verbatimModuleSyntax": true
   },
   "exclude": ["dist"]
