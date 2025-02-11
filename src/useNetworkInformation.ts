@@ -2,37 +2,15 @@ import { useEffect, useState } from 'react';
 
 const isBrowser = typeof window !== 'undefined';
 
-type NetworkInformation = {
-  addEventListener: (event: string, callback: () => void) => void;
-  downlink: number;
-  downlinkMax?: number;
-  effectiveType: 'slow-2g' | '2g' | '3g' | '4g';
-  removeEventListener: (event: string, callback: () => void) => void;
-  rtt: number;
-  saveData: boolean;
-  type?:
-    | 'bluetooth'
-    | 'cellular'
-    | 'ethernet'
-    | 'mixed'
-    | 'none'
-    | 'wifi'
-    | 'wimax'
-    | 'other'
-    | 'unknown';
-};
-
-type NavigatorWithConnection = Navigator & { connection: NetworkInformation };
-
 export default function useNetworkInformation(): NetworkInformation | null {
   const [connection, setConnection] = useState<NetworkInformation | null>(() => {
     if (!isBrowser || !('connection' in navigator)) {
       return null;
     }
 
-    const connection = (navigator as NavigatorWithConnection).connection;
+    const connection = navigator.connection;
 
-    return connection;
+    return connection || null;
   });
 
   useEffect(() => {
@@ -40,16 +18,20 @@ export default function useNetworkInformation(): NetworkInformation | null {
       return;
     }
 
-    const connection = (navigator as NavigatorWithConnection).connection;
+    const connection = navigator.connection;
+
+    if (!connection) {
+      return;
+    }
 
     function onConnectionChange() {
       if (!isBrowser || !('connection' in navigator)) {
         return null;
       }
 
-      const connection = (navigator as NavigatorWithConnection).connection;
+      const connection = navigator.connection;
 
-      setConnection(connection);
+      setConnection(connection || null);
     }
 
     connection.addEventListener('change', onConnectionChange);
