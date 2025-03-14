@@ -71,4 +71,37 @@ describe('useMatchMedia()', () => {
 
     expect(result.current).toBe(false);
   });
+
+  itIfWindowDefined('should update the flag when the listener is called (legacy)', () => {
+    let matches = true;
+    const addListener = vi.fn();
+    const removeListener = vi.fn();
+
+    const mql = {
+      get matches() {
+        return matches;
+      },
+      addListener,
+      removeListener,
+    };
+
+    window.matchMedia = vi.fn().mockReturnValue(mql);
+
+    let listener: EventListener;
+    addListener.mockImplementationOnce((_type, currentListener) => {
+      listener = currentListener;
+
+      return () => null;
+    });
+
+    const { result } = renderHook(() => useMatchMedia('screen and (min-width: 1024px'));
+
+    act(() => {
+      matches = false;
+      const mediaQueryListEvent = new MediaQueryListEvent('change', { matches });
+      listener(mediaQueryListEvent);
+    });
+
+    expect(result.current).toBe(false);
+  });
 });

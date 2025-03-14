@@ -21,10 +21,13 @@ export default function useMatchMedia(query: string): boolean | null {
       return undefined;
     }
 
-    mql.addEventListener('change', handleMql);
+    const addEventListener = mql.addEventListener || mql.addListener;
+    const removeEventListener = mql.removeEventListener || mql.removeListener;
+
+    addEventListener('change', handleMql);
 
     return () => {
-      mql.removeEventListener('change', handleMql);
+      removeEventListener('change', handleMql);
     };
   }, [mql, handleMql]);
 
