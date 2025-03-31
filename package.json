@@ -20,7 +20,7 @@
     "build-esm": "tsc --project tsconfig.build.json --outDir dist/esm",
     "build-cjs": "tsc --project tsconfig.build.json --outDir dist/cjs --module commonjs --moduleResolution node --verbatimModuleSyntax false",
     "build-cjs-package": "echo '{\n  \"type\": \"commonjs\"\n}' > dist/cjs/package.json",
-    "clean": "rimraf dist",
+    "clean": "node -e \"fs.rmSync('./dist', { recursive: true, force: true })\"",
     "format": "biome format",
     "lint": "biome lint",
     "postinstall": "husky",
@@ -49,7 +49,6 @@
     "husky": "^9.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "rimraf": "^6.0.0",
     "typescript": "^5.5.2",
     "vitest": "^3.0.5"
   },
