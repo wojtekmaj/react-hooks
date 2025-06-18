@@ -5,6 +5,7 @@ import useDebouncedValue from './useDebouncedValue.js';
 
 const itIfWindowDefined = it.runIf(typeof window !== 'undefined');
 
+// biome-ignore lint/correctness/useHookAtTopLevel: False positive, see https://github.com/biomejs/biome/issues/6396
 vi.useFakeTimers();
 
 describe('useDebouncedValue()', () => {

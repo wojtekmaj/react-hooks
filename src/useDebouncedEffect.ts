@@ -15,7 +15,6 @@ export default function useDebouncedEffect(
   deps: DependencyList,
   debounceTime = 250,
 ): void {
-  // biome-ignore lint/correctness/useExhaustiveDependencies: Ommitted debounceTime so it is not called every time it changes
   useEffect(() => {
     let cleanup: ReturnType<EffectCallback>;
 
@@ -30,5 +29,6 @@ export default function useDebouncedEffect(
         cleanup();
       }
     };
+    // biome-ignore lint/correctness/useExhaustiveDependencies: Ommitted debounceTime so it is not called every time it changes
   }, deps);
 }
