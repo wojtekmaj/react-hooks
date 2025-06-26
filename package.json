@@ -40,6 +40,7 @@
     "@types/react-dom": "*",
     "happy-dom": "^15.10.2",
     "husky": "^9.0.0",
+    "network-information-types": "^0.1.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "typescript": "^5.5.2",

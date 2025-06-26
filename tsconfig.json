@@ -13,6 +13,7 @@
     "skipLibCheck": true,
     "strict": true,
     "target": "es2015",
+    "types": ["./node_modules/network-information-types"],
     "verbatimModuleSyntax": true
   },
   "exclude": ["dist"]
