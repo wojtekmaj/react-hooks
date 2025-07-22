@@ -17,7 +17,12 @@ import {
   usePrefersReducedTransparency,
   useResizeObserver,
   useScrollLeft,
+  useScrollLeftDirection,
+  useScrollLeftPercent,
   useScrollTop,
+  useScrollTopDirection,
+  useScrollTopPercent,
+  useSessionStorage,
   useSetInterval,
   useSetTimeout,
   useTick,
@@ -95,8 +100,28 @@ describe('index', () => {
     expect(useScrollLeft).toBeInstanceOf(Function);
   });
 
+  it('has useScrollLeftDirection exported properly', () => {
+    expect(useScrollLeftDirection).toBeInstanceOf(Function);
+  });
+
+  it('has useScrollLeftPercent exported properly', () => {
+    expect(useScrollLeftPercent).toBeInstanceOf(Function);
+  });
+
   it('has useScrollTop exported properly', () => {
     expect(useScrollTop).toBeInstanceOf(Function);
+  });
+
+  it('has useScrollTopDirection exported properly', () => {
+    expect(useScrollTopDirection).toBeInstanceOf(Function);
+  });
+
+  it('has useScrollTopPercent exported properly', () => {
+    expect(useScrollTopPercent).toBeInstanceOf(Function);
+  });
+
+  it('has useSessionStorage exported properly', () => {
+    expect(useSessionStorage).toBeInstanceOf(Function);
   });
 
   it('has useSetInterval exported properly', () => {

@@ -15,9 +15,12 @@ import usePrefersReducedMotion from './usePrefersReducedMotion.js';
 import usePrefersReducedTransparency from './usePrefersReducedTransparency.js';
 import useResizeObserver from './useResizeObserver.js';
 import useScrollLeft from './useScrollLeft.js';
+import useScrollLeftDirection from './useScrollLeftDirection.js';
 import useScrollLeftPercent from './useScrollLeftPercent.js';
 import useScrollTop from './useScrollTop.js';
+import useScrollTopDirection from './useScrollTopDirection.js';
 import useScrollTopPercent from './useScrollTopPercent.js';
+import useSessionStorage from './useSessionStorage.js';
 import useSetInterval from './useSetInterval.js';
 import useSetTimeout from './useSetTimeout.js';
 import useTick from './useTick.js';
@@ -43,9 +46,12 @@ export {
   usePrefersReducedTransparency,
   useResizeObserver,
   useScrollLeft,
+  useScrollLeftDirection,
   useScrollLeftPercent,
   useScrollTop,
+  useScrollTopDirection,
   useScrollTopPercent,
+  useSessionStorage,
   useSetInterval,
   useSetTimeout,
   useTick,
