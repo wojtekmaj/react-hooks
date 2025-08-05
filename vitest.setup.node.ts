@@ -1,4 +1,5 @@
 import { vi } from 'vitest';
+
 import { renderHookServer } from './test-utils.js';
 
 vi.mock('@testing-library/react', async () => {

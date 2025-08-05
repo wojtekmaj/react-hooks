@@ -1,8 +1,8 @@
 import { describe, expect, it, vi } from 'vitest';
 import { renderHook } from '@testing-library/react';
 
-import usePrefersReducedTransparency from './usePrefersReducedTransparency.js';
 import useMatchMedia from './useMatchMedia.js';
+import usePrefersReducedTransparency from './usePrefersReducedTransparency.js';
 
 vi.mock('./useMatchMedia.js', () => ({ default: vi.fn() }));
 

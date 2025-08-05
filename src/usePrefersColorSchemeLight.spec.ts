@@ -1,8 +1,8 @@
 import { describe, expect, it, vi } from 'vitest';
 import { renderHook } from '@testing-library/react';
 
-import usePrefersColorSchemeLight from './usePrefersColorSchemeLight.js';
 import useMatchMedia from './useMatchMedia.js';
+import usePrefersColorSchemeLight from './usePrefersColorSchemeLight.js';
 
 vi.mock('./useMatchMedia.js', () => ({ default: vi.fn() }));
 
