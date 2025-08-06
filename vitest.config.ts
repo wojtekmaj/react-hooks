@@ -15,7 +15,7 @@ const config: ViteUserConfig = defineConfig({
         test: {
           name: 'node',
           environment: 'node',
-          setupFiles: 'vitest.setup.node.ts',
+          setupFiles: 'vitest.setup.ts',
         },
       },
     ],
