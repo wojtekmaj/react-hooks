@@ -9,14 +9,13 @@ const config: ViteUserConfig = defineConfig({
         test: {
           name: 'browser',
           environment: 'happy-dom',
-          setupFiles: 'vitest.setup.ts',
         },
       },
       {
         test: {
           name: 'node',
           environment: 'node',
-          setupFiles: ['vitest.setup.ts', 'vitest.setup.node.ts'],
+          setupFiles: 'vitest.setup.node.ts',
         },
       },
     ],
