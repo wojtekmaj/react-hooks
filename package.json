@@ -18,10 +18,9 @@
     "lint": "biome lint",
     "postinstall": "husky",
     "prepack": "yarn clean && yarn build",
-    "test": "yarn lint && yarn tsc && yarn format && yarn unit && yarn unit:node",
+    "test": "yarn lint && yarn tsc && yarn format && yarn unit",
     "tsc": "tsc",
-    "unit": "vitest --config vitest.config.ts",
-    "unit:node": "vitest --config vitest.config.node.ts"
+    "unit": "vitest"
   },
   "keywords": [
     "react",
