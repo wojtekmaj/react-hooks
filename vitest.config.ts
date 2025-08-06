@@ -8,7 +8,22 @@ const config: ViteUserConfig = defineConfig({
       {
         test: {
           name: 'browser',
-          environment: 'happy-dom',
+          browser: {
+            enabled: true,
+            headless: true,
+            instances: [
+              {
+                browser: 'chromium',
+                context: {
+                  colorScheme: 'dark',
+                  reducedMotion: 'reduce',
+                  // TODO: Set when Playwright supports this feature
+                  // reducedTransparency: 'reduce',
+                },
+              },
+            ],
+            provider: 'playwright',
+          },
         },
       },
       {

@@ -11,7 +11,7 @@ export default function useScrollLeftPercent(): number | null {
 
   const { scrollWidth } = document.documentElement;
 
-  if (scrollWidth === 0) {
+  if (scrollWidth === 0 || scrollWidth === windowWidth) {
     return 0;
   }
 
