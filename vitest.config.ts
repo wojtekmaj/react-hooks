@@ -9,6 +9,18 @@ const config: ViteUserConfig = defineConfig({
         test: {
           name: 'browser',
           environment: 'happy-dom',
+          environmentOptions: {
+            happyDOM: {
+              settings: {
+                device: {
+                  prefersColorScheme: 'dark',
+                  prefersReducedMotion: 'reduce',
+                  // See https://github.com/capricorn86/happy-dom/issues/1866
+                  // prefersReducedTransparency: 'reduce',
+                },
+              },
+            },
+          },
         },
       },
       {
