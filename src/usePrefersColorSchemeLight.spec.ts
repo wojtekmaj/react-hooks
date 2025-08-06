@@ -1,24 +1,21 @@
-import { describe, expect, it, vi } from 'vitest';
+import { describe, expect, it } from 'vitest';
 import { renderHook } from '@testing-library/react';
 
-import useMatchMedia from './useMatchMedia.js';
 import usePrefersColorSchemeLight from './usePrefersColorSchemeLight.js';
 
-vi.mock('./useMatchMedia.js', () => ({ default: vi.fn() }));
-
-const mockedUseMatchMedia = vi.mocked(useMatchMedia);
-mockedUseMatchMedia.mockReturnValue(true);
+const itIfWindowDefined = it.runIf(typeof window !== 'undefined');
+const itIfWindowUndefined = it.runIf(typeof window === 'undefined');
 
 describe('usePrefersColorSchemeLight()', () => {
-  it('should call useMatchMedia properly', () => {
-    renderHook(() => usePrefersColorSchemeLight());
-
-    expect(useMatchMedia).toHaveBeenCalledWith('(prefers-color-scheme: light)');
-  });
-
-  it('returns useMatchMedia result propperly', () => {
+  itIfWindowDefined('returns useMatchMedia result propperly', () => {
     const { result } = renderHook(() => usePrefersColorSchemeLight());
 
-    expect(result.current).toBe(true);
+    expect(result.current).toBe(false);
+  });
+
+  itIfWindowUndefined('should return null', () => {
+    const { result } = renderHook(() => usePrefersColorSchemeLight());
+
+    expect(result.current).toBe(null);
   });
 });

@@ -11,7 +11,7 @@ export default function useScrollTopPercent(): number | null {
 
   const { scrollHeight } = document.documentElement;
 
-  if (scrollHeight === 0) {
+  if (scrollHeight === 0 || scrollHeight === windowHeight) {
     return 0;
   }
 
