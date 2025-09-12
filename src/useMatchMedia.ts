@@ -21,14 +21,19 @@ export default function useMatchMedia(query: string): boolean | null {
       return undefined;
     }
 
-    const addEventListener = mql.addEventListener || mql.addListener;
-    const removeEventListener = mql.removeEventListener || mql.removeListener;
+    if (mql.addEventListener) {
+      mql.addEventListener('change', handleMql);
 
-    addEventListener('change', handleMql);
+      return () => {
+        mql.removeEventListener('change', handleMql);
+      };
+    } else {
+      mql.addListener(handleMql);
 
-    return () => {
-      removeEventListener('change', handleMql);
-    };
+      return () => {
+        mql.removeListener(handleMql);
+      };
+    }
   }, [mql, handleMql]);
 
   return matches;

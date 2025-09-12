@@ -88,7 +88,7 @@ describe('useMatchMedia()', () => {
     window.matchMedia = vi.fn().mockReturnValue(mql);
 
     let listener: EventListener;
-    addListener.mockImplementationOnce((_type, currentListener) => {
+    addListener.mockImplementationOnce((currentListener) => {
       listener = currentListener;
 
       return () => null;
