@@ -23,7 +23,6 @@ export default function useMatchMedia(query: string): boolean | null {
     }
 
     const mql = window.matchMedia(query);
-    setMatches(mql.matches);
 
     if (mql.addEventListener) {
       mql.addEventListener('change', handleMql);
