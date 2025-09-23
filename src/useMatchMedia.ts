@@ -12,26 +12,31 @@ export default function useMatchMedia(query: string): boolean | null {
   const [matches, setMatches] = useState<boolean | null>(() =>
     isBrowser ? window.matchMedia(query).matches : null,
   );
+
   const handleMql = useCallback((event: MediaQueryListEvent) => {
     setMatches(event.matches);
   }, []);
 
   useEffect(() => {
-    if (isBrowser) {
-      const mql = window.matchMedia(query);
-      setMatches(mql.matches);
+    if (!isBrowser) {
+      return undefined;
+    }
 
-      if (mql.addEventListener) {
-        mql.addEventListener('change', handleMql);
-        return () => {
-          mql.removeEventListener('change', handleMql);
-        };
-      } else {
-        mql.addListener(handleMql);
-        return () => {
-          mql.removeListener(handleMql);
-        };
-      }
+    const mql = window.matchMedia(query);
+    setMatches(mql.matches);
+
+    if (mql.addEventListener) {
+      mql.addEventListener('change', handleMql);
+
+      return () => {
+        mql.removeEventListener('change', handleMql);
+      };
+    } else {
+      mql.addListener(handleMql);
+
+      return () => {
+        mql.removeListener(handleMql);
+      };
     }
   }, [query, handleMql]);
 
