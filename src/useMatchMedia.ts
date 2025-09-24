@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 const isBrowser = typeof window !== 'undefined';
 
@@ -9,17 +9,20 @@ const isBrowser = typeof window !== 'undefined';
  * @returns {boolean | null} Whether the document matches the given media query string
  */
 export default function useMatchMedia(query: string): boolean | null {
-  const mql = useMemo(() => (isBrowser ? window.matchMedia(query) : null), [query]);
-  const [matches, setMatches] = useState(mql ? mql.matches : null);
+  const [matches, setMatches] = useState<boolean | null>(() =>
+    isBrowser ? window.matchMedia(query).matches : null,
+  );
 
   const handleMql = useCallback((event: MediaQueryListEvent) => {
     setMatches(event.matches);
   }, []);
 
   useEffect(() => {
-    if (!mql) {
+    if (!isBrowser) {
       return undefined;
     }
+
+    const mql = window.matchMedia(query);
 
     if (mql.addEventListener) {
       mql.addEventListener('change', handleMql);
@@ -34,7 +37,7 @@ export default function useMatchMedia(query: string): boolean | null {
         mql.removeListener(handleMql);
       };
     }
-  }, [mql, handleMql]);
+  }, [query, handleMql]);
 
   return matches;
 }
