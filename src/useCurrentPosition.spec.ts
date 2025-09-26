@@ -74,8 +74,10 @@ describe('useCurrentPosition()', () => {
           latitude: 0,
           longitude: 0,
           speed: 0,
+          toJSON: () => '<mocked json>',
         },
         timestamp: 0,
+        toJSON: () => '<mocked json>',
       });
     });
 
@@ -87,6 +89,7 @@ describe('useCurrentPosition()', () => {
       latitude: 0,
       longitude: 0,
       speed: 0,
+      toJSON: expect.any(Function),
     });
   });
 
@@ -110,8 +113,10 @@ describe('useCurrentPosition()', () => {
           latitude: 0,
           longitude: 0,
           speed: 0,
+          toJSON: () => '<mocked json>',
         },
         timestamp: 0,
+        toJSON: () => '<mocked json>',
       });
     });
 
@@ -123,6 +128,7 @@ describe('useCurrentPosition()', () => {
       latitude: 0,
       longitude: 0,
       speed: 0,
+      toJSON: expect.any(Function),
     });
   });
 });
