@@ -739,6 +739,7 @@ __metadata:
     "@types/react-dom": "npm:*"
     "@vitest/browser": "npm:^3.2.3"
     husky: "npm:^9.0.0"
+    network-information-types: "npm:^0.1.1"
     playwright: "npm:^1.51.1"
     react: "npm:^18.2.0"
     react-dom: "npm:^18.2.0"
@@ -1509,6 +1510,15 @@ __metadata:
   version: 1.0.0
   resolution: "negotiator@npm:1.0.0"
   checksum: 10c0/4c559dd52669ea48e1914f9d634227c561221dd54734070791f999c52ed0ff36e437b2e07d5c1f6e32909fc625fe46491c16e4a8f0572567d4dd15c3a4fda04b
+  languageName: node
+  linkType: hard
+
+"network-information-types@npm:^0.1.1":
+  version: 0.1.1
+  resolution: "network-information-types@npm:0.1.1"
+  peerDependencies:
+    typescript: ">= 3.0.0"
+  checksum: 10c0/4bf7824e284138e2cca665380f9eba41b79a32e768c6ef944f4dd6d8cff3490c7bab705cd77e265468e0de18b8a32e83aabe0a107247496a11253cac54eab29b
   languageName: node
   linkType: hard
 

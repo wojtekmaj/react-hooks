@@ -39,6 +39,7 @@
     "@types/react-dom": "*",
     "@vitest/browser": "^3.2.3",
     "husky": "^9.0.0",
+    "network-information-types": "^0.1.1",
     "playwright": "^1.51.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
