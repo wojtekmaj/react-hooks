@@ -24,29 +24,29 @@ describe('useIntersectionObserver()', () => {
       observe = vi.fn();
       disconnect = vi.fn();
 
+      function MockIntersectionObserver() {
+        return {
+          observe,
+          unobserve: () => {
+            //Intentionally empty
+          },
+          disconnect,
+          root: null,
+          rootMargin: '',
+          thresholds: [],
+          takeRecords: () => {
+            return [];
+          },
+        };
+      }
+
       Object.defineProperty(window, 'IntersectionObserver', {
         configurable: true,
         enumerable: true,
-        get: () => () => {
-          // Intentionally empty
-        },
+        get: () => MockIntersectionObserver,
       });
 
-      const mockIntersectionObserver = vi.spyOn(window, 'IntersectionObserver');
-
-      mockIntersectionObserver.mockImplementation(() => ({
-        observe,
-        unobserve: () => {
-          //Intentionally empty
-        },
-        disconnect,
-        root: null,
-        rootMargin: '',
-        thresholds: [],
-        takeRecords: () => {
-          return [];
-        },
-      }));
+      vi.spyOn(window, 'IntersectionObserver');
     }
   });
 

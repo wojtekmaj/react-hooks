@@ -1,3 +1,4 @@
+import { playwright } from '@vitest/browser-playwright';
 import { defineConfig } from 'vitest/config';
 
 import type { ViteUserConfig } from 'vitest/config';
@@ -11,18 +12,15 @@ const config: ViteUserConfig = defineConfig({
           browser: {
             enabled: true,
             headless: true,
-            instances: [
-              {
-                browser: 'chromium',
-                context: {
-                  colorScheme: 'dark',
-                  reducedMotion: 'reduce',
-                  // TODO: Set when Playwright supports this feature
-                  // reducedTransparency: 'reduce',
-                },
+            instances: [{ browser: 'chromium' }],
+            provider: playwright({
+              contextOptions: {
+                colorScheme: 'dark',
+                reducedMotion: 'reduce',
+                // TODO: Set when Playwright supports this feature
+                // reducedTransparency: 'reduce',}
               },
-            ],
-            provider: 'playwright',
+            }),
           },
         },
       },

@@ -24,23 +24,23 @@ describe('useResizeObserver()', () => {
       observe = vi.fn();
       disconnect = vi.fn();
 
+      function MockResizeObserver() {
+        return {
+          observe,
+          unobserve: () => {
+            //Intentionally empty
+          },
+          disconnect,
+        };
+      }
+
       Object.defineProperty(window, 'ResizeObserver', {
         configurable: true,
         enumerable: true,
-        get: () => () => {
-          // Intentionally empty
-        },
+        get: () => MockResizeObserver,
       });
 
-      const mockResizeObserver = vi.spyOn(window, 'ResizeObserver');
-
-      mockResizeObserver.mockImplementation(() => ({
-        observe,
-        unobserve: () => {
-          //Intentionally empty
-        },
-        disconnect,
-      }));
+      vi.spyOn(window, 'ResizeObserver');
     }
   });
 
