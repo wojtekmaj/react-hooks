@@ -6,7 +6,7 @@ type GlobalAndWindowEventHandlersEventMap = WindowEventHandlersEventMap &
 /**
  * Adds event listener to a given element.
  *
- * @param {Element | Window | Document} [element] Element to attach the listener to
+ * @param {Element | Window | Document | FontFaceSet | null} [element] Element to attach the listener to
  * @param {string} type Event type
  * @param {EventListenerOrEventListenerObject} listener Event listener
  * @returns {void}
@@ -26,8 +26,13 @@ export default function useEventListener<U extends keyof DocumentEventMap>(
   type: U,
   listener: (event: DocumentEventMap[U]) => void,
 ): void;
+export default function useEventListener<U extends keyof FontFaceSetEventMap>(
+  element: FontFaceSet | null,
+  type: U,
+  listener: (event: FontFaceSetEventMap[U]) => void,
+): void;
 export default function useEventListener(
-  element: Element | Window | Document | null,
+  element: Element | Window | Document | FontFaceSet | null,
   type: string,
   listener: EventListenerOrEventListenerObject | ((event: Event) => void),
 ): void {
