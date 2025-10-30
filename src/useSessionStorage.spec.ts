@@ -1,5 +1,6 @@
 import { afterEach, describe, expect, it } from 'vitest';
-import { act, renderHook } from '@testing-library/react';
+import { renderHook } from 'vitest-browser-react';
+import { act } from 'react-dom/test-utils';
 
 import useSessionStorage from './useSessionStorage.js';
 
@@ -12,16 +13,16 @@ describe('useSessionStorage()', () => {
     }
   });
 
-  it('should return initialState value if value in sessionStorage is not given (initialState is a value)', () => {
-    const { result } = renderHook(() => useSessionStorage('myKey', 'initialState'));
+  it('should return initialState value if value in sessionStorage is not given (initialState is a value)', async () => {
+    const { result } = await renderHook(() => useSessionStorage('myKey', 'initialState'));
 
     const [value] = result.current;
 
     expect(value).toBe('initialState');
   });
 
-  it('should return initialState value if value in sessionStorage is not given (initialState is a function)', () => {
-    const { result } = renderHook(() => useSessionStorage('myKey', () => 'initialState'));
+  it('should return initialState value if value in sessionStorage is not given (initialState is a function)', async () => {
+    const { result } = await renderHook(() => useSessionStorage('myKey', () => 'initialState'));
 
     const [value] = result.current;
 
@@ -30,10 +31,10 @@ describe('useSessionStorage()', () => {
 
   itIfWindowDefined(
     'should return initialState if value in sessionStorage is not valid JSON (initialState is a value)',
-    () => {
+    async () => {
       sessionStorage.setItem('myKey', 'invalid JSON');
 
-      const { result } = renderHook(() => useSessionStorage('myKey', 'initialState'));
+      const { result } = await renderHook(() => useSessionStorage('myKey', 'initialState'));
 
       const [value] = result.current;
 
@@ -43,10 +44,10 @@ describe('useSessionStorage()', () => {
 
   itIfWindowDefined(
     'should return initialState if value in sessionStorage is not valid JSON (initialState is a function)',
-    () => {
+    async () => {
       sessionStorage.setItem('myKey', 'invalid JSON');
 
-      const { result } = renderHook(() => useSessionStorage('myKey', () => 'initialState'));
+      const { result } = await renderHook(() => useSessionStorage('myKey', () => 'initialState'));
 
       const [value] = result.current;
 
@@ -54,28 +55,31 @@ describe('useSessionStorage()', () => {
     },
   );
 
-  itIfWindowDefined('should return value from sessionStorage properly', () => {
+  itIfWindowDefined('should return value from sessionStorage properly', async () => {
     sessionStorage.setItem('myKey', JSON.stringify('foo'));
 
-    const { result } = renderHook(() => useSessionStorage('myKey', 'initialState'));
+    const { result } = await renderHook(() => useSessionStorage('myKey', 'initialState'));
 
     const [value] = result.current;
 
     expect(value).toBe('foo');
   });
 
-  itIfWindowDefined('should return value from sessionStorage properly even if it’s falsy', () => {
-    sessionStorage.setItem('myKey', JSON.stringify(0));
+  itIfWindowDefined(
+    'should return value from sessionStorage properly even if it’s falsy',
+    async () => {
+      sessionStorage.setItem('myKey', JSON.stringify(0));
 
-    const { result } = renderHook(() => useSessionStorage('myKey', 'initialState'));
+      const { result } = await renderHook(() => useSessionStorage('myKey', 'initialState'));
 
-    const [value] = result.current;
+      const [value] = result.current;
 
-    expect(value).toBe(0);
-  });
+      expect(value).toBe(0);
+    },
+  );
 
-  itIfWindowDefined('should update value properly', () => {
-    const { result } = renderHook(() => useSessionStorage('myKey'));
+  itIfWindowDefined('should update value properly', async () => {
+    const { result } = await renderHook(() => useSessionStorage('myKey'));
 
     const [, setValue] = result.current;
 

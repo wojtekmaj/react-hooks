@@ -1,5 +1,5 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
-import { renderHook } from '@testing-library/react';
+import { renderHook } from 'vitest-browser-react';
 
 import useMutationObserver from './useMutationObserver.js';
 
@@ -21,12 +21,12 @@ describe('useMutationObserver()', () => {
     vi.clearAllMocks();
   });
 
-  it('does nothing given falsy element', () => {
+  it('does nothing given falsy element', async () => {
     const listener = () => {
       // Intentionally empty
     };
 
-    const { result } = renderHook(() => useMutationObserver(null, config, listener));
+    const { result } = await renderHook(() => useMutationObserver(null, config, listener));
 
     expect(result.current).toBe(undefined);
   });
@@ -35,7 +35,7 @@ describe('useMutationObserver()', () => {
     const element = document.createElement('div');
     const listener = vi.fn();
 
-    renderHook(() => useMutationObserver(element, config, listener));
+    await renderHook(() => useMutationObserver(element, config, listener));
 
     element.appendChild(document.createElement('span'));
 

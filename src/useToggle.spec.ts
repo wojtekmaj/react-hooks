@@ -1,29 +1,30 @@
 import { describe, expect, it } from 'vitest';
-import { act, renderHook } from '@testing-library/react';
+import { renderHook } from 'vitest-browser-react';
+import { act } from 'react-dom/test-utils';
 
 import useToggle from './useToggle.js';
 
 const itIfWindowDefined = it.runIf(typeof window !== 'undefined');
 
 describe('useToggle()', () => {
-  it('should return false value by default', () => {
-    const { result } = renderHook(() => useToggle());
+  it('should return false value by default', async () => {
+    const { result } = await renderHook(() => useToggle());
 
     const [value] = result.current;
 
     expect(value).toBe(false);
   });
 
-  it('should return default value properly if given', () => {
-    const { result } = renderHook(() => useToggle(true));
+  it('should return default value properly if given', async () => {
+    const { result } = await renderHook(() => useToggle(true));
 
     const [value] = result.current;
 
     expect(value).toBe(true);
   });
 
-  itIfWindowDefined('should toggle the flag properly', () => {
-    const { result } = renderHook(() => useToggle());
+  itIfWindowDefined('should toggle the flag properly', async () => {
+    const { result } = await renderHook(() => useToggle());
 
     const [value, toggleValue] = result.current;
 
@@ -46,8 +47,8 @@ describe('useToggle()', () => {
     expect(value3).toBe(false);
   });
 
-  itIfWindowDefined('should toggle the flag properly with memoized toggleValue', () => {
-    const { result } = renderHook(() => useToggle());
+  itIfWindowDefined('should toggle the flag properly with memoized toggleValue', async () => {
+    const { result } = await renderHook(() => useToggle());
 
     const [value, toggleValue] = result.current;
 

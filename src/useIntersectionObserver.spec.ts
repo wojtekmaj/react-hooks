@@ -1,5 +1,5 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
-import { renderHook } from '@testing-library/react';
+import { renderHook } from 'vitest-browser-react';
 
 import useIntersectionObserver from './useIntersectionObserver.js';
 
@@ -54,12 +54,12 @@ describe('useIntersectionObserver()', () => {
     vi.clearAllMocks();
   });
 
-  it('does nothing given falsy element', () => {
+  it('does nothing given falsy element', async () => {
     const listener = () => {
       // Intentionally empty
     };
 
-    const { result } = renderHook(() => useIntersectionObserver(null, config, listener));
+    const { result } = await renderHook(() => useIntersectionObserver(null, config, listener));
 
     expect(result.current).toBe(undefined);
   });
@@ -70,7 +70,7 @@ describe('useIntersectionObserver()', () => {
       // Intentionally empty
     };
 
-    renderHook(() => useIntersectionObserver(element, config, listener));
+    await renderHook(() => useIntersectionObserver(element, config, listener));
 
     await waitForAsync();
 

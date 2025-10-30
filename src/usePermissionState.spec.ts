@@ -1,5 +1,6 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
-import { act, renderHook } from '@testing-library/react';
+import { renderHook } from 'vitest-browser-react';
+import { act } from 'react-dom/test-utils';
 
 import usePermissionState from './usePermissionState.js';
 
@@ -7,12 +8,6 @@ import type { Mock, MockInstance } from 'vitest';
 
 const itIfWindowDefined = it.runIf(typeof window !== 'undefined');
 const itIfWindowUndefined = it.runIf(typeof window === 'undefined');
-
-async function waitForAsync() {
-  await new Promise((resolve) => {
-    setTimeout(resolve, 0);
-  });
-}
 
 describe('usePermissionState()', () => {
   let state: PermissionState;
@@ -61,45 +56,35 @@ describe('usePermissionState()', () => {
     vi.clearAllMocks();
   });
 
-  itIfWindowDefined('should return null initially', async () => {
-    const { result } = renderHook(() => usePermissionState({ name: 'geolocation' }));
+  itIfWindowDefined('should return navigator.permissions.query result initially', async () => {
+    const { result } = await renderHook(() => usePermissionState({ name: 'geolocation' }));
 
-    expect(result.current).toBe(null);
-
-    await act(() => waitForAsync());
+    expect(result.current).toBe('granted');
   });
 
   itIfWindowDefined(
     'should return Notification.permission initially given name "notifications"',
     async () => {
-      const { result } = renderHook(() => usePermissionState({ name: 'notifications' }));
+      const { result } = await renderHook(() => usePermissionState({ name: 'notifications' }));
 
       expect(result.current).toBe('granted');
-
-      await act(() => waitForAsync());
     },
   );
 
   itIfWindowUndefined('should return null', async () => {
-    const { result } = renderHook(() => usePermissionState({ name: 'geolocation' }));
+    const { result } = await renderHook(() => usePermissionState({ name: 'geolocation' }));
 
     expect(result.current).toBe(null);
-
-    await act(() => waitForAsync());
   });
 
   itIfWindowDefined('should query permissions', async () => {
-    renderHook(() => usePermissionState({ name: 'geolocation' }));
-
-    await act(() => waitForAsync());
+    await renderHook(() => usePermissionState({ name: 'geolocation' }));
 
     expect(query).toHaveBeenCalledTimes(1);
   });
 
   itIfWindowDefined('should add listener', async () => {
-    renderHook(() => usePermissionState({ name: 'geolocation' }));
-
-    await act(() => waitForAsync());
+    await renderHook(() => usePermissionState({ name: 'geolocation' }));
 
     expect(addEventListener).toHaveBeenCalledTimes(1);
   });
@@ -112,9 +97,7 @@ describe('usePermissionState()', () => {
       return () => null;
     });
 
-    const { result } = renderHook(() => usePermissionState({ name: 'geolocation' }));
-
-    await act(() => waitForAsync());
+    const { result } = await renderHook(() => usePermissionState({ name: 'geolocation' }));
 
     act(() => {
       state = 'denied';

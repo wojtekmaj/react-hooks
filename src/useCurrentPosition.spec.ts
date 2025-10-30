@@ -1,5 +1,6 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
-import { act, renderHook } from '@testing-library/react';
+import { renderHook } from 'vitest-browser-react';
+import { act } from 'react-dom/test-utils';
 
 import useCurrentPosition from './useCurrentPosition.js';
 
@@ -36,64 +37,67 @@ describe('useCurrentPosition()', () => {
     vi.clearAllMocks();
   });
 
-  it('should return null initially', () => {
-    const { result } = renderHook(() => useCurrentPosition());
+  it('should return null initially', async () => {
+    const { result } = await renderHook(() => useCurrentPosition());
 
     expect(result.current).toBe(null);
   });
 
-  itIfWindowDefined('should get initial position', () => {
-    renderHook(() => useCurrentPosition());
+  itIfWindowDefined('should get initial position', async () => {
+    await renderHook(() => useCurrentPosition());
 
     expect(getCurrentPosition).toHaveBeenCalledTimes(1);
   });
 
-  itIfWindowDefined('should subscribe to position changes', () => {
-    renderHook(() => useCurrentPosition());
+  itIfWindowDefined('should subscribe to position changes', async () => {
+    await renderHook(() => useCurrentPosition());
 
     expect(watchPosition).toHaveBeenCalledTimes(1);
   });
 
-  itIfWindowDefined('should update the flag when getCurrentPosition listener is called', () => {
-    let listener: PositionCallback;
-    getCurrentPosition.mockImplementationOnce((successCallback) => {
-      listener = successCallback;
+  itIfWindowDefined(
+    'should update the flag when getCurrentPosition listener is called',
+    async () => {
+      let listener: PositionCallback;
+      getCurrentPosition.mockImplementationOnce((successCallback) => {
+        listener = successCallback;
 
-      return () => null;
-    });
-
-    const { result } = renderHook(() => useCurrentPosition());
-
-    act(() => {
-      listener({
-        coords: {
-          accuracy: 0,
-          altitude: 0,
-          altitudeAccuracy: 0,
-          heading: 0,
-          latitude: 0,
-          longitude: 0,
-          speed: 0,
-          toJSON: () => '<mocked json>',
-        },
-        timestamp: 0,
-        toJSON: () => '<mocked json>',
+        return () => null;
       });
-    });
 
-    expect(result.current).toEqual({
-      accuracy: 0,
-      altitude: 0,
-      altitudeAccuracy: 0,
-      heading: 0,
-      latitude: 0,
-      longitude: 0,
-      speed: 0,
-      toJSON: expect.any(Function),
-    });
-  });
+      const { result } = await renderHook(() => useCurrentPosition());
 
-  itIfWindowDefined('should update the flag when watchPosition listener is called', () => {
+      act(() => {
+        listener({
+          coords: {
+            accuracy: 0,
+            altitude: 0,
+            altitudeAccuracy: 0,
+            heading: 0,
+            latitude: 0,
+            longitude: 0,
+            speed: 0,
+            toJSON: () => '<mocked json>',
+          },
+          timestamp: 0,
+          toJSON: () => '<mocked json>',
+        });
+      });
+
+      expect(result.current).toEqual({
+        accuracy: 0,
+        altitude: 0,
+        altitudeAccuracy: 0,
+        heading: 0,
+        latitude: 0,
+        longitude: 0,
+        speed: 0,
+        toJSON: expect.any(Function),
+      });
+    },
+  );
+
+  itIfWindowDefined('should update the flag when watchPosition listener is called', async () => {
     let listener: PositionCallback;
     watchPosition.mockImplementationOnce((successCallback) => {
       listener = successCallback;
@@ -101,7 +105,7 @@ describe('useCurrentPosition()', () => {
       return () => 0;
     });
 
-    const { result } = renderHook(() => useCurrentPosition());
+    const { result } = await renderHook(() => useCurrentPosition());
 
     act(() => {
       listener({

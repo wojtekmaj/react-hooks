@@ -1,5 +1,5 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
-import { renderHook } from '@testing-library/react';
+import { renderHook } from 'vitest-browser-react';
 
 import useResizeObserver from './useResizeObserver.js';
 
@@ -48,12 +48,12 @@ describe('useResizeObserver()', () => {
     vi.clearAllMocks();
   });
 
-  it('does nothing given falsy element', () => {
+  it('does nothing given falsy element', async () => {
     const listener = () => {
       // Intentionally empty
     };
 
-    const { result } = renderHook(() => useResizeObserver(null, config, listener));
+    const { result } = await renderHook(() => useResizeObserver(null, config, listener));
 
     expect(result.current).toBe(undefined);
   });
@@ -64,7 +64,7 @@ describe('useResizeObserver()', () => {
       // Intentionally empty
     };
 
-    renderHook(() => useResizeObserver(element, config, listener));
+    await renderHook(() => useResizeObserver(element, config, listener));
 
     await waitForAsync();
 

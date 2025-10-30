@@ -1,5 +1,6 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
-import { act, renderHook } from '@testing-library/react';
+import { renderHook } from 'vitest-browser-react';
+import { act } from 'react-dom/test-utils';
 
 import useMatchMedia from './useMatchMedia.js';
 
@@ -35,25 +36,25 @@ describe('useMatchMedia()', () => {
     vi.clearAllMocks();
   });
 
-  itIfWindowDefined('should return the flag initially', () => {
-    const { result } = renderHook(() => useMatchMedia('screen and (min-width: 1024px'));
+  itIfWindowDefined('should return the flag initially', async () => {
+    const { result } = await renderHook(() => useMatchMedia('screen and (min-width: 1024px'));
 
     expect(result.current).toBe(true);
   });
 
-  itIfWindowUndefined('should return null', () => {
-    const { result } = renderHook(() => useMatchMedia('screen and (min-width: 1024px'));
+  itIfWindowUndefined('should return null', async () => {
+    const { result } = await renderHook(() => useMatchMedia('screen and (min-width: 1024px'));
 
     expect(result.current).toBe(null);
   });
 
-  itIfWindowDefined('should add listener to MediaQueryList', () => {
-    renderHook(() => useMatchMedia('screen and (min-width: 1024px'));
+  itIfWindowDefined('should add listener to MediaQueryList', async () => {
+    await renderHook(() => useMatchMedia('screen and (min-width: 1024px'));
 
     expect(addEventListener).toHaveBeenCalledTimes(1);
   });
 
-  itIfWindowDefined('should update the flag when the listener is called', () => {
+  itIfWindowDefined('should update the flag when the listener is called', async () => {
     let listener: EventListener;
     addEventListener.mockImplementationOnce((_type, currentListener) => {
       listener = currentListener;
@@ -61,7 +62,7 @@ describe('useMatchMedia()', () => {
       return () => null;
     });
 
-    const { result } = renderHook(() => useMatchMedia('screen and (min-width: 1024px'));
+    const { result } = await renderHook(() => useMatchMedia('screen and (min-width: 1024px'));
 
     act(() => {
       matches = false;
@@ -72,7 +73,7 @@ describe('useMatchMedia()', () => {
     expect(result.current).toBe(false);
   });
 
-  itIfWindowDefined('should update the flag when the listener is called (legacy)', () => {
+  itIfWindowDefined('should update the flag when the listener is called (legacy)', async () => {
     let matches = true;
     const addListener = vi.fn();
     const removeListener = vi.fn();
@@ -94,7 +95,7 @@ describe('useMatchMedia()', () => {
       return () => null;
     });
 
-    const { result } = renderHook(() => useMatchMedia('screen and (min-width: 1024px'));
+    const { result } = await renderHook(() => useMatchMedia('screen and (min-width: 1024px'));
 
     act(() => {
       matches = false;

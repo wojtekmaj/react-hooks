@@ -1,5 +1,6 @@
 import { describe, expect, it, vi } from 'vitest';
-import { act, renderHook } from '@testing-library/react';
+import { renderHook } from 'vitest-browser-react';
+import { act } from 'react-dom/test-utils';
 
 import useSetTimeout from './useSetTimeout.js';
 
@@ -9,10 +10,10 @@ const itIfWindowUndefined = it.runIf(typeof window === 'undefined');
 vi.useFakeTimers();
 
 describe('useSetTimeout()', () => {
-  itIfWindowDefined('should run given function once after given timeout', () => {
+  itIfWindowDefined('should run given function once after given timeout', async () => {
     const fn = vi.fn();
 
-    renderHook(() => useSetTimeout(fn, 1000));
+    await renderHook(() => useSetTimeout(fn, 1000));
 
     expect(fn).not.toHaveBeenCalled();
 
@@ -29,10 +30,10 @@ describe('useSetTimeout()', () => {
     expect(fn).toHaveBeenCalledTimes(1);
   });
 
-  itIfWindowUndefined('should not do anything', () => {
+  itIfWindowUndefined('should not do anything', async () => {
     const fn = vi.fn();
 
-    renderHook(() => useSetTimeout(fn, 1000));
+    await renderHook(() => useSetTimeout(fn, 1000));
 
     expect(fn).not.toHaveBeenCalled();
 

@@ -2,11 +2,8 @@ import { vi } from 'vitest';
 
 import { renderHookServer } from './test-utils.js';
 
-vi.mock('@testing-library/react', async () => {
-  const actualTestingLibraryReact = await vi.importActual('@testing-library/react');
-
+vi.mock('vitest-browser-react', async () => {
   return {
-    ...actualTestingLibraryReact,
     renderHook: renderHookServer,
   };
 });

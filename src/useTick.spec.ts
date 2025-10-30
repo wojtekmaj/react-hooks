@@ -1,5 +1,6 @@
 import { describe, expect, it, vi } from 'vitest';
-import { act, renderHook } from '@testing-library/react';
+import { renderHook } from 'vitest-browser-react';
+import { act } from 'react-dom/test-utils';
 
 import useTick from './useTick.js';
 
@@ -9,8 +10,8 @@ const itIfWindowUndefined = it.runIf(typeof window === 'undefined');
 vi.useFakeTimers();
 
 describe('useTick()', () => {
-  itIfWindowDefined('should increment the counter in given intervals', () => {
-    const { result } = renderHook(() => useTick(1000));
+  itIfWindowDefined('should increment the counter in given intervals', async () => {
+    const { result } = await renderHook(() => useTick(1000));
 
     expect(result.current).toBe(0);
 
@@ -27,8 +28,8 @@ describe('useTick()', () => {
     expect(result.current).toBe(2);
   });
 
-  itIfWindowUndefined('should not do anything', () => {
-    const { result } = renderHook(() => useTick(1000));
+  itIfWindowUndefined('should not do anything', async () => {
+    const { result } = await renderHook(() => useTick(1000));
 
     expect(result.current).toBe(0);
 

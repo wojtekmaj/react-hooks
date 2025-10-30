@@ -1,5 +1,6 @@
 import { describe, expect, it, vi } from 'vitest';
-import { act, renderHook } from '@testing-library/react';
+import { renderHook } from 'vitest-browser-react';
+import { act } from 'react-dom/test-utils';
 
 import useDebouncedEffect from './useDebouncedEffect.js';
 
@@ -10,10 +11,10 @@ const itIfWindowDefined = it.runIf(typeof window !== 'undefined');
 vi.useFakeTimers();
 
 describe('useDebouncedEffect()', () => {
-  itIfWindowDefined('should call effect after debounce time on mount', () => {
+  itIfWindowDefined('should call effect after debounce time on mount', async () => {
     const fn = vi.fn();
 
-    renderHook(() => useDebouncedEffect(fn, [], 500));
+    await renderHook(() => useDebouncedEffect(fn, [], 500));
 
     expect(fn).not.toHaveBeenCalled();
 
@@ -24,22 +25,33 @@ describe('useDebouncedEffect()', () => {
     expect(fn).toHaveBeenCalledTimes(1);
   });
 
-  itIfWindowDefined('should call effect after debounce time on dependency change', () => {
+  itIfWindowDefined('should call effect after debounce time on dependency change', async () => {
     const fn = vi.fn();
 
-    const { rerender } = renderHook<
-      void,
+    const { rerender } = await renderHook<
       {
         effect: EffectCallback;
         deps: DependencyList;
-      }
-    >(({ effect, deps }) => useDebouncedEffect(effect, deps, 500), {
-      initialProps: { effect: fn, deps: [1] },
-    });
+      },
+      void
+    >(
+      (props) => {
+        if (!props) {
+          throw new Error('Props are required');
+        }
+
+        const { effect, deps } = props;
+
+        return useDebouncedEffect(effect, deps, 500);
+      },
+      {
+        initialProps: { effect: fn, deps: [1] },
+      },
+    );
 
     expect(fn).not.toHaveBeenCalled();
 
-    rerender({ effect: fn, deps: [2] });
+    await rerender({ effect: fn, deps: [2] });
 
     expect(fn).not.toHaveBeenCalled();
 
@@ -50,20 +62,31 @@ describe('useDebouncedEffect()', () => {
     expect(fn).toHaveBeenCalledTimes(1);
   });
 
-  itIfWindowDefined('should cancel effect on unmount', () => {
+  itIfWindowDefined('should cancel effect on unmount', async () => {
     const cleanup = vi.fn();
 
     const fn = vi.fn().mockReturnValue(cleanup);
 
-    const { unmount } = renderHook<
-      void,
+    const { unmount } = await renderHook<
       {
         effect: EffectCallback;
         deps: DependencyList;
-      }
-    >(({ effect, deps }) => useDebouncedEffect(effect, deps, 500), {
-      initialProps: { effect: fn, deps: [] },
-    });
+      },
+      void
+    >(
+      (props) => {
+        if (!props) {
+          throw new Error('Props are required');
+        }
+
+        const { effect, deps } = props;
+
+        return useDebouncedEffect(effect, deps, 500);
+      },
+      {
+        initialProps: { effect: fn, deps: [] },
+      },
+    );
 
     act(() => {
       vi.advanceTimersByTime(500);
@@ -72,25 +95,36 @@ describe('useDebouncedEffect()', () => {
     expect(fn).toHaveBeenCalledTimes(1);
     expect(cleanup).not.toHaveBeenCalled();
 
-    unmount();
+    await unmount();
 
     expect(cleanup).toHaveBeenCalledTimes(1);
   });
 
-  itIfWindowDefined('should cancel and re-run effect on dependency change', () => {
+  itIfWindowDefined('should cancel and re-run effect on dependency change', async () => {
     const cleanup = vi.fn();
 
     const fn = vi.fn().mockReturnValue(cleanup);
 
-    const { rerender } = renderHook<
-      void,
+    const { rerender } = await renderHook<
       {
         effect: EffectCallback;
         deps: DependencyList;
-      }
-    >(({ effect, deps }) => useDebouncedEffect(effect, deps, 500), {
-      initialProps: { effect: fn, deps: [1] },
-    });
+      },
+      void
+    >(
+      (props) => {
+        if (!props) {
+          throw new Error('Props are required');
+        }
+
+        const { effect, deps } = props;
+
+        return useDebouncedEffect(effect, deps, 500);
+      },
+      {
+        initialProps: { effect: fn, deps: [1] },
+      },
+    );
 
     act(() => {
       vi.advanceTimersByTime(500);
@@ -99,7 +133,7 @@ describe('useDebouncedEffect()', () => {
     expect(fn).toHaveBeenCalledTimes(1);
     expect(cleanup).not.toHaveBeenCalled();
 
-    rerender({ effect: fn, deps: [2] });
+    await rerender({ effect: fn, deps: [2] });
 
     expect(cleanup).toHaveBeenCalledTimes(1);
     expect(fn).toHaveBeenCalledTimes(1);

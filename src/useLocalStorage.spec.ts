@@ -1,5 +1,6 @@
 import { afterEach, describe, expect, it } from 'vitest';
-import { act, renderHook } from '@testing-library/react';
+import { renderHook } from 'vitest-browser-react';
+import { act } from 'react-dom/test-utils';
 
 import useLocalStorage from './useLocalStorage.js';
 
@@ -12,16 +13,16 @@ describe('useLocalStorage()', () => {
     }
   });
 
-  it('should return initialState value if value in localStorage is not given (initialState is a value)', () => {
-    const { result } = renderHook(() => useLocalStorage('myKey', 'initialState'));
+  it('should return initialState value if value in localStorage is not given (initialState is a value)', async () => {
+    const { result } = await renderHook(() => useLocalStorage('myKey', 'initialState'));
 
     const [value] = result.current;
 
     expect(value).toBe('initialState');
   });
 
-  it('should return initialState value if value in localStorage is not given (initialState is a function)', () => {
-    const { result } = renderHook(() => useLocalStorage('myKey', () => 'initialState'));
+  it('should return initialState value if value in localStorage is not given (initialState is a function)', async () => {
+    const { result } = await renderHook(() => useLocalStorage('myKey', () => 'initialState'));
 
     const [value] = result.current;
 
@@ -30,10 +31,10 @@ describe('useLocalStorage()', () => {
 
   itIfWindowDefined(
     'should return initialState if value in localStorage is not valid JSON (initialState is a value)',
-    () => {
+    async () => {
       localStorage.setItem('myKey', 'invalid JSON');
 
-      const { result } = renderHook(() => useLocalStorage('myKey', 'initialState'));
+      const { result } = await renderHook(() => useLocalStorage('myKey', 'initialState'));
 
       const [value] = result.current;
 
@@ -43,10 +44,10 @@ describe('useLocalStorage()', () => {
 
   itIfWindowDefined(
     'should return initialState if value in localStorage is not valid JSON (initialState is a function)',
-    () => {
+    async () => {
       localStorage.setItem('myKey', 'invalid JSON');
 
-      const { result } = renderHook(() => useLocalStorage('myKey', () => 'initialState'));
+      const { result } = await renderHook(() => useLocalStorage('myKey', () => 'initialState'));
 
       const [value] = result.current;
 
@@ -54,28 +55,31 @@ describe('useLocalStorage()', () => {
     },
   );
 
-  itIfWindowDefined('should return value from localStorage properly', () => {
+  itIfWindowDefined('should return value from localStorage properly', async () => {
     localStorage.setItem('myKey', JSON.stringify('foo'));
 
-    const { result } = renderHook(() => useLocalStorage('myKey', 'initialState'));
+    const { result } = await renderHook(() => useLocalStorage('myKey', 'initialState'));
 
     const [value] = result.current;
 
     expect(value).toBe('foo');
   });
 
-  itIfWindowDefined('should return value from localStorage properly even if it’s falsy', () => {
-    localStorage.setItem('myKey', JSON.stringify(0));
+  itIfWindowDefined(
+    'should return value from localStorage properly even if it’s falsy',
+    async () => {
+      localStorage.setItem('myKey', JSON.stringify(0));
 
-    const { result } = renderHook(() => useLocalStorage('myKey', 'initialState'));
+      const { result } = await renderHook(() => useLocalStorage('myKey', 'initialState'));
 
-    const [value] = result.current;
+      const [value] = result.current;
 
-    expect(value).toBe(0);
-  });
+      expect(value).toBe(0);
+    },
+  );
 
-  itIfWindowDefined('should update value properly', () => {
-    const { result } = renderHook(() => useLocalStorage('myKey'));
+  itIfWindowDefined('should update value properly', async () => {
+    const { result } = await renderHook(() => useLocalStorage('myKey'));
 
     const [, setValue] = result.current;
 
