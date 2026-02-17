@@ -22,7 +22,7 @@ export default function useScrollLeftDirection(): Direction | null {
       setDirection(prevScrollLeft.current < scrollX ? 'right' : 'left');
     }
 
-    prevScrollLeft.current = scrollY;
+    prevScrollLeft.current = scrollX;
   }, []);
 
   useEventListener(isBrowser ? document : null, 'scroll', onScroll);
