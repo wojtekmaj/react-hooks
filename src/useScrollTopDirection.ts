@@ -12,13 +12,13 @@ type Direction = 'still' | 'up' | 'down';
  * @returns {Direction | null} Scroll top direction
  */
 export default function useScrollTopDirection(): Direction | null {
-  const prevScrollTop = useRef<number>();
+  const prevScrollTop = useRef<number | null>(null);
   const [direction, setDirection] = useState<Direction | null>(isBrowser ? 'still' : null);
 
   const onScroll = useCallback(() => {
     const { scrollY } = window;
 
-    if (prevScrollTop.current !== undefined) {
+    if (prevScrollTop.current !== null) {
       setDirection(prevScrollTop.current < scrollY ? 'down' : 'up');
     }
 

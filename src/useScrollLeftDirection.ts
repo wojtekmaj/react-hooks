@@ -12,13 +12,13 @@ type Direction = 'still' | 'left' | 'right';
  * @returns {Direction | null} Scroll left direction
  */
 export default function useScrollLeftDirection(): Direction | null {
-  const prevScrollLeft = useRef<number>();
+  const prevScrollLeft = useRef<number | null>(null);
   const [direction, setDirection] = useState<Direction | null>(isBrowser ? 'still' : null);
 
   const onScroll = useCallback(() => {
     const { scrollX } = window;
 
-    if (prevScrollLeft.current !== undefined) {
+    if (prevScrollLeft.current !== null) {
       setDirection(prevScrollLeft.current < scrollX ? 'right' : 'left');
     }
 
