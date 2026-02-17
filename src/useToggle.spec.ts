@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { renderHook } from 'vitest-browser-react';
-import { act } from 'react-dom/test-utils';
+import { act } from 'react';
 
 import useToggle from './useToggle.js';
 

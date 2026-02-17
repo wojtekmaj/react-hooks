@@ -1,6 +1,6 @@
 import { hydrateRoot } from 'react-dom/client';
 import { renderToString } from 'react-dom/server';
-import { act } from 'react-dom/test-utils';
+import { act } from 'react';
 
 import type { ReactNode } from 'react';
 
