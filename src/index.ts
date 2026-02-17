@@ -7,6 +7,7 @@ import useIntersectionObserver from './useIntersectionObserver.js';
 import useLocalStorage from './useLocalStorage.js';
 import useMatchMedia from './useMatchMedia.js';
 import useMutationObserver from './useMutationObserver.js';
+import useNetworkInformation from './useNetworkInformation.js';
 import useOnLine from './useOnLine.js';
 import usePermissionState from './usePermissionState.js';
 import usePrefersColorSchemeDark from './usePrefersColorSchemeDark.js';
@@ -38,6 +39,7 @@ export {
   useLocalStorage,
   useMatchMedia,
   useMutationObserver,
+  useNetworkInformation,
   useOnLine,
   usePermissionState,
   usePrefersColorSchemeDark,

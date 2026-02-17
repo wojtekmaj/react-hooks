@@ -13,6 +13,7 @@
     "skipLibCheck": true,
     "strict": true,
     "target": "es2018",
+    "types": ["network-information-types"],
     "verbatimModuleSyntax": true
   },
   "exclude": ["dist"]
