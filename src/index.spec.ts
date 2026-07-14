@@ -5,6 +5,7 @@ import {
   useDebouncedEffect,
   useDebouncedState,
   useDebouncedValue,
+  useDocumentVisibility,
   useEventListener,
   useIntersectionObserver,
   useLocalStorage,
@@ -47,6 +48,10 @@ describe('index', () => {
 
   it('has useDebouncedValue exported properly', () => {
     expect(useDebouncedValue).toBeInstanceOf(Function);
+  });
+
+  it('has useDocumentVisibility exported properly', () => {
+    expect(useDocumentVisibility).toBeInstanceOf(Function);
   });
 
   it('has useEventListener exported properly', () => {

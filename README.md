@@ -25,6 +25,7 @@ All hooks from this package support SSR. Some hooks use browser-only APIs, e.g. 
 - [`useDebouncedEffect`](#useDebouncedEffect)
 - [`useDebouncedState`](#useDebouncedState)
 - [`useDebouncedValue`](#useDebouncedValue)
+- [`useDocumentVisibility`](#useDocumentVisibility)
 - [`useEventListener`](#useEventListener)
 - [`useIntersectionObserver`](#useIntersectionObserver)
 - [`useLocalStorage`](#useLocalStorage)
@@ -103,6 +104,18 @@ Returns a debounced value.
 import { useDebouncedValue } from '@wojtekmaj/react-hooks';
 
 const debouncedValue = useDebouncedValue(value, 1000); // This value will be updated after 1 second of value not changing.
+```
+
+### `useDocumentVisibility`
+
+Returns the document's current visibility state.
+
+#### Sample usage
+
+```ts
+import { useDocumentVisibility } from '@wojtekmaj/react-hooks';
+
+const visibilityState = useDocumentVisibility(); // 'visible' / 'hidden'
 ```
 
 ### `useEventListener`

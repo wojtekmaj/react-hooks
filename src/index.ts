@@ -2,6 +2,7 @@ import useCurrentPosition from './useCurrentPosition.js';
 import useDebouncedEffect from './useDebouncedEffect.js';
 import useDebouncedState from './useDebouncedState.js';
 import useDebouncedValue from './useDebouncedValue.js';
+import useDocumentVisibility from './useDocumentVisibility.js';
 import useEventListener from './useEventListener.js';
 import useIntersectionObserver from './useIntersectionObserver.js';
 import useLocalStorage from './useLocalStorage.js';
@@ -33,6 +34,7 @@ export {
   useDebouncedEffect,
   useDebouncedState,
   useDebouncedValue,
+  useDocumentVisibility,
   useEventListener,
   useIntersectionObserver,
   useLocalStorage,
