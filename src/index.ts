@@ -4,6 +4,7 @@ import useDebouncedState from './useDebouncedState.js';
 import useDebouncedValue from './useDebouncedValue.js';
 import useDocumentVisibility from './useDocumentVisibility.js';
 import useEventListener from './useEventListener.js';
+import useForcedColors from './useForcedColors.js';
 import useIntersectionObserver from './useIntersectionObserver.js';
 import useLocalStorage from './useLocalStorage.js';
 import useMatchMedia from './useMatchMedia.js';
@@ -12,6 +13,7 @@ import useOnLine from './useOnLine.js';
 import usePermissionState from './usePermissionState.js';
 import usePrefersColorSchemeDark from './usePrefersColorSchemeDark.js';
 import usePrefersColorSchemeLight from './usePrefersColorSchemeLight.js';
+import usePrefersContrast from './usePrefersContrast.js';
 import usePrefersReducedMotion from './usePrefersReducedMotion.js';
 import usePrefersReducedTransparency from './usePrefersReducedTransparency.js';
 import useResizeObserver from './useResizeObserver.js';
@@ -37,6 +39,7 @@ export {
   useDebouncedValue,
   useDocumentVisibility,
   useEventListener,
+  useForcedColors,
   useIntersectionObserver,
   useLocalStorage,
   useMatchMedia,
@@ -45,6 +48,7 @@ export {
   usePermissionState,
   usePrefersColorSchemeDark,
   usePrefersColorSchemeLight,
+  usePrefersContrast,
   usePrefersReducedMotion,
   usePrefersReducedTransparency,
   useResizeObserver,

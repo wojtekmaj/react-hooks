@@ -27,6 +27,7 @@ All hooks from this package support SSR. Some hooks use browser-only APIs, e.g. 
 - [`useDebouncedValue`](#useDebouncedValue)
 - [`useDocumentVisibility`](#useDocumentVisibility)
 - [`useEventListener`](#useEventListener)
+- [`useForcedColors`](#useForcedColors)
 - [`useIntersectionObserver`](#useIntersectionObserver)
 - [`useLocalStorage`](#useLocalStorage)
 - [`useMatchMedia`](#useMatchMedia)
@@ -35,6 +36,7 @@ All hooks from this package support SSR. Some hooks use browser-only APIs, e.g. 
 - [`usePermissionState`](#usePermissionState)
 - [`usePrefersColorSchemeDark`](#usePrefersColorSchemeDark)
 - [`usePrefersColorSchemeLight`](#usePrefersColorSchemeLight)
+- [`usePrefersContrast`](#usePrefersContrast)
 - [`usePrefersReducedMotion`](#usePrefersReducedMotion)
 - [`usePrefersReducedTransparency`](#usePrefersReducedTransparency)
 - [`useResizeObserver`](#useResizeObserver)
@@ -131,6 +133,18 @@ import { useEventListener } from '@wojtekmaj/react-hooks';
 useEventListener(element, 'click', onClick);
 ```
 
+### `useForcedColors`
+
+Returns a flag which determines if the document matches `(forced-colors: active)` [media feature](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries#media_features).
+
+#### Sample usage
+
+```ts
+import { useForcedColors } from '@wojtekmaj/react-hooks';
+
+const forcedColors = useForcedColors(); // true
+```
+
 ### `useIntersectionObserver`
 
 Observes a given element using [IntersectionObserver](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver).
@@ -225,6 +239,18 @@ Returns a flag which determines if the document matches `(prefers-color-scheme: 
 import { usePrefersColorSchemeLight } from '@wojtekmaj/react-hooks';
 
 const prefersColorSchemeLight = usePrefersColorSchemeLight(); // true
+```
+
+### `usePrefersContrast`
+
+Returns the contrast preference indicated by the [`prefers-contrast`](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-contrast) media feature.
+
+#### Sample usage
+
+```ts
+import { usePrefersContrast } from '@wojtekmaj/react-hooks';
+
+const prefersContrast = usePrefersContrast(); // 'more' / 'less' / 'custom' / 'no-preference'
 ```
 
 ### `usePrefersReducedMotion`

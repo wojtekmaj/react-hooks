@@ -7,6 +7,7 @@ import {
   useDebouncedValue,
   useDocumentVisibility,
   useEventListener,
+  useForcedColors,
   useIntersectionObserver,
   useLocalStorage,
   useMatchMedia,
@@ -15,6 +16,7 @@ import {
   usePermissionState,
   usePrefersColorSchemeDark,
   usePrefersColorSchemeLight,
+  usePrefersContrast,
   usePrefersReducedMotion,
   usePrefersReducedTransparency,
   useResizeObserver,
@@ -59,6 +61,10 @@ describe('index', () => {
     expect(useEventListener).toBeInstanceOf(Function);
   });
 
+  it('has useForcedColors exported properly', () => {
+    expect(useForcedColors).toBeInstanceOf(Function);
+  });
+
   it('has useMatchMedia exported properly', () => {
     expect(useMatchMedia).toBeInstanceOf(Function);
   });
@@ -89,6 +95,10 @@ describe('index', () => {
 
   it('has usePrefersColorSchemeLight exported properly', () => {
     expect(usePrefersColorSchemeLight).toBeInstanceOf(Function);
+  });
+
+  it('has usePrefersContrast exported properly', () => {
+    expect(usePrefersContrast).toBeInstanceOf(Function);
   });
 
   it('has usePrefersReducedMotion exported properly', () => {
