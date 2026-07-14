@@ -27,6 +27,7 @@ import useSetTimeout from './useSetTimeout.js';
 import useTick from './useTick.js';
 import useToggle from './useToggle.js';
 import useWindowHeight from './useWindowHeight.js';
+import useWindowSize from './useWindowSize.js';
 import useWindowWidth from './useWindowWidth.js';
 
 export {
@@ -59,5 +60,6 @@ export {
   useTick,
   useToggle,
   useWindowHeight,
+  useWindowSize,
   useWindowWidth,
 };

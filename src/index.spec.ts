@@ -30,6 +30,7 @@ import {
   useTick,
   useToggle,
   useWindowHeight,
+  useWindowSize,
   useWindowWidth,
 } from './index.js';
 
@@ -148,6 +149,10 @@ describe('index', () => {
 
   it('has useWindowHeight exported properly', () => {
     expect(useWindowHeight).toBeInstanceOf(Function);
+  });
+
+  it('has useWindowSize exported properly', () => {
+    expect(useWindowSize).toBeInstanceOf(Function);
   });
 
   it('has useWindowWidth exported properly', () => {

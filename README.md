@@ -50,6 +50,7 @@ All hooks from this package support SSR. Some hooks use browser-only APIs, e.g. 
 - [`useTick`](#useTick)
 - [`useToggle`](#useToggle)
 - [`useWindowHeight`](#useWindowHeight)
+- [`useWindowSize`](#useWindowSize)
 - [`useWindowWidth`](#useWindowWidth)
 
 ### `useCurrentPosition`
@@ -404,6 +405,18 @@ Returns the interior height of the window in pixels.
 import { useWindowHeight } from '@wojtekmaj/react-hooks';
 
 const windowWidth = useWindowHeight(); // 900
+```
+
+### `useWindowSize`
+
+Returns the interior width and height of the window in pixels.
+
+#### Sample usage
+
+```ts
+import { useWindowSize } from '@wojtekmaj/react-hooks';
+
+const windowSize = useWindowSize(); // { width: 1440, height: 900 }
 ```
 
 ### `useWindowWidth`
