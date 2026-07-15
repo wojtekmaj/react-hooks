@@ -9,9 +9,11 @@ import {
   useEventListener,
   useForcedColors,
   useIntersectionObserver,
+  useIntersectionObserverRef,
   useLocalStorage,
   useMatchMedia,
   useMutationObserver,
+  useMutationObserverRef,
   useOnLine,
   usePermissionState,
   usePrefersColorSchemeDark,
@@ -20,6 +22,7 @@ import {
   usePrefersReducedMotion,
   usePrefersReducedTransparency,
   useResizeObserver,
+  useResizeObserverRef,
   useScrollLeft,
   useScrollLeftDirection,
   useScrollLeftPercent,
@@ -73,12 +76,20 @@ describe('index', () => {
     expect(useIntersectionObserver).toBeInstanceOf(Function);
   });
 
+  it('has useIntersectionObserverRef exported properly', () => {
+    expect(useIntersectionObserverRef).toBeInstanceOf(Function);
+  });
+
   it('has useLocalStorage exported properly', () => {
     expect(useLocalStorage).toBeInstanceOf(Function);
   });
 
   it('has useMutationObserver exported properly', () => {
     expect(useMutationObserver).toBeInstanceOf(Function);
+  });
+
+  it('has useMutationObserverRef exported properly', () => {
+    expect(useMutationObserverRef).toBeInstanceOf(Function);
   });
 
   it('has useOnLine exported properly', () => {
@@ -111,6 +122,10 @@ describe('index', () => {
 
   it('has useResizeObserver exported properly', () => {
     expect(useResizeObserver).toBeInstanceOf(Function);
+  });
+
+  it('has useResizeObserverRef exported properly', () => {
+    expect(useResizeObserverRef).toBeInstanceOf(Function);
   });
 
   it('has useScrollLeft exported properly', () => {

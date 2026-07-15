@@ -6,9 +6,11 @@ import useDocumentVisibility from './useDocumentVisibility.js';
 import useEventListener from './useEventListener.js';
 import useForcedColors from './useForcedColors.js';
 import useIntersectionObserver from './useIntersectionObserver.js';
+import useIntersectionObserverRef from './useIntersectionObserverRef.js';
 import useLocalStorage from './useLocalStorage.js';
 import useMatchMedia from './useMatchMedia.js';
 import useMutationObserver from './useMutationObserver.js';
+import useMutationObserverRef from './useMutationObserverRef.js';
 import useOnLine from './useOnLine.js';
 import usePermissionState from './usePermissionState.js';
 import usePrefersColorSchemeDark from './usePrefersColorSchemeDark.js';
@@ -17,6 +19,7 @@ import usePrefersContrast from './usePrefersContrast.js';
 import usePrefersReducedMotion from './usePrefersReducedMotion.js';
 import usePrefersReducedTransparency from './usePrefersReducedTransparency.js';
 import useResizeObserver from './useResizeObserver.js';
+import useResizeObserverRef from './useResizeObserverRef.js';
 import useScrollLeft from './useScrollLeft.js';
 import useScrollLeftDirection from './useScrollLeftDirection.js';
 import useScrollLeftPercent from './useScrollLeftPercent.js';
@@ -41,9 +44,11 @@ export {
   useEventListener,
   useForcedColors,
   useIntersectionObserver,
+  useIntersectionObserverRef,
   useLocalStorage,
   useMatchMedia,
   useMutationObserver,
+  useMutationObserverRef,
   useOnLine,
   usePermissionState,
   usePrefersColorSchemeDark,
@@ -52,6 +57,7 @@ export {
   usePrefersReducedMotion,
   usePrefersReducedTransparency,
   useResizeObserver,
+  useResizeObserverRef,
   useScrollLeft,
   useScrollLeftDirection,
   useScrollLeftPercent,
