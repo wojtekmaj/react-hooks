@@ -2,6 +2,7 @@ import useCurrentPosition from './useCurrentPosition.js';
 import useDebouncedEffect from './useDebouncedEffect.js';
 import useDebouncedState from './useDebouncedState.js';
 import useDebouncedValue from './useDebouncedValue.js';
+import useDeviceOrientation from './useDeviceOrientation.js';
 import useDocumentVisibility from './useDocumentVisibility.js';
 import useEventListener from './useEventListener.js';
 import useForcedColors from './useForcedColors.js';
@@ -41,6 +42,7 @@ export {
   useDebouncedEffect,
   useDebouncedState,
   useDebouncedValue,
+  useDeviceOrientation,
   useDocumentVisibility,
   useEventListener,
   useForcedColors,

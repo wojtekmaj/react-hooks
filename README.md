@@ -24,6 +24,7 @@ All hooks from this package support SSR. Some hooks use browser-only APIs, e.g. 
 #### Browser state and capabilities
 
 - [`useCurrentPosition`](#useCurrentPosition)
+- [`useDeviceOrientation`](#useDeviceOrientation)
 - [`useDocumentVisibility`](#useDocumentVisibility)
 - [`useOnLine`](#useOnLine)
 - [`usePermissionState`](#usePermissionState)
@@ -85,6 +86,20 @@ Returns current position from Geolocation API.
 import { useCurrentPosition } from '@wojtekmaj/react-hooks';
 
 useCurrentPosition(); // { latitude: 0, longitude: 0 }
+```
+
+#### `useDeviceOrientation`
+
+Returns the device's current physical orientation.
+
+On iOS and iPadOS, permission to access device orientation must be requested from a user interaction before orientation events are emitted. If [`DeviceOrientationEvent.requestPermission()`](https://developer.mozilla.org/en-US/docs/Web/API/DeviceOrientationEvent/requestPermission_static) is available, call it from a click or tap handler.
+
+##### Sample usage
+
+```ts
+import { useDeviceOrientation } from '@wojtekmaj/react-hooks';
+
+const orientation = useDeviceOrientation(); // { absolute: false, alpha: 0, beta: 0, gamma: 0 }
 ```
 
 #### `useDocumentVisibility`

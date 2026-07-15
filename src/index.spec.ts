@@ -5,6 +5,7 @@ import {
   useDebouncedEffect,
   useDebouncedState,
   useDebouncedValue,
+  useDeviceOrientation,
   useDocumentVisibility,
   useEventListener,
   useForcedColors,
@@ -55,6 +56,10 @@ describe('index', () => {
 
   it('has useDebouncedValue exported properly', () => {
     expect(useDebouncedValue).toBeInstanceOf(Function);
+  });
+
+  it('has useDeviceOrientation exported properly', () => {
+    expect(useDeviceOrientation).toBeInstanceOf(Function);
   });
 
   it('has useDocumentVisibility exported properly', () => {
