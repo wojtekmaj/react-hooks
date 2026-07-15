@@ -13,6 +13,7 @@ import useMutationObserver from './useMutationObserver.js';
 import useMutationObserverRef from './useMutationObserverRef.js';
 import useOnLine from './useOnLine.js';
 import usePermissionState from './usePermissionState.js';
+import usePrefersColorScheme from './usePrefersColorScheme.js';
 import usePrefersColorSchemeDark from './usePrefersColorSchemeDark.js';
 import usePrefersColorSchemeLight from './usePrefersColorSchemeLight.js';
 import usePrefersContrast from './usePrefersContrast.js';
@@ -51,6 +52,7 @@ export {
   useMutationObserverRef,
   useOnLine,
   usePermissionState,
+  usePrefersColorScheme,
   usePrefersColorSchemeDark,
   usePrefersColorSchemeLight,
   usePrefersContrast,

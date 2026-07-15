@@ -16,6 +16,7 @@ import {
   useMutationObserverRef,
   useOnLine,
   usePermissionState,
+  usePrefersColorScheme,
   usePrefersColorSchemeDark,
   usePrefersColorSchemeLight,
   usePrefersContrast,
@@ -98,6 +99,10 @@ describe('index', () => {
 
   it('has usePermissionState exported properly', () => {
     expect(usePermissionState).toBeInstanceOf(Function);
+  });
+
+  it('has usePrefersColorScheme exported properly', () => {
+    expect(usePrefersColorScheme).toBeInstanceOf(Function);
   });
 
   it('has usePrefersColorSchemeDark exported properly', () => {

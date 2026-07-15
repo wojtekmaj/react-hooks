@@ -39,6 +39,7 @@ All hooks from this package support SSR. Some hooks use browser-only APIs, e.g. 
 
 - [`useForcedColors`](#useForcedColors)
 - [`useMatchMedia`](#useMatchMedia)
+- [`usePrefersColorScheme`](#usePrefersColorScheme)
 - [`usePrefersColorSchemeDark`](#usePrefersColorSchemeDark)
 - [`usePrefersColorSchemeLight`](#usePrefersColorSchemeLight)
 - [`usePrefersContrast`](#usePrefersContrast)
@@ -196,6 +197,18 @@ Returns a flag which determines if the document matches the given [media query](
 import { useMatchMedia } from '@wojtekmaj/react-hooks';
 
 const isDesktop = useMatchMedia('screen and (min-width: 1024px)'); // true / false
+```
+
+#### `usePrefersColorScheme`
+
+Returns the color scheme preference indicated by the [`prefers-color-scheme`](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme) media feature.
+
+##### Sample usage
+
+```ts
+import { usePrefersColorScheme } from '@wojtekmaj/react-hooks';
+
+const prefersColorScheme = usePrefersColorScheme(); // 'dark' / 'light'
 ```
 
 #### `usePrefersColorSchemeDark`
