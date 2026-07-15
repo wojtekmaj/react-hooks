@@ -58,7 +58,7 @@ describe('useResizeObserver()', () => {
     expect(result.current).toBe(undefined);
   });
 
-  itIfWindowDefined('attaches event listener to element properly', async () => {
+  itIfWindowDefined('observes the given element', async () => {
     const element = document.createElement('div');
     const listener = () => {
       // Intentionally empty
