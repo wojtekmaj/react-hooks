@@ -176,7 +176,7 @@ useResizeObserver(element, config, onResize);
 
 #### `useForcedColors`
 
-Returns a flag which determines if the document matches `(forced-colors: active)` [media feature](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries#media_features).
+Returns a flag indicating whether the [`forced-colors`](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/forced-colors) media feature is `active`.
 
 ##### Sample usage
 
@@ -200,7 +200,7 @@ const isDesktop = useMatchMedia('screen and (min-width: 1024px)'); // true / fal
 
 #### `usePrefersColorSchemeDark`
 
-Returns a flag which determines if the document matches `(prefers-color-scheme: dark)` [media feature](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries#media_features).
+Returns a flag indicating whether the [`prefers-color-scheme`](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme) media feature is `dark`.
 
 ##### Sample usage
 
@@ -212,7 +212,7 @@ const prefersColorSchemeDark = usePrefersColorSchemeDark(); // true
 
 #### `usePrefersColorSchemeLight`
 
-Returns a flag which determines if the document matches `(prefers-color-scheme: light)` [media feature](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries#media_features).
+Returns a flag indicating whether the [`prefers-color-scheme`](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme) media feature is `light`.
 
 ##### Sample usage
 
@@ -236,7 +236,7 @@ const prefersContrast = usePrefersContrast(); // 'more' / 'less' / 'custom' / 'n
 
 #### `usePrefersReducedMotion`
 
-Returns a flag which determines if the document matches `(prefers-reduced-motion: reduce)` [media feature](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries#media_features).
+Returns a flag indicating whether the [`prefers-reduced-motion`](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion) media feature is `reduce`.
 
 ##### Sample usage
 
@@ -248,7 +248,7 @@ const prefersReducedMotion = usePrefersReducedMotion(); // true
 
 #### `usePrefersReducedTransparency`
 
-Returns a flag which determines if the document matches `(prefers-reduced-transparency: reduce)` [media feature](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries#media_features).
+Returns a flag indicating whether the [`prefers-reduced-transparency`](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-transparency) media feature is `reduce`.
 
 ##### Sample usage
 
