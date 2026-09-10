@@ -18,7 +18,7 @@ const config: ViteUserConfig = defineConfig({
                 colorScheme: 'dark',
                 reducedMotion: 'reduce',
                 // TODO: Set when Playwright supports this feature
-                // reducedTransparency: 'reduce',}
+                // reducedTransparency: 'reduce',
               },
             }),
           },
