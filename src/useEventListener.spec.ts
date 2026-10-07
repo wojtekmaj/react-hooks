@@ -1,4 +1,4 @@
-import { afterEach, describe, expect, it, vi } from 'vitest';
+import { afterEach, describe, expect, expectTypeOf, it, vi } from 'vitest';
 import { renderHook } from 'vitest-browser-react';
 
 import useEventListener from './useEventListener.js';
@@ -65,4 +65,144 @@ describe('useEventListener()', () => {
       await renderHook(() => useEventListener(element, type, listener));
     },
   );
+
+  describe('types', () => {
+    it('infers DragEvent for HTMLElement and dragstart', async () => {
+      const element = null as HTMLElement | null;
+
+      await renderHook(() =>
+        useEventListener(element, 'dragstart', (event) => {
+          expectTypeOf(event).toEqualTypeOf<DragEvent>();
+        }),
+      );
+    });
+
+    it('accepts DragEvent handler for HTMLElement and dragstart', async () => {
+      const element = null as HTMLDivElement | null;
+      const listener = (_event: DragEvent) => {
+        // Intentionally empty
+      };
+
+      await renderHook(() => useEventListener(element, 'dragstart', listener));
+    });
+
+    it('infers PointerEvent for HTMLElement and click', async () => {
+      const element = null as HTMLElement | null;
+
+      await renderHook(() =>
+        useEventListener(element, 'click', (event) => {
+          expectTypeOf(event).toEqualTypeOf<PointerEvent>();
+        }),
+      );
+    });
+
+    it('infers MouseEvent for HTMLElement and mousedown', async () => {
+      const element = null as HTMLElement | null;
+
+      await renderHook(() =>
+        useEventListener(element, 'mousedown', (event) => {
+          expectTypeOf(event).toEqualTypeOf<MouseEvent>();
+        }),
+      );
+    });
+
+    it('infers KeyboardEvent for HTMLElement and keydown', async () => {
+      const element = null as HTMLInputElement | null;
+
+      await renderHook(() =>
+        useEventListener(element, 'keydown', (event) => {
+          expectTypeOf(event).toEqualTypeOf<KeyboardEvent>();
+        }),
+      );
+    });
+
+    it('rejects mismatched handler for HTMLElement', async () => {
+      const element = null as HTMLElement | null;
+      const listener = (_event: DragEvent) => {
+        // Intentionally empty
+      };
+
+      // @ts-expect-error DragEvent handler cannot handle keydown
+      await renderHook(() => useEventListener(element, 'keydown', listener));
+    });
+
+    it('infers event type for SVGElement', async () => {
+      const element = null as SVGSVGElement | null;
+
+      await renderHook(() =>
+        useEventListener(element, 'pointerdown', (event) => {
+          expectTypeOf(event).toEqualTypeOf<PointerEvent>();
+        }),
+      );
+    });
+
+    it('infers event type for Element', async () => {
+      const element = null as Element | null;
+
+      await renderHook(() =>
+        useEventListener(element, 'fullscreenchange', (event) => {
+          expectTypeOf(event).toEqualTypeOf<Event>();
+        }),
+      );
+    });
+
+    it('falls back to Event for custom event types', async () => {
+      const element = null as HTMLElement | null;
+
+      await renderHook(() =>
+        useEventListener(element, 'my-custom-event', (event) => {
+          expectTypeOf(event).toEqualTypeOf<Event>();
+        }),
+      );
+    });
+
+    it('accepts listener objects', async () => {
+      const element = null as HTMLElement | null;
+      const listener = {
+        handleEvent: (_event: Event) => {
+          // Intentionally empty
+        },
+      };
+
+      await renderHook(() => useEventListener(element, 'click', listener));
+    });
+
+    it('accepts null element', async () => {
+      await renderHook(() =>
+        useEventListener(null, 'click', (event) => {
+          expectTypeOf(event).toEqualTypeOf<PointerEvent>();
+        }),
+      );
+    });
+
+    it('infers event type for Window', async () => {
+      const element = null as Window | null;
+
+      await renderHook(() =>
+        useEventListener(element, 'storage', (event) => {
+          expectTypeOf(event).toEqualTypeOf<StorageEvent>();
+        }),
+      );
+    });
+
+    it('infers event type for Document', async () => {
+      const element = null as Document | null;
+
+      await renderHook(() =>
+        useEventListener(element, 'visibilitychange', (event) => {
+          expectTypeOf(event).toEqualTypeOf<Event>();
+        }),
+      );
+    });
+
+    it('infers event type for FontFaceSet', async () => {
+      const element = null as FontFaceSet | null;
+
+      await renderHook(() =>
+        useEventListener(element, 'loadingdone', (event) => {
+          expectTypeOf(event).toEqualTypeOf<FontFaceSetLoadEvent>();
+        }),
+      );
+    });
+  });
 });
