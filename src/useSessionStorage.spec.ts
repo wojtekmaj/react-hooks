@@ -153,4 +153,23 @@ describe('useSessionStorage()', () => {
     expect(value).toBe(1);
     expect(sessionStorage.getItem('myKey')).toBe('1');
   });
+
+  itIfWindowDefined(
+    'should return initialState after a storage event with invalid JSON',
+    async () => {
+      sessionStorage.setItem('myKey', JSON.stringify('foo'));
+
+      const { result } = await renderHook(() => useSessionStorage('myKey', 'initialState'));
+
+      act(() => {
+        window.dispatchEvent(
+          new StorageEvent('storage', { key: 'myKey', newValue: 'invalid JSON' }),
+        );
+      });
+
+      const [value] = result.current;
+
+      expect(value).toBe('initialState');
+    },
+  );
 });

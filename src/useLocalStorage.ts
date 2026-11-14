@@ -60,14 +60,20 @@ export default function useLocalStorage<T = unknown>(
 
       const { newValue: rawValue } = event;
 
-      const nextValue = rawValue !== null ? JSON.parse(rawValue) : null;
+      const nextValue = (() => {
+        try {
+          return rawValue !== null ? JSON.parse(rawValue) : null;
+        } catch {
+          return initialState instanceof Function ? initialState() : initialState;
+        }
+      })();
 
       if (nextValue !== valueRef.current) {
         valueRef.current = nextValue;
         setValue(nextValue);
       }
     },
-    [key],
+    [key, initialState],
   );
 
   useEventListener(isBrowser ? window : null, 'storage', onStorage);
