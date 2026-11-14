@@ -172,4 +172,21 @@ describe('useLocalStorage()', () => {
       expect(value).toBe('initialState');
     },
   );
+
+  itIfWindowDefined(
+    'should return initialState after a storage event removes the key',
+    async () => {
+      localStorage.setItem('myKey', JSON.stringify('foo'));
+
+      const { result } = await renderHook(() => useLocalStorage('myKey', 'initialState'));
+
+      act(() => {
+        window.dispatchEvent(new StorageEvent('storage', { key: 'myKey', newValue: null }));
+      });
+
+      const [value] = result.current;
+
+      expect(value).toBe('initialState');
+    },
+  );
 });

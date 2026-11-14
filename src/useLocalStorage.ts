@@ -61,10 +61,14 @@ export default function useLocalStorage<T = unknown>(
       const { newValue: rawValue } = event;
 
       const nextValue = (() => {
-        try {
-          return rawValue !== null ? JSON.parse(rawValue) : null;
-        } catch {
+        function getInitialState() {
           return initialState instanceof Function ? initialState() : initialState;
+        }
+
+        try {
+          return rawValue !== null ? JSON.parse(rawValue) : getInitialState();
+        } catch {
+          return getInitialState();
         }
       })();
 
