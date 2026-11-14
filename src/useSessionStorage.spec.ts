@@ -120,4 +120,37 @@ describe('useSessionStorage()', () => {
       expect(JSON.parse(rawValue)).toBe('bar');
     }
   });
+
+  itIfWindowDefined('should update value properly with batched functional updates', async () => {
+    const { result } = await renderHook(() => useSessionStorage('myKey', 0));
+
+    const [, setValue] = result.current;
+
+    act(() => {
+      setValue((prevValue) => prevValue + 1);
+      setValue((prevValue) => prevValue + 1);
+    });
+
+    const [value] = result.current;
+
+    expect(value).toBe(2);
+    expect(sessionStorage.getItem('myKey')).toBe('2');
+  });
+
+  itIfWindowDefined('should update value properly after a storage event', async () => {
+    const { result } = await renderHook(() => useSessionStorage('myKey', 0));
+
+    const [, setValue] = result.current;
+
+    act(() => {
+      setValue(5);
+      window.dispatchEvent(new StorageEvent('storage', { key: 'myKey', newValue: '0' }));
+      setValue((prevValue) => prevValue + 1);
+    });
+
+    const [value] = result.current;
+
+    expect(value).toBe(1);
+    expect(sessionStorage.getItem('myKey')).toBe('1');
+  });
 });

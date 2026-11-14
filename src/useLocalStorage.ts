@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useRef, useState } from 'react';
 
 import useEventListener from './useEventListener.js';
 
@@ -32,18 +32,24 @@ export default function useLocalStorage<T = unknown>(
     }
   });
 
+  // Keep pending updates available before React renders
+  const valueRef = useRef(value);
+
   const onChange = useCallback(
     (nextValueOrFunction: T | ((value: T) => T)) => {
       const nextValue =
-        nextValueOrFunction instanceof Function ? nextValueOrFunction(value) : nextValueOrFunction;
+        nextValueOrFunction instanceof Function
+          ? nextValueOrFunction(valueRef.current)
+          : nextValueOrFunction;
 
       if (isBrowser) {
         localStorage.setItem(key, JSON.stringify(nextValue));
       }
 
+      valueRef.current = nextValue;
       setValue(nextValue);
     },
-    [key, value],
+    [key],
   );
 
   const onStorage = useCallback(
@@ -56,11 +62,12 @@ export default function useLocalStorage<T = unknown>(
 
       const nextValue = rawValue !== null ? JSON.parse(rawValue) : null;
 
-      if (nextValue !== value) {
+      if (nextValue !== valueRef.current) {
+        valueRef.current = nextValue;
         setValue(nextValue);
       }
     },
-    [key, value],
+    [key],
   );
 
   useEventListener(isBrowser ? window : null, 'storage', onStorage);
