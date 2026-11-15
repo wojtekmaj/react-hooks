@@ -9,6 +9,7 @@ A collection of React Hooks.
 - Install by executing `npm install @wojtekmaj/react-hooks` or `yarn add @wojtekmaj/react-hooks`.
 - Import by adding `import { useTick } from '@wojtekmaj/react-hooks'`.
 - Do stuff with it!
+
   ```ts
   const tick = useTick();
   ```
